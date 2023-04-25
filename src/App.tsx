@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Button, Treemap } from '@kirill-jsdev/tw-components-library';
+// import { Button } from '@kirill-jsdev/tw-components-library';
+import Treemap from './Treemap';
+
 
 function App() {
   return (
     <div className="App">
-      <Button label='AAA' />
+      {/* <Button label='Test' /> */}
       <Treemap treemap={data.treemap} predictorPalette={data.predictorPalette} />
     </div>
   );
