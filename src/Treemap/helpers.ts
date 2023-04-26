@@ -382,3 +382,23 @@ export function buildPredictorPalette(variables: []) {
 
   return predictorPalette
 }
+
+
+
+///GUARD FOR Table.tsx
+
+export function roundStandardFormatter(n: number, fractionDigits: number): number {
+  const factor = Math.pow(10, fractionDigits)
+  return Math.round(n * factor) / factor
+}
+
+export function standardFormatter(n: number): number {
+  return roundStandardFormatter(n, FRACTION_DIGITS)
+}
+
+export function getTermLabel(term: Term): string {
+  return term.parts
+    .filter((p) => !isBetaDictionary(p))
+    .map((p) => getPartLabel(p, standardFormatter))
+    .join(' & ')
+}
