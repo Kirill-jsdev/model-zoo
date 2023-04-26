@@ -370,7 +370,7 @@ const colorMap = [
   { color: '#7A434F', textColor: '#EBECF0'},
 ]
 
-export function buildPredictorPalette(variables: []) {
+export function buildPredictorPalette(variables: any[]) { //the type of argument was changed from '[]' to 'any[]'
   const predictorPalette = variables.map((v: any, i: number) => {
     const colorIndex = i < colorMap.length ? i : 0
     v.variable = v.name

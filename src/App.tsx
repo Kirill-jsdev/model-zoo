@@ -2,19 +2,24 @@ import React from 'react';
 import './App.css';
 import Treemap from './Treemap/Treemap';
 import TablePrep from './Treemap/Table/TablePrep'
+import { buildPredictorPalette } from './Treemap/helpers'
+
 
 function App() {
+
+  const variablesWithColors = buildPredictorPalette(variables)
+
   return (
     <div className="App">
-      <Treemap models={models} variables={variables} />
-      <TablePrep />
+      <Treemap models={models} variables={variablesWithColors} />
+      <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />
     </div>
   );
 }
 
 export default App;
 
-const variables = [
+const variables = [ //data from VIRSIONS endpoint
   {
       "minimumValue": 1,
       "name": "cnt",
@@ -83,7 +88,7 @@ const variables = [
   }
 ]
 
-const models = [
+const models = [ //data from MODEL endpoint
     {
         "index": 1,
         "terms": [
