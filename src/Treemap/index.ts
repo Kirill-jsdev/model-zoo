@@ -1,1 +1,1 @@
-export { default } from "./Treemap"
+export { default } from "./TreemapChartProvider"

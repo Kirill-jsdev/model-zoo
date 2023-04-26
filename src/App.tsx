@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import ModelZoo from './Treemap/ModelZoo';
+import Treemap from './Treemap/Treemap';
 
 
 function App() {
   return (
     <div className="App">
-      <ModelZoo models={ModelZooData} variables={variables} />
+      <Treemap models={models} variables={variables} />
     </div>
   );
 }
@@ -82,7 +82,7 @@ const variables = [
   }
 ]
 
-const ModelZooData = [
+const models = [
     {
         "index": 1,
         "terms": [
