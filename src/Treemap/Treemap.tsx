@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { TreemapNode, DatasetVariable, Direction } from './Types'
 import { TreemapChartConsumer } from './TreemapChartConsumer'
 import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from './Util'
