@@ -3,16 +3,28 @@ import './App.css';
 import Treemap from './Treemap/Treemap';
 import TablePrep from './Treemap/Table/TablePrep'
 import { buildPredictorPalette } from './Treemap/helpers'
+import {useState} from 'react'
 
+type ViewDataType = 'treemap' | 'table'
 
 function App() {
+
+  const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setViewDataAs(e.target.value as ViewDataType)
+  }
 
   const variablesWithColors = buildPredictorPalette(variables)
 
   return (
     <div className="App">
-      <Treemap models={models} variables={variablesWithColors} />
-      <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />
+        <select onChange={handleSelectChange}>
+            <option value="treemap" selected>Treemap</option>
+            <option value="table">Table</option>
+        </select>
+      {viewDataAs === 'treemap' && <Treemap models={models} variables={variablesWithColors} />}
+      {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
     </div>
   );
 }
