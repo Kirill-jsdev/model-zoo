@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Treemap from './Treemap/Treemap';
 import { ModelZooTable } from './Treemap/Table/Table'
+import { Term } from './Treemap/helpers'
 
 
 function App() {
@@ -896,20 +897,7 @@ const variablesWithColors = [
     }
 ]
 
-const selectedModelTerms = [
-    {
-        "importance": 0,
-        "parts": [
-            {
-                "type": "Intercept",
-                "value": 1
-            },
-            {
-                "type": "β",
-                "value": 0.2855196439068237
-            }
-        ]
-    },
+const selectedModelTerms: Term[] = [
     {
         "importance": 20.49137559691252,
         "parts": [
@@ -944,21 +932,22 @@ const selectedModelTerms = [
         ]
     },
     {
-        "importance": 6.619396763989043,
+        "importance": 8.583926127414717,
         "parts": [
             {
-                "type": "Cos",
-                "period": 12,
-                "unit": "hours"
+                "type": "TimeOffsets",
+                "predictor": "cnt",
+                "offset": -1
             },
             {
-                "type": "RestOfWeek",
-                "day": 5,
-                "offset": -5
+                "type": "ExponentialMovingAverage",
+                "predictor": "cnt",
+                "window": 4,
+                "offset": -1
             },
             {
                 "type": "β",
-                "value": -18.103922175639443
+                "value": 0.021745821054344073
             }
         ]
     },
@@ -983,31 +972,11 @@ const selectedModelTerms = [
         ]
     },
     {
-        "importance": 8.583926127414717,
-        "parts": [
-            {
-                "type": "TimeOffsets",
-                "predictor": "cnt",
-                "offset": -1
-            },
-            {
-                "type": "ExponentialMovingAverage",
-                "predictor": "cnt",
-                "window": 4,
-                "offset": -1
-            },
-            {
-                "type": "β",
-                "value": 0.021745821054344073
-            }
-        ]
-    },
-    {
-        "importance": 5.545582423277233,
+        "importance": 6.619396763989043,
         "parts": [
             {
                 "type": "Cos",
-                "period": 8,
+                "period": 12,
                 "unit": "hours"
             },
             {
@@ -1017,45 +986,7 @@ const selectedModelTerms = [
             },
             {
                 "type": "β",
-                "value": 8.502026020880189
-            }
-        ]
-    },
-    {
-        "importance": 4.532151209340016,
-        "parts": [
-            {
-                "type": "Cos",
-                "period": 4,
-                "unit": "hours"
-            },
-            {
-                "type": "RestOfWeek",
-                "day": 5,
-                "offset": -5
-            },
-            {
-                "type": "β",
-                "value": 8.446791253080226
-            }
-        ]
-    },
-    {
-        "importance": 5.083907386300636,
-        "parts": [
-            {
-                "type": "Sin",
-                "period": 3,
-                "unit": "hours"
-            },
-            {
-                "type": "RestOfWeek",
-                "day": 5,
-                "offset": -5
-            },
-            {
-                "type": "β",
-                "value": -7.979259177321925
+                "value": -18.103922175639443
             }
         ]
     },
@@ -1079,6 +1010,25 @@ const selectedModelTerms = [
         ]
     },
     {
+        "importance": 5.545582423277233,
+        "parts": [
+            {
+                "type": "Cos",
+                "period": 8,
+                "unit": "hours"
+            },
+            {
+                "type": "RestOfWeek",
+                "day": 5,
+                "offset": -5
+            },
+            {
+                "type": "β",
+                "value": 8.502026020880189
+            }
+        ]
+    },
+    {
         "importance": 5.4211045757024205,
         "parts": [
             {
@@ -1098,87 +1048,40 @@ const selectedModelTerms = [
         ]
     },
     {
-        "importance": 2.511415967838125,
+        "importance": 5.083907386300636,
         "parts": [
-            {
-                "type": "Cos",
-                "period": 24,
-                "unit": "hours"
-            },
             {
                 "type": "Sin",
                 "period": 3,
                 "unit": "hours"
             },
             {
+                "type": "RestOfWeek",
+                "day": 5,
+                "offset": -5
+            },
+            {
                 "type": "β",
-                "value": 4.413053140963686
+                "value": -7.979259177321925
             }
         ]
     },
     {
-        "importance": 2.176225635014396,
-        "parts": [
-            {
-                "type": "TimeOffsets",
-                "predictor": "cnt",
-                "offset": -1
-            },
-            {
-                "type": "Cos",
-                "period": 3,
-                "unit": "hours"
-            },
-            {
-                "type": "β",
-                "value": -0.07831218280917539
-            }
-        ]
-    },
-    {
-        "importance": 2.314162699343578,
-        "parts": [
-            {
-                "type": "Sin",
-                "period": 24,
-                "unit": "hours"
-            },
-            {
-                "type": "β",
-                "value": 11.572695626298994
-            }
-        ]
-    },
-    {
-        "importance": 2.372839678480726,
-        "parts": [
-            {
-                "type": "TimeOffsets",
-                "predictor": "cnt",
-                "offset": -1
-            },
-            {
-                "type": "Cos",
-                "period": 12,
-                "unit": "hours"
-            },
-            {
-                "type": "β",
-                "value": -0.40388878653892624
-            }
-        ]
-    },
-    {
-        "importance": 2.673250470447511,
+        "importance": 4.532151209340016,
         "parts": [
             {
                 "type": "Cos",
-                "period": 12,
+                "period": 4,
                 "unit": "hours"
             },
             {
+                "type": "RestOfWeek",
+                "day": 5,
+                "offset": -5
+            },
+            {
                 "type": "β",
-                "value": 17.449086884967855
+                "value": 8.446791253080226
             }
         ]
     },
@@ -1221,6 +1124,58 @@ const selectedModelTerms = [
         ]
     },
     {
+        "importance": 2.673250470447511,
+        "parts": [
+            {
+                "type": "Cos",
+                "period": 12,
+                "unit": "hours"
+            },
+            {
+                "type": "β",
+                "value": 17.449086884967855
+            }
+        ]
+    },
+    {
+        "importance": 2.511415967838125,
+        "parts": [
+            {
+                "type": "Cos",
+                "period": 24,
+                "unit": "hours"
+            },
+            {
+                "type": "Sin",
+                "period": 3,
+                "unit": "hours"
+            },
+            {
+                "type": "β",
+                "value": 4.413053140963686
+            }
+        ]
+    },
+    {
+        "importance": 2.372839678480726,
+        "parts": [
+            {
+                "type": "TimeOffsets",
+                "predictor": "cnt",
+                "offset": -1
+            },
+            {
+                "type": "Cos",
+                "period": 12,
+                "unit": "hours"
+            },
+            {
+                "type": "β",
+                "value": -0.40388878653892624
+            }
+        ]
+    },
+    {
         "importance": 2.3170614429555547,
         "parts": [
             {
@@ -1236,6 +1191,52 @@ const selectedModelTerms = [
             {
                 "type": "β",
                 "value": 6.1484989512059505
+            }
+        ]
+    },
+    {
+        "importance": 2.314162699343578,
+        "parts": [
+            {
+                "type": "Sin",
+                "period": 24,
+                "unit": "hours"
+            },
+            {
+                "type": "β",
+                "value": 11.572695626298994
+            }
+        ]
+    },
+    {
+        "importance": 2.176225635014396,
+        "parts": [
+            {
+                "type": "TimeOffsets",
+                "predictor": "cnt",
+                "offset": -1
+            },
+            {
+                "type": "Cos",
+                "period": 3,
+                "unit": "hours"
+            },
+            {
+                "type": "β",
+                "value": -0.07831218280917539
+            }
+        ]
+    },
+    {
+        "importance": 0,
+        "parts": [
+            {
+                "type": "Intercept",
+                "value": 1
+            },
+            {
+                "type": "β",
+                "value": 0.2855196439068237
             }
         ]
     }
