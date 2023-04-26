@@ -1,5 +1,3 @@
-import { css } from 'styled-components'
-
 export const LIGHTEN_FACTOR = 0.4
 export const FADE_FACTOR = 0.3
 
@@ -134,21 +132,3 @@ export const COLOR_TO_TEXT_COLOR_MAP: Record<string, string> = {
   [color.comp.viking]: DARK_TEXT_COLOR,
   [color.comp.sulu]: DARK_TEXT_COLOR,
 }
-
-export const loadingAnimation = css`
-  background-image: linear-gradient(0.25turn, ${gradient.headerLoading});
-  background-size: 300% 400%;
-  animation: Gradient 4s ease-out infinite;
-
-  @keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-`

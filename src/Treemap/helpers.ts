@@ -354,3 +354,31 @@ function mapPartsToTreemapNodes(term: Term, shouldRound: boolean): TreemapNode[]
         coefficient,
       }))
 }
+
+///The functions related to pallete generation
+
+const colorMap = [
+  { color: '#5573F7', textColor: '#EBECF0'},
+  { color: '#2941AB', textColor: '#EBECF0'},
+  { color: '#5CC8D0', textColor: '#2c2835'},
+  { color: '#499988', textColor: '#EBECF0'},
+  { color: '#BBF0CA', textColor: '#2c2835'},
+  { color: '#57CE5C', textColor: '#EBECF0'},
+  { color: '#662860', textColor: '#EBECF0'},
+  { color: '#6B6185', textColor: '#EBECF0'},
+  { color: '#FFF640', textColor: '#2c2835'},
+  { color: '#7A434F', textColor: '#EBECF0'},
+]
+
+export function buildPredictorPalette(variables: []) {
+  const predictorPalette = variables.map((v: any, i: number) => {
+    const colorIndex = i < colorMap.length ? i : 0
+    v.variable = v.name
+    v.color = colorMap[colorIndex].color
+    v.textColor = colorMap[colorIndex].textColor
+
+    return v
+  })
+
+  return predictorPalette
+}
