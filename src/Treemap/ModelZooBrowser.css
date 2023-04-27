@@ -1,0 +1,6 @@
+.model-zoo-browser {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 490px;
+}
+

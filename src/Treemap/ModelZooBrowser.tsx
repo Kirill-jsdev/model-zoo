@@ -1,6 +1,9 @@
 import React from 'react'
+import './ModelZooBrowser.css'
+
 import Treemap from './Treemap'
 import TablePrep from './Table/TablePrep'
+import { Navigation } from './Navigation/Navigation'
 import { buildPredictorPalette } from './helpers'
 import {useState} from 'react'
 
@@ -18,7 +21,10 @@ function ModelZooBrowser() {
 
   return (
     <div className="model-zoo-browser">
-        <div className="data-visualization">
+        <div className='model-zoo-browser-navigation'>
+            <Navigation />
+        </div>
+        <div className="model-zoo-browser-data-visualization">
             <select onChange={handleSelectChange} defaultValue='treemap' >
                 <option value="treemap">Treemap</option>
                 <option value="table">Table</option>
