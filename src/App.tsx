@@ -1,20 +1,22 @@
 import React from 'react'
 import './App.css'
 import ModelZooBrowser from './Treemap/ModelZooBrowser'
-import { useLogin } from './API/api'
+import { useLogin, useGetModel } from './API/api'
 
 
 function App() {
 
-    const { user, error } = useLogin()
+    const { user } = useLogin()
 
-    console.log('USER DATA', user?.token)
-    console.log('EROR', error)
+    const {model, error: modelError} = useGetModel('bd4f208e-808d-492d-a4c0-550e42924445', user?.token)
+
+    console.log('Model', model)
+    console.log('modelError', modelError)
 
   return (
     <div className="App">
         {/* <div style={{width: 100, height: 50, margin: 20}}>Login</div> */}
-        <ModelZooBrowser />
+        <ModelZooBrowser model={model} />
     </div>
   );
 }
