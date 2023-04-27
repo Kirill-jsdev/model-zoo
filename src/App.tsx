@@ -19,12 +19,14 @@ function App() {
 
   return (
     <div className="App">
-        <select onChange={handleSelectChange}>
-            <option value="treemap" selected>Treemap</option>
-            <option value="table">Table</option>
-        </select>
-      {viewDataAs === 'treemap' && <Treemap models={models} variables={variablesWithColors} />}
-      {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
+        <div className="data-visualization">
+            <select onChange={handleSelectChange}>
+                <option value="treemap" selected>Treemap</option>
+                <option value="table">Table</option>
+            </select>
+            {viewDataAs === 'treemap' && <Treemap models={models} variables={variablesWithColors} />}
+            {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
+        </div>
     </div>
   );
 }
