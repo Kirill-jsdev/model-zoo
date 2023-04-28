@@ -67,3 +67,35 @@ export const useGetModel = (jobId: string, token: string) => {
 
     return {model, error}
 }
+
+export const useGetVersions = (datasetId: string, token: string) => {
+
+    const [versions, setVersions] = useState<any>()
+    const [error, setError] = useState<any>()
+
+    useEffect(() => {
+
+    const url = `https://tim-platform-dev.tangent.works/api/v5/datasets/${datasetId}/versions`
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
+        },
+    }
+
+    fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setVersions(data)
+        console.log(data);
+      })
+      .catch(error => {
+        setError(error)
+        console.error('Error:', error);
+      })
+    }, [datasetId, token])
+
+    return {versions, error}
+}

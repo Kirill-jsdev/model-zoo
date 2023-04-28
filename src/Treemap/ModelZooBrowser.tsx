@@ -8,7 +8,7 @@ import {useState} from 'react'
 
 type ViewDataType = 'treemap' | 'table'
 
-const ModelZooBrowser: React.FC<any> = ({model}) => {
+const ModelZooBrowser: React.FC<any> = ({model, versions}) => {
 
   const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
   const models = model?.model?.normalBehaviorModel?.models
