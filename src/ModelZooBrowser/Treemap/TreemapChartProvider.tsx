@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { TreemapNode, DatasetVariable, Direction } from '../Types'
+import { TreemapNode, DatasetVariable, Direction } from '../Utilities/Types'
 import { TreemapChartConsumer } from './TreemapChartConsumer'
-import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from '../Util'
-import { Hierarchy, MergedRef } from '../Types'
-import { TooltipDataProps as TooltipData } from '../Types'
+import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from '../Utilities/Util'
+import { Hierarchy, MergedRef } from '../Utilities/Types'
+import { TooltipDataProps as TooltipData } from '../Utilities/Types'
 
 export interface TreemapChartProps {
   className?: string

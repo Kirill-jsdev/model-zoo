@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { TableContainer, Table, TableHead, TableRow, TableBody, TableCell, lighten } from '@material-ui/core'
-import { Term } from '../helpers'
-import { DatasetVariable } from '../Types'
+import { Term } from '../Utilities/helpers'
+import { DatasetVariable } from '../Utilities/Types'
 
-import { color } from '../color'
-import { Part } from '../helpers'
-import { standardFormatter } from '../helpers'
-import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../helpers'  //original path: src/pure/ModelZoo
-import { useResizeListener } from '../useResizeListener'
+import { color } from '../Utilities/color'
+import { Part } from '../Utilities/helpers'
+import { standardFormatter } from '../Utilities/helpers'
+import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../Utilities/helpers'  //original path: src/pure/ModelZoo
+import { useResizeListener } from '../Utilities/useResizeListener'
 import { Bar } from './Bar'
 import { TooltipEnhancedDiv } from './TooltipEnhanced'
 

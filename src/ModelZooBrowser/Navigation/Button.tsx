@@ -1,6 +1,6 @@
 import React from 'react'
 // import { faClock, faWaveSine } from '@fortawesome/pro-solid-svg-icons'
-import { color } from '../color'
+import { color } from '../Utilities/color'
 import { PillButton, PillButtonProps } from './Pill/Pill'
 
 type Selected = { isSelected?: boolean }

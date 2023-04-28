@@ -1,6 +1,6 @@
 import React from 'react'
 import TreemapChartProvider from './TreemapChartProvider'
-import { getTreemapFromModels } from '../helpers'
+import { getTreemapFromModels } from '../Utilities/helpers'
 
 const Treemap: React.FC<any> = ({models, variables}) => {
 

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faLevelDownAlt, faDownload } from '@fortawesome/pro-solid-svg-icons'
 // import { ActionButton } from './ActionButton' //For now substituted with simple 'div' element
-import { color } from '../color'
+import { color } from '../Utilities/color'
 
 //Will be used later
 // import { useDetectionModelDownload } from 'src/context/API'

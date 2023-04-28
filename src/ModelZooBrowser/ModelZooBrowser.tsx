@@ -3,7 +3,7 @@ import './ModelZooBrowser.css'
 import Treemap from './Treemap/Treemap'
 import TablePrep from './Table/TablePrep'
 import { Navigation } from './Navigation/Navigation'
-import { buildPredictorPalette } from './helpers'
+import { buildPredictorPalette } from './Utilities/helpers'
 import {useState} from 'react'
 
 type ViewDataType = 'treemap' | 'table'

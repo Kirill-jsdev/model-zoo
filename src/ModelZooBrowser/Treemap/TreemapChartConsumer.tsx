@@ -2,10 +2,10 @@ import React, { forwardRef, useState, useRef, useImperativeHandle } from 'react'
 import styled from 'styled-components'
 import { Group } from '@visx/group'
 import { Treemap, treemapSquarify } from '@visx/hierarchy'
-import { TreemapNode, Direction } from '../Types'
-import { useResizeListener } from '../useResizeListener'
+import { TreemapNode, Direction } from '../Utilities/Types'
+import { useResizeListener } from '../Utilities/useResizeListener'
 import { Node } from './Node'
-import { Hierarchy, Data, MergedRef } from '../Types'
+import { Hierarchy, Data, MergedRef } from '../Utilities/Types'
 import { TreemapTooltip, TooltipDataProps as TooltipData } from './Tooltip'
 
 interface TreemapChartProps {

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ButtonBase, ButtonBaseProps } from '@material-ui/core'
 // import { IconProp } from '@fortawesome/fontawesome-svg-core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { color, COLOR_TO_TEXT_COLOR_MAP, loadingAnimation } from '../../color'
+import { color, COLOR_TO_TEXT_COLOR_MAP, loadingAnimation } from '../../Utilities/color'
 
 type ButtonProps = {
   color?: string

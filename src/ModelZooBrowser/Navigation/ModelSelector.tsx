@@ -6,7 +6,7 @@ import { ModelSelectButton } from './Button'
 import { fakeModels as models, wholeModel } from '../../API/fake-data'
 import { fakeModelTwoo } from '../../API/fake-data-two'
 
-import { mapVariablePropertiesToTreemapNodes, getVariablePropertiesSum, getTreemapFromModels, mapVariablePropertiesToTerms } from '../helpers'
+import { mapVariablePropertiesToTreemapNodes, getVariablePropertiesSum, getTreemapFromModels, mapVariablePropertiesToTerms } from '../Utilities/helpers'
 
 
 const fakeModelsTwoo = fakeModelTwoo?.model?.normalBehaviorModel?.models
