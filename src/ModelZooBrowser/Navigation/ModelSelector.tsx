@@ -1,16 +1,15 @@
-import React, {useMemo, useState} from 'react'
+import React, {useMemo, useState, useContext} from 'react'
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import styled from 'styled-components'
-// import { useModelSelector } from 'src/context/DetectionResults'
 import { ModelSelectButton } from './Button'
-
-import { fakeModels as models, wholeModel } from '../../API/fake-data'
-import { fakeModelTwoo } from '../../API/fake-data-two'
 
 import { mapVariablePropertiesToTreemapNodes, getVariablePropertiesSum, getTreemapFromModels, mapVariablePropertiesToTerms } from '../Utilities/helpers'
 
-
-const fakeModelsTwoo = fakeModelTwoo?.model?.normalBehaviorModel?.models
-
+//These imports will be deleted later
+// import { useModelSelector } from 'src/context/DetectionResults'
+// import { fakeModels as models, wholeModel } from '../../API/fake-data'
+// import { fakeModelTwoo } from '../../API/fake-data-two'
+// const fakeModelsTwoo = fakeModelTwoo?.model?.normalBehaviorModel?.models
 
 const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
   dailyCycle ? (
@@ -20,17 +19,18 @@ const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) 
   )
 
 export const ModelSelector: React.FC = () => {
-//   const { isDailyCycle, selectModel, selectedModelIndex, options } = useModelSelector()
+  //   const { isDailyCycle, selectModel, selectedModelIndex, options } = useModelSelector()
 
   //My code goes here
 
-  const options = useModelOptions()
   const {selectedModelIndex, setSelectedModelIndex, isDailyCycle} = useMyDetectionModelResult()
+
+  const options = useModelOptions()
+  if (typeof options === 'undefined') return <></>
 
   console.log('HERE selectedModelIndex', selectedModelIndex)
   console.log('HERE setSelectedModelIndex', setSelectedModelIndex)
-  console.log('HERE detectionModelResult', isDailyCycle)
-
+  console.log('HERE isDailyCycle', isDailyCycle)
   console.log('options calculated', options)
 
   return (
@@ -102,12 +102,18 @@ type ModelOption = {
 }
 
 const useModelOptions = () => {
+
+  const {model} = useContext(ModelZooBrowserContext)
+
+  const models = model?.model?.normalBehaviorModel?.models
+
   const options = useMemo<ModelOption[]>(() => {
-    return fakeModelsTwoo.map(({ index, dayTime }) => ({
+    if(typeof models === 'undefined') return
+    return models.map(({ index, dayTime }: {index: any, dayTime: any}) => ({
       value: index,
       option: dayTime ? dayTime : `Index ${index}`,
     }))
-  }, [])
+  }, [models])
 
   return options
 }
@@ -172,9 +178,12 @@ export function useDetectionModelResult(
 
 const useMyDetectionModelResult = () => {
 
-  const [selectedModelIndex, setSelectedModelIndex] = useState(1) 
+  const {model} = useContext(ModelZooBrowserContext)
+  const models = model?.model?.normalBehaviorModel?.models
 
-  const detectionModelResult = useDetectionModelResult(fakeModelTwoo, selectedModelIndex)
+  const [selectedModelIndex, setSelectedModelIndex] = useState(1)
+
+  const detectionModelResult = useDetectionModelResult(models, selectedModelIndex)
   const isDailyCycle = detectionModelResult.isDailyCycle
 
   return {selectedModelIndex, setSelectedModelIndex, isDailyCycle, detectionModelResult}
