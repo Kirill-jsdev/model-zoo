@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import styled from 'styled-components'
 // import { useModelSelector } from 'src/context/DetectionResults'
 import { ModelSelectButton } from './Button'
+
+import { fakeModels as models } from '../../API/fake-data'
 
 const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
   dailyCycle ? (
@@ -13,12 +15,10 @@ const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) 
 export const ModelSelector: React.FC = () => {
 //   const { isDailyCycle, selectModel, selectedModelIndex, options } = useModelSelector()
 
-  const options = [
-    {
-        "value": 1,
-        "option": "Index 1"
-    }
-]
+  //My code goes here
+
+  const options = useModelOptions()
+  console.log('options calculated', options)
 
   return (
     <Sidebar>
@@ -62,4 +62,42 @@ const NonDailyModelsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
+
+
+////Fake data with functions for ModelSelector
+
+// export function useModelSelector(): UseModelSelector {
+//   const { models, ...forecastingResults } = useDetectionResults()
+
+//   console.log('MODELS THAT I NEED RIGHT NOW', models)
+
+//   const options = useMemo<ModelOption[]>(() => {
+//     return models.map(({ index, dayTime }) => ({
+//       value: index,
+//       option: dayTime ? dayTime : `Index ${index}`,
+//     }))
+//   }, [models])
+
+//   return { options, ...forecastingResults }
+// }
+
+//Custom function extracted from the function above
+
+type ModelOption = {
+  value: number
+  option: string
+}
+
+const useModelOptions = () => {
+  const options = useMemo<ModelOption[]>(() => {
+    return models.map(({ index, dayTime }) => ({
+      value: index,
+      option: dayTime ? dayTime : `Index ${index}`,
+    }))
+  }, [])
+
+  return options
+}
+
+
 
