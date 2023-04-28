@@ -22,14 +22,14 @@ export const ModelSelector: React.FC = () => {
 
   return (
     <Sidebar>
-      <Container dailyCycle={isDailyCycle}>
+      <Container dailyCycle={true}>
         {options.map(({ option, value }) => (
           <ModelSelectButton
             key={`${option}-${value}`}
             text={option}
-            onClick={() => selectModel(value)}
-            isSelected={value === selectedModelIndex}
-            isDailyCycle={isDailyCycle}
+            // onClick={() => selectModel(value)}
+            isSelected={value === 0}
+            isDailyCycle={true}
           />
         ))}
       </Container>
@@ -44,22 +44,22 @@ const Sidebar = styled.aside`
   overflow-y: auto;
 `
 
-// const DailyModelsContainer = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   padding-left: 0.5rem;
+const DailyModelsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 0.5rem;
 
-//   & > * {
-//     &:nth-child(odd) {
-//       margin-right: 0.5rem;
-//     }
-//   }
-// `
+  & > * {
+    &:nth-child(odd) {
+      margin-right: 0.5rem;
+    }
+  }
+`
 
-// const NonDailyModelsContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-// `
+const NonDailyModelsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
 
