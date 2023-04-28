@@ -4,8 +4,13 @@ import styled from 'styled-components'
 import { ModelSelectButton } from './Button'
 
 import { fakeModels as models, wholeModel } from '../../API/fake-data'
+import { fakeModelTwoo } from '../../API/fake-data-two'
 
 import { mapVariablePropertiesToTreemapNodes, getVariablePropertiesSum, getTreemapFromModels, mapVariablePropertiesToTerms } from '../helpers'
+
+
+const fakeModelsTwoo = fakeModelTwoo?.model?.normalBehaviorModel?.models
+
 
 const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
   dailyCycle ? (
@@ -98,7 +103,7 @@ type ModelOption = {
 
 const useModelOptions = () => {
   const options = useMemo<ModelOption[]>(() => {
-    return models.map(({ index, dayTime }) => ({
+    return fakeModelsTwoo.map(({ index, dayTime }) => ({
       value: index,
       option: dayTime ? dayTime : `Index ${index}`,
     }))
@@ -169,7 +174,7 @@ const useMyDetectionModelResult = () => {
 
   const [selectedModelIndex, setSelectedModelIndex] = useState(1) 
 
-  const detectionModelResult = useDetectionModelResult(wholeModel, selectedModelIndex)
+  const detectionModelResult = useDetectionModelResult(fakeModelTwoo, selectedModelIndex)
   const isDailyCycle = detectionModelResult.isDailyCycle
 
   return {selectedModelIndex, setSelectedModelIndex, isDailyCycle, detectionModelResult}
