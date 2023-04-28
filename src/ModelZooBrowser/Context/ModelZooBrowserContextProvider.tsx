@@ -13,7 +13,7 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     onModelChange: (model: any) => {}
 })
 
-export const ExperimentApproachContextProvider: React.FC = ({children}) => {
+export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState()
 
