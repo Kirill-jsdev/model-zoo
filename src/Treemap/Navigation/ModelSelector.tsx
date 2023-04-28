@@ -1,23 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 // import { useModelSelector } from 'src/context/DetectionResults'
-// import { ModelSelectButton } from './Button'
+import { ModelSelectButton } from './Button'
 
-// const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
-//   dailyCycle ? (
-//     <DailyModelsContainer>{children}</DailyModelsContainer>
-//   ) : (
-//     <NonDailyModelsContainer>{children}</NonDailyModelsContainer>
-//   )
+const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
+  dailyCycle ? (
+    <DailyModelsContainer>{children}</DailyModelsContainer>
+  ) : (
+    <NonDailyModelsContainer>{children}</NonDailyModelsContainer>
+  )
 
 export const ModelSelector: React.FC = () => {
 //   const { isDailyCycle, selectModel, selectedModelIndex, options } = useModelSelector()
 
+  const options = [
+    {
+        "value": 1,
+        "option": "Index 1"
+    }
+]
+
   return (
     <Sidebar>
-      {/* <Container dailyCycle={isDailyCycle}>
+      <Container dailyCycle={isDailyCycle}>
         {options.map(({ option, value }) => (
-          <StyledModelSelectButton
+          <ModelSelectButton
             key={`${option}-${value}`}
             text={option}
             onClick={() => selectModel(value)}
@@ -25,7 +32,7 @@ export const ModelSelector: React.FC = () => {
             isDailyCycle={isDailyCycle}
           />
         ))}
-      </Container> */}
+      </Container>
     </Sidebar>
   )
 }
@@ -56,6 +63,3 @@ const Sidebar = styled.aside`
 //   align-items: flex-start;
 // `
 
-// const StyledModelSelectButton = styled(ModelSelectButton)`
-//   margin-bottom: 0.25rem;
-// `
