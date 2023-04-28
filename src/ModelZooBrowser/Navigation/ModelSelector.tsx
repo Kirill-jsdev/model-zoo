@@ -179,11 +179,10 @@ export function useDetectionModelResult(
 const useMyDetectionModelResult = () => {
 
   const {model} = useContext(ModelZooBrowserContext)
-  const models = model?.model?.normalBehaviorModel?.models
 
   const [selectedModelIndex, setSelectedModelIndex] = useState(1)
 
-  const detectionModelResult = useDetectionModelResult(models, selectedModelIndex)
+  const detectionModelResult = useDetectionModelResult(model, selectedModelIndex)
   const isDailyCycle = detectionModelResult.isDailyCycle
 
   return {selectedModelIndex, setSelectedModelIndex, isDailyCycle, detectionModelResult}
