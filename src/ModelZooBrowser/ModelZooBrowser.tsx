@@ -1,6 +1,6 @@
 import React from 'react'
 import './ModelZooBrowser.css'
-import Treemap from './Treemap'
+import Treemap from './Treemap/Treemap'
 import TablePrep from './Table/TablePrep'
 import { Navigation } from './Navigation/Navigation'
 import { buildPredictorPalette } from './helpers'

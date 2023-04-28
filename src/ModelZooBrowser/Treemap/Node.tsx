@@ -2,8 +2,8 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Group } from '@visx/group'
 import { lighten } from '@material-ui/core'
-import { TreemapNode } from './Types'
-import { COLOR_TO_TEXT_COLOR_MAP } from './color'
+import { TreemapNode } from '../Types'
+import { COLOR_TO_TEXT_COLOR_MAP } from '../color'
 
 type NodeColors = {
   background: string

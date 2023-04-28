@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import ModelZooBrowser from './Treemap/ModelZooBrowser'
+import ModelZooBrowser from './ModelZooBrowser/ModelZooBrowser'
 import { useLogin, useGetModel, useGetVersions } from './API/api'
 
-const JOB_ID = 'bd4f208e-808d-492d-a4c0-550e42924445'
+// const JOB_ID = 'bd4f208e-808d-492d-a4c0-550e42924445'
 const VIRSIONS_ID = '5522a4b9-ecc4-48d1-aa16-fb1563bf2a7e'
 
 const JOB_ID_TWO = '8a743fef-4f68-4152-83b4-3da9b749732d'

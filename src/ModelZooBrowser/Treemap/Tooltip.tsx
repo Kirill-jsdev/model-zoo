@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Tooltip as MUITooltip, TooltipProps } from '@material-ui/core'
-import { color } from './color'
-import { standardFormatter } from './number'
+import { color } from '../color'
+import { standardFormatter } from '../number'
 
 type Position = { x: number; y: number }
 
