@@ -20,19 +20,24 @@ export const ModelSelector: React.FC = () => {
   //My code goes here
 
   const options = useModelOptions()
+  const {selectedModelIndex, setSelectedModelIndex, isDailyCycle} = useMyDetectionModelResult()
+
+  console.log('HERE selectedModelIndex', selectedModelIndex)
+  console.log('HERE setSelectedModelIndex', setSelectedModelIndex)
+  console.log('HERE detectionModelResult', isDailyCycle)
 
   console.log('options calculated', options)
 
   return (
     <Sidebar>
-      <Container dailyCycle={true}>
+      <Container dailyCycle={isDailyCycle}>
         {options.map(({ option, value }) => (
           <ModelSelectButton
             key={`${option}-${value}`}
             text={option}
-            // onClick={() => selectModel(value)}
+            onClick={() => setSelectedModelIndex(value)}
             isSelected={value === 0}
-            isDailyCycle={true}
+            isDailyCycle={isDailyCycle}
           />
         ))}
       </Container>
@@ -165,8 +170,9 @@ const useMyDetectionModelResult = () => {
   const [selectedModelIndex, setSelectedModelIndex] = useState(1) 
 
   const detectionModelResult = useDetectionModelResult(wholeModel, selectedModelIndex)
+  const isDailyCycle = detectionModelResult.isDailyCycle
 
-  return {selectedModelIndex, setSelectedModelIndex, detectionModelResult}
+  return {selectedModelIndex, setSelectedModelIndex, isDailyCycle, detectionModelResult}
 }
 
 
