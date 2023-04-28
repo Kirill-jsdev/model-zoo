@@ -1,9 +1,11 @@
-import React, {useMemo} from 'react'
+import React, {useMemo, useState} from 'react'
 import styled from 'styled-components'
 // import { useModelSelector } from 'src/context/DetectionResults'
 import { ModelSelectButton } from './Button'
 
-import { fakeModels as models } from '../../API/fake-data'
+import { fakeModels as models, wholeModel } from '../../API/fake-data'
+
+import { mapVariablePropertiesToTreemapNodes, getVariablePropertiesSum, getTreemapFromModels, mapVariablePropertiesToTerms } from '../helpers'
 
 const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
   dailyCycle ? (
@@ -18,6 +20,7 @@ export const ModelSelector: React.FC = () => {
   //My code goes here
 
   const options = useModelOptions()
+
   console.log('options calculated', options)
 
   return (
@@ -97,6 +100,73 @@ const useModelOptions = () => {
   }, [])
 
   return options
+}
+
+///Extract other options: selectModel, selectedModelIndex, isDylyCycle
+
+// const modelResult = useMemo(() => {
+//   console.log('SELECTED JOB MODEL I NEED', selectedJobModel)
+//   if (parentJobModel.data) return parentJobModel
+//   if (selectedJobModel.data) return selectedJobModel
+//   return { data: undefined, isLoading: false, isError: false }
+// }, [parentJobModel, selectedJobModel])
+
+// const detectionModelResult = useDetectionModelResult(modelResult.data, selectedModelIndex)
+
+export function useDetectionModelResult(
+  model: any,
+  selectedModelIndex: number | undefined,
+): any {
+  const models = useMemo(() => model?.model?.normalBehaviorModel?.models ?? [], [model])
+  const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
+
+  const variableImportancesModel = useMemo(() => {
+    if (!model?.model?.normalBehaviorModel?.variableProperties) return []
+    return mapVariablePropertiesToTreemapNodes(model?.model?.normalBehaviorModel?.variableProperties ?? [])
+  }, [model])
+
+  const variablesImportancesSum = useMemo(() => {
+    return getVariablePropertiesSum(variableImportancesModel)
+  }, [variableImportancesModel])
+
+  const isUnRelatedModel = useMemo(() => {
+    if (!model?.model?.normalBehaviorModel?.models) return
+    if (!model.model?.normalBehaviorModel?.variableProperties) return
+    return variablesImportancesSum === 0
+  }, [model, variablesImportancesSum])
+
+  const selectedModelTreemapNodes = useMemo(() => {
+    if (models.length === 0) return
+    if (selectedModelIndex) return getTreemapFromModels(models, selectedModelIndex, true)
+    if (isUnRelatedModel) return getTreemapFromModels(models, 0, true)
+    return variableImportancesModel
+  }, [models, isUnRelatedModel, selectedModelIndex, variableImportancesModel])
+
+  const selectedModelTerms = useMemo(() => {
+    if (models.length === 0) return
+    if (selectedModelIndex) return models.find(({ index }: { index: any }) => index === selectedModelIndex)?.terms
+    if (isUnRelatedModel) return models[0]?.terms
+    return mapVariablePropertiesToTerms(model?.model?.normalBehaviorModel?.variableProperties ?? [])
+  }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.normalBehaviorModel?.variableProperties])
+
+  return {
+    models,
+    isDailyCycle,
+    variableImportancesModel,
+    selectedModelTreemapNodes,
+    selectedModelTerms,
+    isUnRelatedModel,
+  }
+}
+
+
+const useMyDetectionModelResult = () => {
+
+  const [selectedModelIndex, setSelectedModelIndex] = useState(1) 
+
+  const detectionModelResult = useDetectionModelResult(wholeModel, selectedModelIndex)
+
+  return {selectedModelIndex, setSelectedModelIndex, detectionModelResult}
 }
 
 

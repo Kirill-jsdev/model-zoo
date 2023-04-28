@@ -402,3 +402,30 @@ export function getTermLabel(term: Term): string {
     .map((p) => getPartLabel(p, standardFormatter))
     .join(' & ')
 }
+
+
+
+
+
+////////////////////////////////////
+////////////////////////////////////CODE FOR MODEL ZOO NAVIGATION
+
+export interface VariableProperties {
+  name: string
+  importance: number
+}
+
+export function mapVariablePropertiesToTreemapNodes(variableProperties: VariableProperties[]): TreemapNode[] {
+  return variableProperties.reduce<TreemapNode[]>(
+    (acc, curr) => {
+      return [...acc, { label: curr.name, parentLabel: ROOT_LABEL, importance: curr.importance }]
+    },
+    [ROOT_ELEMENT],
+  )
+}
+
+export const getVariablePropertiesSum = (treemapNodes: TreemapNode[]): number =>
+  treemapNodes.reduce((acc, curr) => acc + (curr.importance || 0), 0)
+
+export const mapVariablePropertiesToTerms = (properties: VariableProperties[]): Term[] =>
+  properties.map(({ importance, name }) => ({ importance, parts: [{ type: 'Identity', predictor: name }] }))

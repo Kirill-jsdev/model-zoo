@@ -13,6 +13,8 @@ function App() {
 
     const {model} = useGetModel(JOB_ID, user?.token)
 
+    console.log('Model In my APP', model)
+
     const {versions, error: virsionsError} = useGetVersions(VIRSIONS_ID, user?.token)
 
     console.log('versions', versions)
