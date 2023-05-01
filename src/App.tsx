@@ -18,13 +18,12 @@ function App() {
 
     console.log('Model In my APP', model)
 
-    const {versions, error: virsionsError} = useGetVersions(VIRSIONS_ID_TWO, user?.token)
+    const {versions} = useGetVersions(VIRSIONS_ID_TWO, user?.token)
 
     console.log('versions', versions)
 
   return (
     <div className="App">
-        {/* <div style={{width: 100, height: 50, margin: 20}}>Login</div> */}
         {model && versions && <ModelZooBrowser model={model} versions={versions} />}
     </div>
   );
