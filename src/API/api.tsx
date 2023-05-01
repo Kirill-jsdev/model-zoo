@@ -24,11 +24,9 @@ export const useLogin = () => {
       .then(response => response.json())
       .then(data => {
         setUser(data)
-        console.log(data);
       })
       .catch(error => {
         setError(error)
-        console.error('Error:', error);
       })
     }, [])
 
@@ -57,11 +55,9 @@ export const useGetModel = (jobId: string, token: string) => {
       .then(response => response.json())
       .then(data => {
         setModel(data)
-        console.log(data);
       })
       .catch(error => {
         setError(error)
-        console.error('Error:', error);
       })
     }, [jobId, token])
 
@@ -89,13 +85,44 @@ export const useGetVersions = (datasetId: string, token: string) => {
       .then(response => response.json())
       .then(data => {
         setVersions(data)
-        console.log(data);
       })
       .catch(error => {
         setError(error)
-        console.error('Error:', error);
       })
     }, [datasetId, token])
 
     return {versions, error}
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+export const useGetDataset = (datasetId: string, token: string) => {
+
+  const [dataset, setDataset] = useState<any>()
+  const [error, setError] = useState<any>()
+
+  useEffect(() => {
+
+  const url = `https://tim-platform-dev.tangent.works/api/v5/datasets/${datasetId}`
+
+  const requestOptions = {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          authorization: `Bearer ${token}`
+      },
+  }
+
+  fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setDataset(data)
+    })
+    .catch(error => {
+      setError(error)
+    })
+  }, [datasetId, token])
+
+  return {dataset, error}
+}
+

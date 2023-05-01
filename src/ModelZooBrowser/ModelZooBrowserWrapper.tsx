@@ -7,13 +7,12 @@ interface ModelZooBrowserWrapperProps {
 
 const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children, model}) => {
 
-    const {onModelChange, model: ctxModel} = useContext(ModelZooBrowserContext)
+    const {onModelChange} = useContext(ModelZooBrowserContext)
 
     useEffect(() => {
         onModelChange(model)
     }, [model, onModelChange])
 
-    console.log('ctxModel', ctxModel)
 
     return(
         <>

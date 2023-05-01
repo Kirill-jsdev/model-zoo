@@ -23,15 +23,10 @@ export const ModelSelector: React.FC = () => {
 
   //My code goes here
 
-  const {selectedModelIndex, setSelectedModelIndex, isDailyCycle} = useMyDetectionModelResult()
+  const {setSelectedModelIndex, isDailyCycle} = useMyDetectionModelResult()
 
   const options = useModelOptions()
   if (typeof options === 'undefined') return <></>
-
-  console.log('HERE selectedModelIndex', selectedModelIndex)
-  console.log('HERE setSelectedModelIndex', setSelectedModelIndex)
-  console.log('HERE isDailyCycle', isDailyCycle)
-  console.log('options calculated', options)
 
   return (
     <Sidebar>
