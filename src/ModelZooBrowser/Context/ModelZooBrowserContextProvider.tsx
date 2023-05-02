@@ -7,6 +7,8 @@ interface ModelZooBrowserContextValues {
     onModelChange: (model: any) => void
     selectedModelIndex: number | undefined
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
+    selectedModelTerms: any
+    onSelectedModelTermsChange: (selectedModelTerms: any) => void
 }
 
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
@@ -15,13 +17,16 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     onModelChange: (model: any) => {},
     selectedModelIndex: undefined,
      // eslint-disable-next-line
-     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {}
+    onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
+    selectedModelTerms: undefined,
+    onSelectedModelTermsChange: (selectedModelTerms: any) => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
+    const [selectedModelTerms, setSelectedModelTerms] = useState()
 
     const onModelChange = (model: any) => {
         setModel(model)
@@ -31,12 +36,18 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setSelectedModelIndex(selectedModelIndex)
     }
 
+    const onSelectedModelTermsChange = (selectedModelTerms: any) => {
+        setSelectedModelTerms(selectedModelTerms)
+    }
+
 
     const ctxValues = {
         model,
         onModelChange,
         selectedModelIndex,
-        onSelectedModelIndexChange
+        onSelectedModelIndexChange,
+        selectedModelTerms,
+        onSelectedModelTermsChange
     }
 
     return (
