@@ -4,7 +4,7 @@ import { IconButton } from '@material-ui/core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faAngleDoubleRight } from '@fortawesome/pro-solid-svg-icons'
 import { color } from '../Utilities/color'
-// import { Offsets } from './Offsets'
+import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
@@ -33,7 +33,7 @@ export const Insights: React.FC<InsightsProps> = ({ open, close, variablesWithCo
             <StyledH6>Insights</StyledH6>
           </HeaderContainer>
           <Container>
-            {/* <Offsets /> */}
+            <Offsets variablesWithColors={variablesWithColors} />
             <UnusedVariables variablesWithColors={variablesWithColors} selectedModelTerms={selectedModelTerms} />
           </Container>
         </Drawer>
