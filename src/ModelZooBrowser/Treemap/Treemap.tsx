@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import TreemapChartProvider from './TreemapChartProvider'
 
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider' 
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 
 import { useDetectionModelResult } from '../Navigation/ModelSelector'
 

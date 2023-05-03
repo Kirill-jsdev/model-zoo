@@ -7,6 +7,7 @@ import { buildPredictorPalette } from './Utilities/helpers'
 
 import { ModelZooBrowserContextProvider } from './Context/ModelZooBrowserContextProvider'
 import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
+// import { Insights } from './Insights/Insights'
 
 type ViewDataType = 'treemap' | 'table'
 
@@ -34,6 +35,9 @@ const ModelZooBrowser: React.FC<any> = ({model, variables}) => {
                     </select>
                     {viewDataAs === 'treemap' && models && <Treemap models={models} variables={variablesWithColors} />}
                     {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
+                </div>
+                <div className='model-zoo-browser-insights'>
+                    {/* <Insights open={true} close={() => alert('hi')} variablesWithColors={variablesWithColors} /> */}
                 </div>
             </div>
         </ModelZooBrowserWrapper>

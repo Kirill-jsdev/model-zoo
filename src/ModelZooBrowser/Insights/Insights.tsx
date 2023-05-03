@@ -4,7 +4,7 @@ import { IconButton } from '@material-ui/core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faAngleDoubleRight } from '@fortawesome/pro-solid-svg-icons'
 import { color } from '../Utilities/color'
-import { Offsets } from './Offsets'
+// import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 
 interface DrawerProps {
@@ -24,7 +24,7 @@ export const Insights: React.FC<InsightsProps> = ({ open, close }) => (
       <StyledH6>Insights</StyledH6>
     </HeaderContainer>
     <Container>
-      <Offsets />
+      {/* <Offsets /> */}
       <UnusedVariables />
     </Container>
   </Drawer>
