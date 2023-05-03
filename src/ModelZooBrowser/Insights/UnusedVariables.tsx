@@ -6,6 +6,8 @@ import { useSelectedDatasetVersion } from 'src/context/Dataset'
 import { useDetectionResults } from 'src/context/DetectionResults'
 import { GraphPillButton } from 'src/components/atoms/Button/Pill/Graph'
 
+
+import {getPartLabel} from '../Utilities/helpers'
 import {Term} from './Types'
 
 export const UnusedVariables: React.FC = () => {
