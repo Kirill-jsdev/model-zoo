@@ -15,7 +15,10 @@ export const UnusedVariables: React.FC<any> = ({variablesWithColors, selectedMod
   // const { selectedModelTerms = [] } = useDetectionResults()
 
   const unusedVariables = useMemo(() => {
-    return variablesWithColors.filter(({ variable }: {variable: any}) => !selectedModelTerms.some(checkForVariableInTerm(variable)))
+    if (variablesWithColors && selectedModelTerms)
+      return variablesWithColors.filter(({ variable }: {variable: any}) => !selectedModelTerms.some(checkForVariableInTerm(variable)))
+    else
+      return []
   }, [variablesWithColors, selectedModelTerms])
 
   return (

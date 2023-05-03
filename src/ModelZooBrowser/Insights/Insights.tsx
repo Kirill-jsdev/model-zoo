@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { IconButton } from '@material-ui/core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,28 +7,38 @@ import { color } from '../Utilities/color'
 // import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
+
+
+
 interface DrawerProps {
   open: boolean
 }
 
 interface InsightsProps extends DrawerProps {
   close: () => void
+  variablesWithColors: any
 }
 
-export const Insights: React.FC<InsightsProps> = ({ open, close }) => (
-  <Drawer open={open} onTransitionEnd={() => window.dispatchEvent(new Event('resize'))}>
-    <HeaderContainer onClick={close}>
-      <IconButton color="inherit" disableRipple onClick={close}>
-        {/* <FixedWidthFontAwesomeIcon size="xs" icon={faAngleDoubleRight} /> */}
-      </IconButton>
-      <StyledH6>Insights</StyledH6>
-    </HeaderContainer>
-    <Container>
-      {/* <Offsets /> */}
-      <UnusedVariables />
-    </Container>
-  </Drawer>
-)
+export const Insights: React.FC<InsightsProps> = ({ open, close, variablesWithColors }) => {
+
+    const { selectedModelTerms } = useContext(ModelZooBrowserContext)
+
+    return (
+        <Drawer open={open} onTransitionEnd={() => window.dispatchEvent(new Event('resize'))}>
+          <HeaderContainer onClick={close}>
+            <IconButton color="inherit" disableRipple onClick={close}>
+              {/* <FixedWidthFontAwesomeIcon size="xs" icon={faAngleDoubleRight} /> */}
+            </IconButton>
+            <StyledH6>Insights</StyledH6>
+          </HeaderContainer>
+          <Container>
+            {/* <Offsets /> */}
+            <UnusedVariables variablesWithColors={variablesWithColors} selectedModelTerms={selectedModelTerms} />
+          </Container>
+        </Drawer>
+      )
+}
 
 const Drawer = styled.div<DrawerProps>`
   display: flex;
