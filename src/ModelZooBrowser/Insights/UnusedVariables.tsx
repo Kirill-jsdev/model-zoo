@@ -32,7 +32,7 @@ export const UnusedVariables: React.FC<any> = ({variablesWithColors, selectedMod
               //   color={color}
               //   text={variable}
               // />
-              <div style={{color: color}}>Variable</div>
+              <div style={{color: color}}>{variable}</div>
             ))
           : 'All variables were used.'}
       </Info>
