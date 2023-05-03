@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { SliderProps } from '@material-ui/core'
-import { DatasetVariable } from 'src/Types'
+import { DatasetVariable } from './Types'
 import { DataAvailabilityScale } from 'src/context/Dataset'
 import { VariableOffsets } from 'src/context/ForecastingResults/hooks'
 import { Scale as ScaleComponent } from 'src/components/organisms/Scale'

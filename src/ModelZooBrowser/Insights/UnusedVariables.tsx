@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { color } from '../Utilities/color'
-import { checkForVariableInTerm } from 'src/pure/ModelZoo'
+// import { checkForVariableInTerm } from 'src/pure/ModelZoo'
 import { useSelectedDatasetVersion } from 'src/context/Dataset'
 import { useDetectionResults } from 'src/context/DetectionResults'
 import { GraphPillButton } from 'src/components/atoms/Button/Pill/Graph'
+
+import {Term} from './Types'
 
 export const UnusedVariables: React.FC = () => {
   const { variablesWithColors } = useSelectedDatasetVersion()
@@ -52,3 +54,14 @@ const Info = styled.div`
     }
   }
 `
+
+
+//GUARDS AND HELPERS
+
+function variableOccursInTerm(variable: string, { parts }: Term) {
+    return parts.map((p) => getPartLabel(p, noFormatter)).some((part) => part.includes(variable))
+  }
+
+export function checkForVariableInTerm(variable: string): (term: Term) => boolean {
+    return (term: Term) => Boolean(variableOccursInTerm(variable, term) && term.importance)
+  }

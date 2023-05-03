@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { color as coreColor } from '../Utilities/color'
 import { useSelectedDatasetVersion, DataAvailabilityScale } from 'src/context/Dataset'
 import { VariableOffsets } from 'src/context/ForecastingResults'
-import { Select } from 'src/components/atoms'
+import { Select } from './Select'
 
 interface DetermineScaleProps {
   offsets: VariableOffsets[]
