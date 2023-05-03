@@ -60,6 +60,10 @@ const Info = styled.div`
 
 //GUARDS AND HELPERS
 
+export function noFormatter(n: number): number {
+  return n
+}
+
 function variableOccursInTerm(variable: string, { parts }: Term) {
     return parts.map((p) => getPartLabel(p, noFormatter)).some((part) => part.includes(variable))
   }
