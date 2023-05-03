@@ -1,18 +1,10 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { color } from '../Utilities/color'
-// import { checkForVariableInTerm } from 'src/pure/ModelZoo'
-// import { useSelectedDatasetVersion } from 'src/context/Dataset'
-// import { useDetectionResults } from 'src/context/DetectionResults'
-// import { GraphPillButton } from 'src/components/atoms/Button/Pill/Graph'
-
-
 import {getPartLabel} from '../Utilities/helpers'
 import {Term} from './Types'
 
 export const UnusedVariables: React.FC<any> = ({variablesWithColors, selectedModelTerms}) => {
-  // const { variablesWithColors } = useSelectedDatasetVersion()
-  // const { selectedModelTerms = [] } = useDetectionResults()
 
   const unusedVariables = useMemo(() => {
     if (variablesWithColors && selectedModelTerms)
@@ -27,12 +19,7 @@ export const UnusedVariables: React.FC<any> = ({variablesWithColors, selectedMod
       <Info>
         {unusedVariables.length > 0
           ? unusedVariables.map(({ variable, color }: {variable: any, color: any}, index: any) => (
-              // <GraphPillButton
-              //   key={`model-zoo-browser--insights-unused-variable-${variable}--${index}`}
-              //   color={color}
-              //   text={variable}
-              // />
-              <div style={{color: color}}>{variable}</div>
+              <div key={`${color}-unused-${variable}`} style={{color: color}}>{variable}</div>
             ))
           : 'All variables were used.'}
       </Info>
