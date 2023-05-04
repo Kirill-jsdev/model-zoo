@@ -5,12 +5,12 @@ import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvide
 
 import { useDetectionModelResult } from '../Navigation/ModelSelector'
 
-const Treemap: React.FC<any> = ({models, variables}) => {
+const Treemap: React.FC<any> = () => {
 
-    const {model, selectedModelIndex} = useContext(ModelZooBrowserContext)
+    const {model, selectedModelIndex, variablesWithColors} = useContext(ModelZooBrowserContext)
     const { selectedModelTreemapNodes } = useDetectionModelResult(model, selectedModelIndex)
 
-    return <TreemapChartProvider treemap={selectedModelTreemapNodes ?? []} predictorPalette={variables}/>
+    return <TreemapChartProvider treemap={selectedModelTreemapNodes ?? []} predictorPalette={variablesWithColors}/>
 
 }
 

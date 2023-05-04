@@ -17,6 +17,8 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
     const models = model?.model?.normalBehaviorModel?.models
     const variablesWithColors = buildPredictorPalette(variables)
 
+    console.log('MODELS_MODELS', models)
+
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setViewDataAs(e.target.value as ViewDataType)
     }
@@ -33,7 +35,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
                         <option value="treemap">Treemap</option>
                         <option value="table">Table</option>
                     </select>
-                    {viewDataAs === 'treemap' && models && <Treemap models={models} variables={variablesWithColors} />}
+                    {viewDataAs === 'treemap' && models && <Treemap />}
                     {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
                 </div>
                 <div className='model-zoo-browser-insights'>
