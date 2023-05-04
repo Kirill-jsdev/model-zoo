@@ -14,7 +14,6 @@ export enum DataAvailabilityScale {
 export const SCALE_MAX = 10
 
 export const useDataAvailability: any = (selectedVersion: any, target: any, originalSamplingPeriod: number) => {
-    // const { selectedVersion, target, originalSamplingPeriod = 0 } = useSelectedDatasetVersion()
     const [scale, setScale] = useState<DataAvailabilityScale>(DataAvailabilityScale.SAMPLE)
 
     const targetLatest = useMemo(() => (target?.lastTimestamp ? new Date(target.lastTimestamp).getTime() : undefined), [target])
@@ -34,6 +33,7 @@ export const useDataAvailability: any = (selectedVersion: any, target: any, orig
       }
 
       setScale(determineScale(originalSamplingPeriod * SCALE_MAX))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [availabilities, targetLatest])
 
     const variables: ScaledAvailability[] = useMemo(() => {
@@ -47,9 +47,6 @@ export const useDataAvailability: any = (selectedVersion: any, target: any, orig
         return { ...availability, relativeValue, scaledRelativeValue }
       })
     }, [availabilities, scale, targetLatest, originalSamplingPeriod])
-
-    console.log('VARIABLESSSSSSS', variables)
-    console.log('SCALE', scale)
 
     return { scale, variables, setScale }
   }

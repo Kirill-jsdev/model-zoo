@@ -1,11 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { color as coreColor } from '../Utilities/color'
-// import { useSelectedDatasetVersion, DataAvailabilityScale } from 'src/context/Dataset'
-// import { VariableOffsets } from 'src/context/ForecastingResults'
 import { Select } from './Select'
-
-//my imports
 import {DataAvailabilityScale} from './useDatasetAvailability-hook'
 
 export type VariableOffsets = {
@@ -46,7 +42,6 @@ function determineScale(msDistance: number): DataAvailabilityScale {
 }
 
 export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, onChange, originalSamplingPeriod }) => {
-  // const { originalSamplingPeriod = 0 } = useSelectedDatasetVersion()
 
   const maxOffset = useMemo(() => {
     return offsets.reduce((acc, { usedOffsets }) => {
@@ -57,6 +52,7 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
     }, 0)
   }, [offsets])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => onChange(determineScale(originalSamplingPeriod * maxOffset)), [originalSamplingPeriod, maxOffset])
 
   const handleScaleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
@@ -80,7 +76,3 @@ const ScaleSelect = styled(Select)`
     padding: 0.75rem;
   }
 `
-
-// export const DetermineScale = () => {
-//   return <div>DetermineScale</div>
-// }

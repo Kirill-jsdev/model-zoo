@@ -1,15 +1,10 @@
 import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { IconButton } from '@material-ui/core'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleDoubleRight } from '@fortawesome/pro-solid-svg-icons'
 import { color } from '../Utilities/color'
 import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
-
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
-
-
 
 interface DrawerProps {
   open: boolean
@@ -28,7 +23,6 @@ export const Insights: React.FC<InsightsProps> = ({ open, close, variablesWithCo
         <Drawer open={open} onTransitionEnd={() => window.dispatchEvent(new Event('resize'))}>
           <HeaderContainer onClick={close}>
             <IconButton color="inherit" disableRipple onClick={close}>
-              {/* <FixedWidthFontAwesomeIcon size="xs" icon={faAngleDoubleRight} /> */}
             </IconButton>
             <StyledH6>Insights</StyledH6>
           </HeaderContainer>
@@ -60,12 +54,6 @@ const HeaderContainer = styled.div`
   background-color: ${color.shades.athens.d};
   cursor: pointer;
 `
-
-// const FixedWidthFontAwesomeIcon = styled(FontAwesomeIcon)`
-//   &.svg-inline--fa.fa-w-8 {
-//     width: 1.125rem;
-//   }
-// `
 
 const StyledH6 = styled.h6`
   font-size: 1rem;
