@@ -6,23 +6,18 @@ import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 
-interface DrawerProps {
-  open: boolean
-}
-
-interface InsightsProps extends DrawerProps {
-  close: () => void
+interface InsightsProps {
   variablesWithColors: any
 }
 
-export const Insights: React.FC<InsightsProps> = ({ open, close, variablesWithColors }) => {
+export const Insights: React.FC<InsightsProps> = ({variablesWithColors }) => {
 
     const { selectedModelTerms } = useContext(ModelZooBrowserContext)
 
     return (
-        <Drawer open={open} onTransitionEnd={() => window.dispatchEvent(new Event('resize'))}>
-          <HeaderContainer onClick={close}>
-            <IconButton color="inherit" disableRipple onClick={close}>
+        <>
+          <HeaderContainer>
+            <IconButton color="inherit" disableRipple>
             </IconButton>
             <StyledH6>Insights</StyledH6>
           </HeaderContainer>
@@ -30,19 +25,9 @@ export const Insights: React.FC<InsightsProps> = ({ open, close, variablesWithCo
             <Offsets variablesWithColors={variablesWithColors} />
             <UnusedVariables variablesWithColors={variablesWithColors} selectedModelTerms={selectedModelTerms} />
           </Container>
-        </Drawer>
+        </>
       )
 }
-
-const Drawer = styled.div<DrawerProps>`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: ${(props) => (props.open ? '20rem' : 0)};
-  visibility: ${(props) => (props.open ? 'visible' : 'hidden')};
-  transition: width 300ms;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
-`
 
 const HeaderContainer = styled.div`
   width: 100%;

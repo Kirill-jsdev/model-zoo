@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo } from 'react'
-import styled from 'styled-components'
 import { color as coreColor } from '../Utilities/color'
 import { Select } from './Select'
 import {DataAvailabilityScale} from './useDatasetAvailability-hook'
@@ -59,7 +58,7 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
     onChange(e.target.value as DataAvailabilityScale)
 
   return (
-    <ScaleSelect
+    <Select
       label="Scale"
       options={scaleOptions}
       value={scale ?? ''}
@@ -68,11 +67,3 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
     />
   )
 }
-
-const ScaleSelect = styled(Select)`
-  margin: 1rem 0 1.25rem 0.1rem;
-
-  .MuiSelect-selectMenu {
-    padding: 0.75rem;
-  }
-`
