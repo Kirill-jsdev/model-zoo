@@ -7,7 +7,7 @@ import { color as coreColor } from '../Utilities/color'
 
 //Might be later uncommented components
 // import { Scale } from './Scale'
-// import { DetermineScale } from './DetermineScale'
+import { DetermineScale } from './DetermineScale'
 
 //My imports
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
@@ -81,7 +81,7 @@ export const Offsets: React.FC<any> = ({variablesWithColors}) => {
   return (
     <Container>
       <StyledH6>Variable offsets</StyledH6>
-      {/* <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} /> */}
+      <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} originalSamplingPeriod={originalSamplingPeriod} />
       {/* <Info>
         {enhancedOffsets.filter(shouldDisplay).map((offset, index) => (
           <Scale
