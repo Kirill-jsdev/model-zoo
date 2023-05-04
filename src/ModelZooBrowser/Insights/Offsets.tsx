@@ -2,7 +2,7 @@ import React, { useState, useMemo, useContext } from 'react'
 import styled from 'styled-components'
 import { Mark } from '@material-ui/core'
 import { color as coreColor } from '../Utilities/color'
-import { useDataAvailability, useSelectedDatasetVersion, DataAvailabilityScale } from 'src/context/Dataset'
+import { useDataAvailability, useSelectedDatasetVersion/*, DataAvailabilityScale */ } from 'src/context/Dataset'
 // import { /*useDetectionResults, useSelectedModelOffsets,*/ VariableOffsets } from 'src/context/DetectionResults'  //Might be deleted later
 
 //Might be later uncommented components
@@ -11,7 +11,7 @@ import { useDataAvailability, useSelectedDatasetVersion, DataAvailabilityScale }
 
 //My imports
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
-import { useSelectedModelOffsets, VariableOffsets } from './insights-hooks'
+import { useSelectedModelOffsets, VariableOffsets, DataAvailabilityScale } from './insights-hooks'
 
 
 const MARK_STEP = 2
