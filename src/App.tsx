@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-        {model && variables && <ModelZooBrowser model={model} variables={variables} />}
+        {model && variables && <ModelZooBrowser model={model} variables={variables} dataset={versions[0]} />}
     </div>
   );
 }

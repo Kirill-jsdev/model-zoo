@@ -11,7 +11,7 @@ import { Insights } from './Insights/Insights'
 
 type ViewDataType = 'treemap' | 'table'
 
-const ModelZooBrowser: React.FC<any> = ({model, variables}) => {
+const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
 
     const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
     const models = model?.model?.normalBehaviorModel?.models
@@ -23,7 +23,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables}) => {
 
     return (
     <ModelZooBrowserContextProvider>
-        <ModelZooBrowserWrapper model={model}>
+        <ModelZooBrowserWrapper model={model} dataset={dataset}>
             <div className="model-zoo-browser">
                 <div className='model-zoo-browser-navigation'>
                     <Navigation />

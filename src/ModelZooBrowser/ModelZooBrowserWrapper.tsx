@@ -3,15 +3,19 @@ import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider
 
 interface ModelZooBrowserWrapperProps {
     model?: any
+    dataset?: any
 }
 
-const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children, model}) => {
+const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children, model, dataset}) => {
 
-    const {onModelChange} = useContext(ModelZooBrowserContext)
+    const {onModelChange, onDatasetChange} = useContext(ModelZooBrowserContext)
+
+    console.log(dataset)
 
     useEffect(() => {
         onModelChange(model)
-    }, [model, onModelChange])
+        onDatasetChange(dataset)
+    }, [model, dataset, onModelChange, onDatasetChange])
 
 
     return(
