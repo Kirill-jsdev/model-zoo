@@ -5,8 +5,8 @@ import { color as coreColor } from '../Utilities/color'
 // import {/* useDataAvailability/*, useSelectedDatasetVersion/*, DataAvailabilityScale */ } from 'src/context/Dataset'
 // import { /*useDetectionResults, useSelectedModelOffsets,*/ VariableOffsets } from 'src/context/DetectionResults'  //Might be deleted later
 
-//Might be later uncommented components
-// import { Scale } from './Scale'
+//Components
+import { Scale } from './Scale'
 import { DetermineScale } from './DetermineScale'
 
 //My imports
@@ -82,7 +82,7 @@ export const Offsets: React.FC<any> = ({variablesWithColors}) => {
     <Container>
       <StyledH6>Variable offsets</StyledH6>
       <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} originalSamplingPeriod={originalSamplingPeriod} />
-      {/* <Info>
+      <Info>
         {enhancedOffsets.filter(shouldDisplay).map((offset, index) => (
           <Scale
             key={`mzb-insights-offsets-${offset.variable}--${index}`}
@@ -92,7 +92,7 @@ export const Offsets: React.FC<any> = ({variablesWithColors}) => {
             {...offset}
           />
         ))}
-      </Info> */}
+      </Info>
     </Container>
   )
 }
