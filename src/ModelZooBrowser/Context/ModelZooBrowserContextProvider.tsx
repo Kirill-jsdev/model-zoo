@@ -11,6 +11,8 @@ interface ModelZooBrowserContextValues {
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
     selectedModelTerms: any
     onSelectedModelTermsChange: (selectedModelTerms: any) => void
+    variablesWithColors: any
+    onVariablesWithColorsChange: (variablesWithColors: any) => void
 }
 
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
@@ -23,13 +25,16 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
      // eslint-disable-next-line
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
     selectedModelTerms: undefined,
-    onSelectedModelTermsChange: (selectedModelTerms: any) => {}
+    onSelectedModelTermsChange: (selectedModelTerms: any) => {},
+    variablesWithColors: undefined,
+    onVariablesWithColorsChange: (variablesWithColors: any) => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState()
     const [dataset, setDataset] = useState()
+    const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
     const [selectedModelTerms, setSelectedModelTerms] = useState()
 
@@ -49,6 +54,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setSelectedModelTerms(selectedModelTerms)
     }
 
+    const onVariablesWithColorsChange = (variablesWithColors: any) => {
+        setVariablesWithColors(variablesWithColors)
+    }
+
 
     const ctxValues = {
         model,
@@ -58,7 +67,9 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         selectedModelIndex,
         onSelectedModelIndexChange,
         selectedModelTerms,
-        onSelectedModelTermsChange
+        onSelectedModelTermsChange,
+        variablesWithColors,
+        onVariablesWithColorsChange
     }
 
     return (

@@ -23,7 +23,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
 
     return (
     <ModelZooBrowserContextProvider>
-        <ModelZooBrowserWrapper model={model} dataset={dataset}>
+        <ModelZooBrowserWrapper model={model} variablesWithColors={variablesWithColors} dataset={dataset}>
             <div className="model-zoo-browser">
                 <div className='model-zoo-browser-navigation'>
                     <Navigation />
