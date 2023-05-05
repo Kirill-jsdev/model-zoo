@@ -27,10 +27,10 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
     <ModelZooBrowserContextProvider>
         <ModelZooBrowserWrapper model={model} variablesWithColors={variablesWithColors} dataset={dataset}>
             <div className="model-zoo-browser">
-                <div className='model-zoo-browser-navigation'>
+                <div className='navigation'>
                     <Navigation />
                 </div>
-                <div className="model-zoo-browser-data-visualization">
+                <div className="data-visualization">
                     <select onChange={handleSelectChange} defaultValue='treemap' >
                         <option value="treemap">Treemap</option>
                         <option value="table">Table</option>
@@ -38,7 +38,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
                     {viewDataAs === 'treemap' && models && <Treemap />}
                     {viewDataAs === 'table' && <TablePrep />}
                 </div>
-                <div className='model-zoo-browser-insights'>
+                <div className='insights'>
                     <Insights variablesWithColors={variablesWithColors} />
                 </div>
             </div>
