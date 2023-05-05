@@ -39,7 +39,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
                     {viewDataAs === 'table' && <TablePrep />}
                 </div>
                 <div className='insights'>
-                    <Insights variablesWithColors={variablesWithColors} />
+                    <Insights />
                 </div>
             </div>
         </ModelZooBrowserWrapper>

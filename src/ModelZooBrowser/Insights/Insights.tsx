@@ -6,13 +6,9 @@ import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 
-interface InsightsProps {
-  variablesWithColors: any
-}
+export const Insights: React.FC = () => {
 
-export const Insights: React.FC<InsightsProps> = ({variablesWithColors }) => {
-
-    const { selectedModelTerms } = useContext(ModelZooBrowserContext)
+    const { selectedModelTerms, variablesWithColors } = useContext(ModelZooBrowserContext)
 
     return (
         <>
