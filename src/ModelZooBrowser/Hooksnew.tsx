@@ -66,7 +66,7 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
 export const useMyDetectionModelResult = () => {
 
     const {model, onSelectedModelIndexChange, onSelectedModelTermsChange} = useContext(ModelZooBrowserContext)
-    const [selectedModelIndex, setSelectedModelIndex] = useState(1)
+    const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
 
     onSelectedModelIndexChange(selectedModelIndex)
 
