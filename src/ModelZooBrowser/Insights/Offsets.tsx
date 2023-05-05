@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useContext } from 'react'
-import styled from 'styled-components'
 import { Mark } from '@material-ui/core'
 import { color as coreColor } from '../Utilities/color'
 
@@ -59,10 +58,10 @@ export const Offsets: React.FC = () => {
 
   if (!selectedModelIndex || offsets.length < 1) return null
   return (
-    <Container>
-      <StyledH6>Variable offsets</StyledH6>
+    <div>
+      <h6>Variable offsets</h6>
       <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} originalSamplingPeriod={originalSamplingPeriod} />
-      <Info>
+      <div>
         {enhancedOffsets.filter(shouldDisplay).map((offset, index) => (
           <Scale
             key={`mzb-insights-offsets-${offset.variable}--${index}`}
@@ -72,35 +71,10 @@ export const Offsets: React.FC = () => {
             {...offset}
           />
         ))}
-      </Info>
-    </Container>
+      </div>
+    </div>
   )
 }
-
-const Container = styled.div`
-  padding-right: 0.5rem;
-`
-
-const StyledH6 = styled.h6`
-  margin: 0;
-  color: ${coreColor.black};
-  font-size: 1rem;
-  text-transform: capitalize;
-  font-weight: 700;
-`
-
-const Info = styled.div`
-  padding-left: 0.375rem;
-  font-size: 0.75rem;
-
-  & > * {
-    margin-left: 0;
-    margin-bottom: 1.25rem;
-    &:last-child {
-      margin-bottom: 2.5rem;
-    }
-  }
-`
 
 const targettt = {
   "minimumValue": 15,
