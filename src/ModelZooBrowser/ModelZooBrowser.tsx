@@ -11,11 +11,11 @@ import { Insights } from './Insights/Insights'
 
 type ViewDataType = 'treemap' | 'table'
 
-const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
+const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
 
     const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
     const models = model?.model?.normalBehaviorModel?.models
-    const variablesWithColors = buildPredictorPalette(variables)
+    const variablesWithColors = buildPredictorPalette(dataset.variables)
 
     console.log('MODELS_MODELS', models)
 
