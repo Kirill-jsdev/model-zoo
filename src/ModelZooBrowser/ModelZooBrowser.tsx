@@ -36,7 +36,7 @@ const ModelZooBrowser: React.FC<any> = ({model, variables, dataset}) => {
                         <option value="table">Table</option>
                     </select>
                     {viewDataAs === 'treemap' && models && <Treemap />}
-                    {viewDataAs === 'table' && <TablePrep terms={models[0].terms} variablesColors={variablesWithColors} />}
+                    {viewDataAs === 'table' && <TablePrep />}
                 </div>
                 <div className='model-zoo-browser-insights'>
                     <Insights variablesWithColors={variablesWithColors} />
