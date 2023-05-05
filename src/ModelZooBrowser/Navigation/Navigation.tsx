@@ -1,21 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { color } from '../Utilities/color'
 import { ModelSelector } from './ModelSelector'
 
 const Header = () => {
+  const {onSelectedModelIndexChange} = useContext(ModelZooBrowserContext)
+
+  const handleClick = () => {
+    onSelectedModelIndexChange(undefined)
+  }
+
   return (
-    <HeaderContainer>
-        <StyledH6>overview</StyledH6>
-    </HeaderContainer>
+    <div>
+        <h6 onClick={handleClick}>overview</h6>
+    </div>
   )
 }
 
 export const Navigation: React.FC = () => (
-  <NavigationContainer>
+  <div>
     <Header />
     <ModelSelector />
-  </NavigationContainer>
+  </div>
 )
 
 const NavigationContainer = styled.div`

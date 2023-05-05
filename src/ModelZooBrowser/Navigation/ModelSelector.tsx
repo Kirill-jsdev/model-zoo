@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import styled from 'styled-components'
 import { ModelSelectButton } from './Button'
-import { useModelOptions, useMyDetectionModelResult } from '../Hooksnew'
+import { useModelOptions, useDetectionModelResult } from '../Hooksnew'
 
 const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) =>
   dailyCycle ? (
@@ -12,21 +13,22 @@ const Container: React.FC<{ dailyCycle: boolean }> = ({ children, dailyCycle }) 
 
 export const ModelSelector: React.FC = () => {
 
-  const {setSelectedModelIndex, isDailyCycle} = useMyDetectionModelResult()
-
+  const {selectedModelIndex, onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)
+  const detectionModelResult = useDetectionModelResult(model, selectedModelIndex)
   const options = useModelOptions()
+
   if (typeof options === 'undefined') return <></>
 
   return (
     <Sidebar>
-      <Container dailyCycle={isDailyCycle}>
+      <Container dailyCycle={detectionModelResult.isDailyCycle}>
         {options.map(({ option, value }) => (
           <ModelSelectButton
             key={`${option}-${value}`}
             text={option}
-            onClick={() => setSelectedModelIndex(value)}
+            onClick={() => onSelectedModelIndexChange(value)}
             isSelected={value === 0}
-            isDailyCycle={isDailyCycle}
+            isDailyCycle={detectionModelResult.isDailyCycle}
           />
         ))}
       </Container>
