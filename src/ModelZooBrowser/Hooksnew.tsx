@@ -71,10 +71,7 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
 
 export const useTarget = () => {
     const {model, variablesWithColors} = useContext(ModelZooBrowserContext)
-
     const targetColumn = model?.model?.settings?.data?.KPIColumn
-
     const target = targetColumn ? variablesWithColors.find((v: any) => v.name === targetColumn) : undefined
-
     return target
 }
