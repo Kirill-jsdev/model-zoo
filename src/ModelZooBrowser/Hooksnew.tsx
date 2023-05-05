@@ -1,4 +1,4 @@
-import {useContext, useMemo, useState} from 'react'
+import { useContext, useMemo } from 'react'
 import { ModelOption } from "./Typesnew"
 import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './Utilities/helpers'
@@ -20,6 +20,9 @@ export const useModelOptions = () => {
 }
 
 export function useDetectionModelResult(model: any, selectedModelIndex: number | undefined) {
+
+    const { onSelectedModelTermsChange } = useContext(ModelZooBrowserContext)
+
     const models = useMemo(() => model?.model?.normalBehaviorModel?.models ?? [], [model])
     const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
 
@@ -52,6 +55,8 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
         return mapVariablePropertiesToTerms(model?.model?.normalBehaviorModel?.variableProperties ?? [])
     }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.normalBehaviorModel?.variableProperties])
 
+    onSelectedModelTermsChange(selectedModelTerms)
+
     return {
         models,
         isDailyCycle,
@@ -60,22 +65,6 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
         selectedModelTerms,
         isUnRelatedModel,
     }
-}
-
-
-export const useMyDetectionModelResult = () => {
-
-    const {model, onSelectedModelIndexChange, onSelectedModelTermsChange} = useContext(ModelZooBrowserContext)
-    const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
-
-    onSelectedModelIndexChange(selectedModelIndex)
-
-    const detectionModelResult = useDetectionModelResult(model, selectedModelIndex)
-
-    onSelectedModelTermsChange(detectionModelResult.selectedModelTerms)
-    const isDailyCycle = detectionModelResult.isDailyCycle
-
-    return {selectedModelIndex, setSelectedModelIndex, isDailyCycle, detectionModelResult}
 }
 
 //useTarget
