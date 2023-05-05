@@ -18,6 +18,7 @@ const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
     const variablesWithColors = buildPredictorPalette(dataset.variables)
 
     console.log('MODELS_MODELS', models)
+    console.log('MODELLLLLLLLLLl', model.model.settings.data.KPIColumn)
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setViewDataAs(e.target.value as ViewDataType)
