@@ -10,3 +10,8 @@ export type Variable = {
 }
 
 export type VariableWithColors = Variable & { variable: string; color: string; textColor: string }
+
+export type ModelOption = {
+    value: number
+    option: string
+}

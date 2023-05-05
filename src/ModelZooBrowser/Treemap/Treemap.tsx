@@ -3,7 +3,7 @@ import TreemapChartProvider from './TreemapChartProvider'
 
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 
-import { useDetectionModelResult } from '../Navigation/ModelSelector'
+import { useDetectionModelResult } from '../Hooksnew'
 
 const Treemap: React.FC<any> = () => {
 
