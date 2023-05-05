@@ -18,7 +18,7 @@ export const Insights: React.FC = () => {
             <StyledH6>Insights</StyledH6>
           </HeaderContainer>
           <Container>
-            <Offsets variablesWithColors={variablesWithColors} />
+            <Offsets />
             <UnusedVariables variablesWithColors={variablesWithColors} selectedModelTerms={selectedModelTerms} />
           </Container>
         </>

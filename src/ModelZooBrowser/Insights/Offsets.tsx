@@ -38,17 +38,12 @@ function usedOffsetsExceedsOne({ usedOffsets }: VariableOffsets): boolean {
   return from > 1 || to > 1
 }
 
-export const Offsets: React.FC<any> = ({variablesWithColors}) => {
-  // const { scale: availabilityScale } = useDataAvailability()
-  // const { originalSamplingPeriod = 0 } = useSelectedDatasetVersion()
-  // const { selectedModelIndex } = useDetectionResults()
-  // const offsets = useSelectedModelOffsets()
-  // const [scale, setScale] = useState<DataAvailabilityScale>(availabilityScale)
+export const Offsets: React.FC = () => {
 
   /////MY CODE
-  const { selectedModelIndex, model } = useContext(ModelZooBrowserContext)
+  const { selectedModelIndex, model, variablesWithColors, dataset } = useContext(ModelZooBrowserContext)
   const offsets = useSelectedModelOffsets(variablesWithColors, selectedModelIndex, model)
-  let originalSamplingPeriod = useOriginalSamplingPeriod()
+  let originalSamplingPeriod = useOriginalSamplingPeriod(dataset)
   if (!originalSamplingPeriod) originalSamplingPeriod = 0
 
   const { scale: availabilityScale } = useDataAvailability(selectedVersion, targettt, originalSamplingPeriod)
@@ -56,10 +51,7 @@ export const Offsets: React.FC<any> = ({variablesWithColors}) => {
   console.log('AvailabilityScale', availabilityScale)
   console.log('OOOoriginalSamplingPeriod', originalSamplingPeriod)
   console.log('SSSSelectedModelIndex', selectedModelIndex)
-
   const [scale, setScale] = useState<DataAvailabilityScale>(availabilityScale)
-
-
   ////////////
 
   const exceedsOne = useMemo(() => offsets.some(usedOffsetsExceedsOne), [offsets])
