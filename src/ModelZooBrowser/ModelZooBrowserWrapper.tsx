@@ -9,9 +9,7 @@ interface ModelZooBrowserWrapperProps {
 
 const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children, model, variablesWithColors, dataset}) => {
 
-    const {onModelChange, onDatasetChange, onVariablesWithColorsChange, variablesWithColors: ctx} = useContext(ModelZooBrowserContext)
-
-    console.log('VVVvariablesWithColorsCTX', ctx)
+    const {onModelChange, onDatasetChange, onVariablesWithColorsChange} = useContext(ModelZooBrowserContext)
 
     useEffect(() => {
         onModelChange(model)

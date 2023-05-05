@@ -14,14 +14,10 @@ type ViewDataType = 'treemap' | 'table'
 const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
 
     const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
-    const models = model?.model?.normalBehaviorModel?.models
     const variablesWithColors = buildPredictorPalette(dataset.variables)
 
-    console.log('MODELS_MODELS', models)
-    console.log('MODELLLLLLLLLLl', model.model.settings.data.KPIColumn)
-
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setViewDataAs(e.target.value as ViewDataType)
+        setViewDataAs(e.target.value as ViewDataType)
     }
 
     return (
@@ -36,7 +32,7 @@ const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
                         <option value="treemap">Treemap</option>
                         <option value="table">Table</option>
                     </select>
-                    {viewDataAs === 'treemap' && models && <Treemap />}
+                    {viewDataAs === 'treemap' && <Treemap />}
                     {viewDataAs === 'table' && <TablePrep />}
                 </div>
                 <div className='insights'>

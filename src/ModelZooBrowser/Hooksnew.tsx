@@ -21,7 +21,7 @@ export const useModelOptions = () => {
 
 export function useDetectionModelResult(model: any, selectedModelIndex: number | undefined) {
 
-    const { onSelectedModelTermsChange } = useContext(ModelZooBrowserContext)
+    const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange } = useContext(ModelZooBrowserContext)
 
     const models = useMemo(() => model?.model?.normalBehaviorModel?.models ?? [], [model])
     const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
@@ -56,6 +56,7 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
     }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.normalBehaviorModel?.variableProperties])
 
     onSelectedModelTermsChange(selectedModelTerms)
+    onSelectedModelTreemapNodesChange(selectedModelTreemapNodes)
 
     return {
         models,

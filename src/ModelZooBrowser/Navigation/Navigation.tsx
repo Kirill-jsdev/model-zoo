@@ -9,8 +9,6 @@ const Header = () => {
     onSelectedModelIndexChange(undefined)
   }
 
-  console.log('Modelll', model)
-
   const downloadModelAsJson = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     const anchorElement = e.target as HTMLAnchorElement
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(model))

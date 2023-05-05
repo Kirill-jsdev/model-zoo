@@ -1,10 +1,13 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useContext } from 'react'
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import styled from 'styled-components'
 import { color } from '../Utilities/color'
 import {getPartLabel} from '../Utilities/helpers'
 import {Term} from './Types'
 
-export const UnusedVariables: React.FC<any> = ({variablesWithColors, selectedModelTerms}) => {
+export const UnusedVariables: React.FC = () => {
+
+  const { selectedModelTerms, variablesWithColors } = useContext(ModelZooBrowserContext)
 
   const unusedVariables = useMemo(() => {
     if (variablesWithColors && selectedModelTerms)

@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
 
-
 interface ModelZooBrowserContextValues {
     model: any,
     onModelChange: (model: any) => void
@@ -9,6 +8,8 @@ interface ModelZooBrowserContextValues {
     onDatasetChange: (dataset: any) => void
     selectedModelIndex: number | undefined
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
+    selectedModelTreemapNodes: any
+    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: any) => void
     selectedModelTerms: any
     onSelectedModelTermsChange: (selectedModelTerms: any) => void
     variablesWithColors: any
@@ -24,6 +25,8 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     selectedModelIndex: undefined,
      // eslint-disable-next-line
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
+    selectedModelTreemapNodes: undefined,
+    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: any) => {},
     selectedModelTerms: undefined,
     onSelectedModelTermsChange: (selectedModelTerms: any) => {},
     variablesWithColors: undefined,
@@ -36,6 +39,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [dataset, setDataset] = useState()
     const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
+    const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState()
     const [selectedModelTerms, setSelectedModelTerms] = useState()
 
     const onModelChange = (model: any) => {
@@ -50,6 +54,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setSelectedModelIndex(selectedModelIndex)
     }
 
+    const onSelectedModelTreemapNodesChange = (selectedModelTreemapNodes: any) => {
+        setSelectedModelTreemapNodes(selectedModelTreemapNodes)
+    }
+
     const onSelectedModelTermsChange = (selectedModelTerms: any) => {
         setSelectedModelTerms(selectedModelTerms)
     }
@@ -58,7 +66,6 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setVariablesWithColors(variablesWithColors)
     }
 
-
     const ctxValues = {
         model,
         onModelChange,
@@ -66,6 +73,8 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         onDatasetChange,
         selectedModelIndex,
         onSelectedModelIndexChange,
+        selectedModelTreemapNodes,
+        onSelectedModelTreemapNodesChange,
         selectedModelTerms,
         onSelectedModelTermsChange,
         variablesWithColors,

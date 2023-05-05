@@ -1,14 +1,11 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { IconButton } from '@material-ui/core'
 import { color } from '../Utilities/color'
 import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 
 export const Insights: React.FC = () => {
-
-    const { selectedModelTerms, variablesWithColors } = useContext(ModelZooBrowserContext)
 
     return (
         <>
@@ -19,7 +16,7 @@ export const Insights: React.FC = () => {
           </HeaderContainer>
           <Container>
             <Offsets />
-            <UnusedVariables variablesWithColors={variablesWithColors} selectedModelTerms={selectedModelTerms} />
+            <UnusedVariables />
           </Container>
         </>
       )

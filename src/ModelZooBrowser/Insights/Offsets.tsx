@@ -42,8 +42,6 @@ export const Offsets: React.FC = () => {
   if (!originalSamplingPeriod) originalSamplingPeriod = 0
 
   const target = useTarget()
-  console.log('TARGETTT', target)
-
   const { scale: availabilityScale } = useDataAvailability(dataset, target, originalSamplingPeriod)
   const [scale, setScale] = useState<DataAvailabilityScale>(availabilityScale)
   const exceedsOne = useMemo(() => offsets.some(usedOffsetsExceedsOne), [offsets])
