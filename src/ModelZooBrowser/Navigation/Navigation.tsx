@@ -30,7 +30,7 @@ const Header = () => {
 }
 
 export const Navigation: React.FC = () => (
-  <div>
+  <div className='mzb-navigation'>
     <Header />
     <ModelSelector />
   </div>

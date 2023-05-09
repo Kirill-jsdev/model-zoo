@@ -4,7 +4,12 @@
 .model-zoo-browser {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    height: 490px;
+    align-items: stretch;
+    /* height: 490px; */
+}
+
+.model-zoo-browser .mzb-navigation {
+    background-color: #ebecf0;
 }
 
 .model-zoo-browser .nav-header {
@@ -54,6 +59,7 @@
 /* Model Selector */
 
 .model-zoo-browser .sidebar {
+    padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -62,8 +68,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
-}
 
+    margin: 0 auto;
+    max-width: 169px;
+}
 
 .model-zoo-browser .sidebar .selector-btn {
     background-color: #C9C4D4;
