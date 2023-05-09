@@ -104,3 +104,23 @@
 .model-zoo-browser .sidebar .selector-btn.selected .clock {
     color: rgb(250, 250, 229);
 }
+
+/* DATA VISUALIZATION */
+
+.model-zoo-browser .data-visualization {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.model-zoo-browser .data-visualization .treemap-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.model-zoo-browser .data-visualization .treemap-container .treemap-svg {
+    pointer-events: none;
+    width: inherit;
+    height: inherit;
+}

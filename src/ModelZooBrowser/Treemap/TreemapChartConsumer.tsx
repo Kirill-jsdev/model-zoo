@@ -1,5 +1,4 @@
 import React, { forwardRef, useState, useRef, useImperativeHandle } from 'react'
-import styled from 'styled-components'
 import { Group } from '@visx/group'
 import { Treemap, treemapSquarify } from '@visx/hierarchy'
 import { TreemapNode, Direction } from '../Utilities/Types'
@@ -56,9 +55,9 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
     }
 
     return (
-      <Container className={className} ref={setDimensionsRef}>
+      <div className={`treemap-container ${className}`} ref={setDimensionsRef}>
         <TreemapTooltip {...tooltipData} TooltipProps={{ onMouseMove: handleMouseMove }} $position={position}>
-          <Svg ref={svgRef}>
+          <svg className='treemap-svg' ref={svgRef}>
             <Treemap<Data>
               top={margin.top}
               root={root}
@@ -104,22 +103,10 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
                 </Group>
               )}
             </Treemap>
-          </Svg>
+          </svg>
         </TreemapTooltip>
-      </Container>
+      </div>
     )
   },
 )
 TreemapChartConsumer.displayName = 'TreemapChartConsumer'
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`
-
-export const Svg = styled.svg`
-  pointer-events: none;
-  width: inherit;
-  height: inherit;
-`
