@@ -50,3 +50,15 @@
     transform: scale(-1, -1);
     height: 1rem;
 }
+
+/* Model Selector */
+
+.model-zoo-browser .sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.model-zoo-browser .sidebar .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
