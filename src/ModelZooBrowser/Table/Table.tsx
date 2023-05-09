@@ -1,6 +1,4 @@
 import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import { TableContainer, Table, TableHead, TableRow, TableBody, TableCell, lighten } from '@material-ui/core'
 import { Term } from '../Utilities/helpers'
 import { DatasetVariable } from '../Utilities/Types'
 
@@ -24,8 +22,6 @@ const TERMS = 'Term θ'
 const COEFFICIENT = 'Coefficient β'
 const IMPORTANCE = 'Importance'
 
-const BORDER_COLOR = lighten(color.shades.tertiary.llll, 0.9)
-
 export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms = [], variablesColors }) => {
   const [setTableRef, tableDimensions] = useResizeListener()
   const [setIndexColumnRef, indexColumnDimensions] = useResizeListener()
@@ -48,16 +44,16 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
 
   return (
     <div className={`table-container ${className}`} ref={setTableRef}>
-      <StyledTable aria-label="terms table" stickyHeader>
-        <TableHead>
-          <TableRow>
-            <IndexTableCell>{INDEX}</IndexTableCell>
-            <StyledTableCell>{TERMS}</StyledTableCell>
-            {hasCoefficient && <MinWidthTableCell>{COEFFICIENT}</MinWidthTableCell>}
-            <MinWidthTableCell>{IMPORTANCE}</MinWidthTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+      <table aria-label="terms table">
+        <th>
+          <tr>
+            <td className='index-cell'>{INDEX}</td>
+            <td className='terms-cell'>{TERMS}</td>
+            {hasCoefficient && <td className='coefficient-cell'>{COEFFICIENT}</td>}
+            <td className='importance-cell'>{IMPORTANCE}</td>
+          </tr>
+        </th>
+        <tbody>
           {terms?.sort(compare).map((term, index) => {
             const termLabel = getTermLabel(term)
             const colors = getColors(term)
@@ -65,72 +61,24 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
             const importance = term.importance ?? 0
 
             return (
-              <StyledTableRow key={`mzb-table-body-${index}`}>
-                <IndexTableCell ref={setIndexColumnRef}>{index + 1}</IndexTableCell>
-                <TermTableCell tableWidth={tableWidth}>
+              <tr key={`mzb-table-body-${index}`}>
+                <td className='index-cell' ref={setIndexColumnRef}>{index + 1}</td>
+                <td className='terms-cell' style={{width: tableWidth}}>
                   <TooltipEnhancedDiv TooltipProps={{ title: termLabel }}>{termLabel}</TooltipEnhancedDiv>
-                </TermTableCell>
+                </td>
                 {hasCoefficient && (
-                  <StyledTableCell>
+                  <td className='coefficient-cell'>
                     <Bar biggestValue={biggestCoefficient} value={coefficient} colors={colors} />
-                  </StyledTableCell>
+                  </td>
                 )}
-                <StyledTableCell>
+                <td className='importance-cell'>
                   <Bar biggestValue={biggestImportance} value={importance} colors={colors} />
-                </StyledTableCell>
-              </StyledTableRow>
+                </td>
+              </tr>
             )
           })}
-        </TableBody>
-      </StyledTable>
+        </tbody>
+      </table>
     </div>
   )
 }
-
-const StyledTable = styled(Table)`
-  .MuiTableCell-head {
-    height: 2.5rem;
-    z-index: 5;
-    padding-left: 0.5rem;
-    color: ${color.white};
-    background-color: ${color.shades.tertiary.llll};
-  }
-  .MuiTableCell-body {
-    color: ${color.main.secondary};
-  }
-`
-
-const StyledTableRow = styled(TableRow)`
-  height: 2.1875rem;
-
-  & > * {
-    border-right: 1px solid ${BORDER_COLOR};
-    border-bottom: 1px solid ${BORDER_COLOR};
-
-    &:first-child {
-      border-left: 1px solid ${BORDER_COLOR};
-    }
-  }
-`
-
-const StyledTableCell = styled(TableCell)`
-  font-size: 0.875rem;
-  padding: 0.25rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`
-
-const IndexTableCell = styled(StyledTableCell)`
-  width: 3.5rem;
-`
-
-const MinWidthTableCell = styled(StyledTableCell)`
-  min-width: 6rem;
-`
-
-const TermTableCell = styled(MinWidthTableCell)<{ tableWidth: number }>`
-  padding-right: 2rem;
-  max-width: ${({ tableWidth }) => `calc(${tableWidth}px - 13rem)`};
-  font-weight: 700;
-`

@@ -132,3 +132,45 @@
     overflow-x: auto;
 }
 
+.model-zoo-browser .data-visualization .table-container table {
+    width: 100%;
+    background-color: #f3eff2;
+    border-spacing: 2px;
+    text-align: left;
+}
+.model-zoo-browser .data-visualization .table-container table th {
+    display: table-header-group;
+    width: 100%;
+    background-color: #936487;
+    color: #fff;
+    font-weight: 400;
+}
+.model-zoo-browser .data-visualization .table-container table th tr {
+    width: 100%;
+}
+
+.model-zoo-browser .data-visualization td {
+    padding: 5px 10px;
+}
+
+.model-zoo-browser .data-visualization tbody td {
+    color: #1D0C5F;
+    background-color: #fff;
+}
+
+.model-zoo-browser .data-visualization .table-container .index-cell {
+    width: 5%;
+}
+
+.model-zoo-browser .data-visualization .table-container .terms-cell {
+    width: 55%;
+}
+
+.model-zoo-browser .data-visualization .table-container .coefficient-cell {
+    width: 20%;
+}
+
+.model-zoo-browser .data-visualization .table-container .importance-cell {
+    width: 20%;
+}
+
