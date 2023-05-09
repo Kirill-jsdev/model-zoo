@@ -1,6 +1,8 @@
 import React, {useContext} from 'react'
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { ModelSelector } from './ModelSelector'
+import '../ModelZooBrowser.css'
+import { DownloadIcon, ArrowUpIcon } from '../assets/DownloadIcon'
 
 const Header = () => {
   const {onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)
@@ -17,9 +19,12 @@ const Header = () => {
   }
 
   return (
-    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10}}>
-        <h6 onClick={handleClick}>overview</h6>
-        <a href='/' onClick={(e) => downloadModelAsJson(e)} style={{background: 'lightblue', width: 30, height: 30, display: 'block'}}>D</a>
+    <div className='nav-header'>
+      <div className='title' onClick={handleClick}>
+        <ArrowUpIcon />
+        <h6>overview</h6>
+      </div>
+      <a href='/' onClick={(e) => downloadModelAsJson(e)}><DownloadIcon /></a>
     </div>
   )
 }

@@ -1,6 +1,52 @@
+.model-zoo-browser * {
+    box-sizing: border-box;
+}
 .model-zoo-browser {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     height: 490px;
 }
 
+.model-zoo-browser .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #dbdde5;
+}
+
+.model-zoo-browser .nav-header .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.model-zoo-browser .nav-header h6 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #4d0246;
+    font-weight: 400;
+    margin: 0;
+}
+
+.model-zoo-browser .nav-header a {
+    display: grid;
+    place-items: center;
+    background-color: #4d0246;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.model-zoo-browser .nav-header .download {
+    color: #fff;
+}
+
+.model-zoo-browser .nav-header .arrow-up {
+    color: #4d0246;
+    transform: scale(-1, -1);
+    height: 1rem;
+}
