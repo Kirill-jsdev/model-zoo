@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
-import { ModelSelectButton } from './Button'
 import { useModelOptions, useDetectionModelResult } from '../Hooksnew'
+import ModelSelectButton from './ModelSelectButton'
 
 export const ModelSelector: React.FC = () => {
 
@@ -16,10 +16,10 @@ export const ModelSelector: React.FC = () => {
       <div className='content'>
         {options.map(({ option, value }) => (
           <ModelSelectButton
-            key={`${option}-${value}`}
+            key={`${option}-${value}2`}
             text={option}
-            onClick={() => onSelectedModelIndexChange(value)}
-            isSelected={value === 0}
+            onClickHandler={() => onSelectedModelIndexChange(value)}
+            isSelected={value === selectedModelIndex}
             isDailyCycle={detectionModelResult.isDailyCycle}
           />
         ))}
