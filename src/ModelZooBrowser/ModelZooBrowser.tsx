@@ -32,8 +32,8 @@ const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
                         <option value="treemap">Treemap</option>
                         <option value="table">Table</option>
                     </select>
-                    {viewDataAs === 'treemap' && <Treemap />}
-                    {viewDataAs === 'table' && <TablePrep />}
+                    {viewDataAs === 'table' && <Treemap />}
+                    {viewDataAs === 'treemap' && <TablePrep />}
                 </div>
                 <div className='insights'>
                     <Insights />

@@ -47,7 +47,7 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
   const compare = (a: Term, b: Term) => (b.importance ?? 0) - (a.importance ?? 0)
 
   return (
-    <TableContainer className={className} ref={setTableRef}>
+    <div className={`table-container ${className}`} ref={setTableRef}>
       <StyledTable aria-label="terms table" stickyHeader>
         <TableHead>
           <TableRow>
@@ -83,7 +83,7 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
           })}
         </TableBody>
       </StyledTable>
-    </TableContainer>
+    </div>
   )
 }
 
