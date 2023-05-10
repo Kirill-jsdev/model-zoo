@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { ModelOption } from "./Typesnew"
+import { ModelOption } from "./Utilities/Types"
 import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './Utilities/helpers'
 
