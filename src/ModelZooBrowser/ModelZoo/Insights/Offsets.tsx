@@ -8,7 +8,7 @@ import { DetermineScale } from './DetermineScale'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { useSelectedModelOffsets, VariableOffsets, DataAvailabilityScale, useOriginalSamplingPeriod } from './insights-hooks'
 import { useDataAvailability } from './useDatasetAvailability-hook'
-import { useTarget } from '../../Hooksnew'
+import { useTarget } from '../../Utilities/Hooks'
 
 
 const MARK_STEP = 2
