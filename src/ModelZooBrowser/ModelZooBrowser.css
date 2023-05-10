@@ -116,7 +116,7 @@
 .model-zoo-browser .data-visualization .treemap-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 370px;
 }
 
 .model-zoo-browser .data-visualization .treemap-container .treemap-svg {
