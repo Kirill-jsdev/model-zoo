@@ -240,6 +240,14 @@
     overflow-y: auto;
 }
 
+.model-zoo-browser .insights .var-off-header {
+    margin: 0 0 15px;
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+}
+
 /* Insights Scale */
 
 .model-zoo-browser .insights .scale-generic {
