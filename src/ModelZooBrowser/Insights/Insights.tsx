@@ -1,45 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
-import { IconButton } from '@material-ui/core'
-import { color } from '../Utilities/color'
 import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
+import { DrawerArrows } from '../assets/DownloadIcon'
 
 export const Insights: React.FC = () => {
 
     return (
-        <>
-          <HeaderContainer>
-            <IconButton color="inherit" disableRipple>
-            </IconButton>
-            <StyledH6>Insights</StyledH6>
-          </HeaderContainer>
-          <Container>
+        <div className='insights'>
+          <div className='header'>
+            <DrawerArrows />
+            <h6>Insights</h6>
+          </div>
+          <div className='settings-panel'>
             <Offsets />
             <UnusedVariables />
-          </Container>
-        </>
+          </div>
+        </div>
       )
 }
-
-const HeaderContainer = styled.div`
-  width: 100%;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  line-height: 1.2;
-  color: ${color.main.tertiary};
-  background-color: ${color.shades.athens.d};
-  cursor: pointer;
-`
-
-const StyledH6 = styled.h6`
-  font-size: 1rem;
-  font-weight: 700;
-`
-
-const Container = styled.div`
-  flex: 1;
-  padding: 1.25rem 1.5rem 1.25rem 1rem;
-  overflow-y: auto;
-`

@@ -11,7 +11,7 @@ const DataInfo = () => {
 
     const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length}) Terms` : 'Overview'
     const timeScale = model?.model?.settings?.data?.timeScale
-    const timeScaleText = `Timescale: ${timeScale.value} ${timeScale.baseUnit}`
+    const timeScaleText = `Timescale: ${timeScale?.value} ${timeScale?.baseUnit}`
 
     return (
         <div className="data-info">

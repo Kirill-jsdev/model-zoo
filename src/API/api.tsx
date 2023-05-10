@@ -85,6 +85,7 @@ export const useGetVersions = (datasetId: string, token: string) => {
     fetch(url, requestOptions)
       .then(response => response.json())
       .then(data => {
+        console.log('VERSIONS', data )
         setVersions(data)
       })
       .catch(error => {
