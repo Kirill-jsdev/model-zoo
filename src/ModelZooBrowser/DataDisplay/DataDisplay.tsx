@@ -5,11 +5,11 @@ import TablePrep from './Table/TablePrep'
 
 const DataDisplay = () => {
 
-    const {visualizeAs} = useContext(ModelZooBrowserContext)
+    const {visualizeAs, isDrawerOpen} = useContext(ModelZooBrowserContext)
 
     return (
         <>
-            {visualizeAs === 'treemap' && <Treemap />}
+            {visualizeAs === 'treemap' && <Treemap key={`treemap-${isDrawerOpen}`} />}
             {visualizeAs === 'table' && <TablePrep />}
         </>
     )
