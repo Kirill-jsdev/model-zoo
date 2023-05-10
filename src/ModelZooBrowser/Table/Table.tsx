@@ -45,14 +45,14 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
   return (
     <div className={`table-container ${className}`} ref={setTableRef}>
       <table aria-label="terms table">
-        <th>
+        <thead>
           <tr>
             <td className='index-cell'>{INDEX}</td>
             <td className='terms-cell'>{TERMS}</td>
             {hasCoefficient && <td className='coefficient-cell'>{COEFFICIENT}</td>}
             <td className='importance-cell'>{IMPORTANCE}</td>
           </tr>
-        </th>
+        </thead>
         <tbody>
           {terms?.sort(compare).map((term, index) => {
             const termLabel = getTermLabel(term)
