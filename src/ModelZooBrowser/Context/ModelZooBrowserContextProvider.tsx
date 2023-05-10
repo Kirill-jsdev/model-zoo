@@ -16,6 +16,8 @@ interface ModelZooBrowserContextValues {
     onVariablesWithColorsChange: (variablesWithColors: any) => void
     visualizeAs: 'treemap' | 'table'
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => void
+    isDrawerOpen: boolean
+    onIsDrawerOpenChange: (isDrawerOpen: boolean) => void
 }
 
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
@@ -34,7 +36,9 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     variablesWithColors: undefined,
     onVariablesWithColorsChange: (variablesWithColors: any) => {},
     visualizeAs: 'treemap',
-    onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {}
+    onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {},
+    isDrawerOpen: true,
+    onIsDrawerOpenChange: (isDrawerOpen: boolean) => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
@@ -46,6 +50,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState()
     const [selectedModelTerms, setSelectedModelTerms] = useState()
     const [visualizeAs, setVisualizeAs] = useState<'treemap' | 'table'>('treemap')
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true)
 
     const onModelChange = (model: any) => {
         setModel(model)
@@ -75,6 +80,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setVisualizeAs(visualizeAs)
     }
 
+    const onIsDrawerOpenChange = (isDrawerOpen: boolean) => {
+        setIsDrawerOpen(isDrawerOpen)
+    }
+
     const ctxValues = {
         model,
         onModelChange,
@@ -89,7 +98,9 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         variablesWithColors,
         onVariablesWithColorsChange,
         visualizeAs,
-        onVisualizeAsChange
+        onVisualizeAsChange,
+        isDrawerOpen,
+        onIsDrawerOpenChange
     }
 
     return (

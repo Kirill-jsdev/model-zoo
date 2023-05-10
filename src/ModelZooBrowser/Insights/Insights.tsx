@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
 import { DrawerArrows } from '../assets/DownloadIcon'
 
 export const Insights: React.FC = () => {
 
+    const { onIsDrawerOpenChange } =  useContext(ModelZooBrowserContext)
+
     return (
         <div className='insights'>
-          <div className='header'>
+          <div className='header' onClick={() => onIsDrawerOpenChange(false)}>
             <DrawerArrows />
             <h6>Insights</h6>
           </div>
