@@ -9,7 +9,7 @@ import {
   SelectProps as MUISelectProps,
   FormHelperText,
 } from '@material-ui/core'
-import { color } from '../Utilities/color'
+import { color } from '../../Utilities/color'
 
 type SelectValue = string | number | undefined
 

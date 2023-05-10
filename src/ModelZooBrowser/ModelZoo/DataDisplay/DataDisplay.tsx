@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
+import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import Treemap from './Treemap/Treemap'
 import TablePrep from './Table/TablePrep'
 

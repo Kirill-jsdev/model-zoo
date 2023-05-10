@@ -1,4 +1,4 @@
-import { ClockIcon } from "../assets/DownloadIcon"
+import { ClockIcon } from "../../assets/DownloadIcon"
 
 const ModelSelectButton: React.FC<any> = ({text, isDailyCycle, isSelected, onClickHandler}) => {
 

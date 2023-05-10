@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
-import { Term } from '../../Utilities/helpers'
-import { DatasetVariable } from '../../Utilities/Types'
+import { Term } from '../../../Utilities/helpers'
+import { DatasetVariable } from '../../../Utilities/Types'
 
-import { color } from '../../Utilities/color'
-import { Part } from '../../Utilities/helpers'
-import { standardFormatter } from '../../Utilities/helpers'
-import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../../Utilities/helpers'  //original path: src/pure/ModelZoo
-import { useResizeListener } from '../../Utilities/useResizeListener'
+import { color } from '../../../Utilities/color'
+import { Part } from '../../../Utilities/helpers'
+import { standardFormatter } from '../../../Utilities/helpers'
+import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../../../Utilities/helpers'  //original path: src/pure/ModelZoo
+import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Bar } from './Bar'
 import { TooltipEnhancedDiv } from './TooltipEnhanced'
 

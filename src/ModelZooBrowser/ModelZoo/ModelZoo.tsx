@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
-import DataDisplay from "../DataDisplay/DataDisplay"
-import DataInfo from "../DataDisplay/DataInfo/DataInfo"
-import { Insights } from "../Insights/Insights"
-import { Navigation } from "../Navigation/Navigation"
+import DataDisplay from "./DataDisplay/DataDisplay"
+import DataInfo from "./DataDisplay/DataInfo/DataInfo"
+import { Insights } from "./Insights/Insights"
+import { Navigation } from "./Navigation/Navigation"
 
 const ModelZoo = () => {
 

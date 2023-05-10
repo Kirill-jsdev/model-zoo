@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
-import { color as coreColor } from '../Utilities/color'
+import { color as coreColor } from '../../Utilities/color'
 import { Select } from './Select'
 import {DataAvailabilityScale} from './useDatasetAvailability-hook'
 

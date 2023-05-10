@@ -1,8 +1,8 @@
 import React, { useMemo, useContext } from 'react'
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
+import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import styled from 'styled-components'
-import { color } from '../Utilities/color'
-import {getPartLabel} from '../Utilities/helpers'
+import { color } from '../../Utilities/color'
+import {getPartLabel} from '../../Utilities/helpers'
 import {Term} from './Types'
 
 export const UnusedVariables: React.FC = () => {

@@ -2,7 +2,7 @@ import { SliderProps } from '@material-ui/core'
 import styled from 'styled-components'
 import { Slider } from '@material-ui/core'
 // import { trackRadius } from './Utils'
-import { color } from '../Utilities/color'
+import { color } from '../../Utilities/color'
 
 interface ScaleSliderProps {
   $indexOfZeroMark: number

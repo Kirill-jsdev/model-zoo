@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
-import { useModelOptions, useDetectionModelResult } from '../Hooksnew'
+import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
+import { useModelOptions, useDetectionModelResult } from '../../Hooksnew'
 import ModelSelectButton from './ModelSelectButton'
 
 export const ModelSelector: React.FC = () => {

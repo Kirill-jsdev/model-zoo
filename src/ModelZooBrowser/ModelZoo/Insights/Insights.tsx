@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
+import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { Offsets } from './Offsets'
 import { UnusedVariables } from './UnusedVariables'
-import { DrawerArrows } from '../assets/DownloadIcon'
+import { DrawerArrows } from '../../assets/DownloadIcon'
 
 export const Insights: React.FC = () => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Tooltip as MUITooltip, ValueLabelProps, SliderProps } from '@material-ui/core'
-import { color } from '../Utilities/color'
+import { color } from '../../Utilities/color'
 
 interface Color {
   color: string

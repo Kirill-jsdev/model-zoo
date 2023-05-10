@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
-import { DrawerArrows } from '../../assets/DownloadIcon'
+import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
+import { DrawerArrows } from '../../../assets/DownloadIcon'
 
 
 const DataInfo = () => {
