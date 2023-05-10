@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { SliderProps, lighten } from '@material-ui/core'
 import { Inequality } from './Inequality'
 import { Tooltip } from './Tooltip'
-import { Container, Header, VariableName, PillLabel, ScaleContainer, ScaleSlider } from './ScaleGenericStyles'
+import { PillLabel, ScaleContainer, ScaleSlider } from './ScaleGenericStyles'
 
 interface ScaleProps {
   name: string
@@ -59,7 +59,7 @@ export const Scale: React.FC<ScaleProps> = ({
           side="left"
           $backgroundColor={$backgroundColor}
         />
-        <Div>
+        <div className='scale-wrapper'>
           <StyledScaleSlider
             {...sliderProps}
             value={value}
@@ -79,7 +79,7 @@ export const Scale: React.FC<ScaleProps> = ({
               $showTrackOnly
             />
           )}
-        </Div>
+        </div>
         <Inequality
           value={sliderProps?.value}
           min={sliderProps?.min}
@@ -91,13 +91,6 @@ export const Scale: React.FC<ScaleProps> = ({
     </div>
   )
 }
-
-const Div = styled.div`
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-`
 
 const StyledScaleSlider = styled(ScaleSlider)`
   flex: 1;

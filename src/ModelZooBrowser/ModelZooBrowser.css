@@ -278,3 +278,11 @@
     border-radius: 2px;
 }
 
+.model-zoo-browser .insights .scale-generic .scale-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
