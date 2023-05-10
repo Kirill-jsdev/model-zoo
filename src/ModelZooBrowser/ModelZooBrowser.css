@@ -192,6 +192,25 @@
     gap: 10px;
 }
 
+.model-zoo-browser .data-info .open-drawer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+
+    background-color: #ebecf0;
+    border-radius: 4px;
+    padding: 0 3px;
+}
+
+.model-zoo-browser .data-info .open-drawer .drawer-arrows {
+    width: 10px;
+    transform: scale(-1);
+}
+
+.model-zoo-browser .data-info .open-drawer span {position: relative; top: -1px;}
+
 .model-zoo-browser .insights .header {
     width: 100%;
     display: flex;

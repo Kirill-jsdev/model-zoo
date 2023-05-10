@@ -1,9 +1,11 @@
 import { useContext } from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
+import { DrawerArrows } from '../../assets/DownloadIcon'
+
 
 const DataInfo = () => {
 
-    const { selectedModelIndex, selectedModelTerms, onVisualizeAsChange, model } = useContext(ModelZooBrowserContext)
+    const { selectedModelIndex, selectedModelTerms, onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen } = useContext(ModelZooBrowserContext)
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         onVisualizeAsChange(e.target.value as 'treemap' | 'table')
@@ -22,6 +24,12 @@ const DataInfo = () => {
                     <option value="treemap">Treemap</option>
                     <option value="table">Table</option>
                 </select>
+                {!isDrawerOpen && 
+                    <div className='open-drawer' onClick={() => onIsDrawerOpenChange(true)}>
+                        <DrawerArrows />
+                        <span>Insights</span>
+                    </div>
+                }
             </div>
         </div>
     )
