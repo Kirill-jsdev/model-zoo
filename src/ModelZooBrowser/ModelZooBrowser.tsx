@@ -1,24 +1,17 @@
-import React, {useState } from 'react'
+import React from 'react'
 import './ModelZooBrowser.css'
-import Treemap from './Treemap/Treemap'
-import TablePrep from './Table/TablePrep'
 import { Navigation } from './Navigation/Navigation'
 import { buildPredictorPalette } from './Utilities/helpers'
 
 import { ModelZooBrowserContextProvider } from './Context/ModelZooBrowserContextProvider'
 import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
 import { Insights } from './Insights/Insights'
-
-type ViewDataType = 'treemap' | 'table'
+import DataDisplay from './DataDisplay/DataDisplay'
+import DataInfo from './DataDisplay/DataInfo/DataInfo'
 
 const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
 
-    const [viewDataAs, setViewDataAs] = useState<ViewDataType>('treemap')
     const variablesWithColors = buildPredictorPalette(dataset.variables)
-
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setViewDataAs(e.target.value as ViewDataType)
-    }
 
     return (
     <ModelZooBrowserContextProvider>
@@ -28,12 +21,8 @@ const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
                     <Navigation />
                 </div>
                 <div className="data-visualization">
-                    <select onChange={handleSelectChange} defaultValue='treemap' >
-                        <option value="treemap">Treemap</option>
-                        <option value="table">Table</option>
-                    </select>
-                    {viewDataAs === 'treemap' && <Treemap />}
-                    {viewDataAs === 'table' && <TablePrep />}
+                    <DataInfo />
+                    <DataDisplay />
                 </div>
                 <div className='insights'>
                     <Insights />

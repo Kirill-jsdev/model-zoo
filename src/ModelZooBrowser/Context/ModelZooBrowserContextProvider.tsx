@@ -14,6 +14,8 @@ interface ModelZooBrowserContextValues {
     onSelectedModelTermsChange: (selectedModelTerms: any) => void
     variablesWithColors: any
     onVariablesWithColorsChange: (variablesWithColors: any) => void
+    visualizeAs: 'treemap' | 'table'
+    onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => void
 }
 
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
@@ -30,7 +32,9 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     selectedModelTerms: undefined,
     onSelectedModelTermsChange: (selectedModelTerms: any) => {},
     variablesWithColors: undefined,
-    onVariablesWithColorsChange: (variablesWithColors: any) => {}
+    onVariablesWithColorsChange: (variablesWithColors: any) => {},
+    visualizeAs: 'treemap',
+    onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
@@ -41,6 +45,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
     const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState()
     const [selectedModelTerms, setSelectedModelTerms] = useState()
+    const [visualizeAs, setVisualizeAs] = useState<'treemap' | 'table'>('treemap')
 
     const onModelChange = (model: any) => {
         setModel(model)
@@ -66,6 +71,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setVariablesWithColors(variablesWithColors)
     }
 
+    const onVisualizeAsChange = (visualizeAs: 'treemap' | 'table') => {
+        setVisualizeAs(visualizeAs)
+    }
+
     const ctxValues = {
         model,
         onModelChange,
@@ -78,7 +87,9 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         selectedModelTerms,
         onSelectedModelTermsChange,
         variablesWithColors,
-        onVariablesWithColorsChange
+        onVariablesWithColorsChange,
+        visualizeAs,
+        onVisualizeAsChange
     }
 
     return (
