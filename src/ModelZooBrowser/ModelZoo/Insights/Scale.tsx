@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { SliderProps } from '@material-ui/core'
-import { DatasetVariable } from './Types'
+import { DatasetVariable } from '../../Utilities/Types'
 import { DataAvailabilityScale } from './useDatasetAvailability-hook'
 import { Scale as ScaleComponent } from './ScaleGeneric'
 
@@ -9,8 +9,6 @@ export type VariableOffsets = {
   usedOffsets?: { from: number; to: number }
   availableOffset?: number
 }
-
-
 
 interface ScaleProps extends VariableOffsets, Omit<DatasetVariable, 'variable'> {
   scale: DataAvailabilityScale
@@ -86,7 +84,3 @@ export const Scale: React.FC<ScaleProps> = ({
     />
   )
 }
-
-// export const Scale = () => {
-//   return <div>Scale</div>
-// }

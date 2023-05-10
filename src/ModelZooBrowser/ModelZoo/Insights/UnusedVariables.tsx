@@ -3,7 +3,7 @@ import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProv
 import styled from 'styled-components'
 import { color } from '../../Utilities/color'
 import {getPartLabel} from '../../Utilities/helpers'
-import {Term} from './Types'
+import {Term} from '../../Utilities/Types'
 
 export const UnusedVariables: React.FC = () => {
 
