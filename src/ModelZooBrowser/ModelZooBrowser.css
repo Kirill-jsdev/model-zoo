@@ -258,3 +258,16 @@
     font-weight: 400;
 }
 
+.model-zoo-browser .insights .scale-generic .inequality-container {
+    height: inherit;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.model-zoo-browser .insights .scale-generic .iq-dot {
+    width: 30%;
+    height: 0.3125rem;
+    border-radius: 2px;
+}
+

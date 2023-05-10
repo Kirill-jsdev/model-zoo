@@ -23,10 +23,10 @@ export const Inequality: React.FC<InequalityProps> = ({ value, $backgroundColor,
   return (
     <Container>
       {shouldShowInequality(value, side, max, min) && (
-        <InequalityContainer $backgroundColor={$backgroundColor}>
-          <div />
-          <div />
-        </InequalityContainer>
+        <div className='inequality-container'>
+          <div className='iq-dot' style={{backgroundColor: $backgroundColor}}/>
+          <div className='iq-dot' style={{backgroundColor: $backgroundColor}}/>
+        </div>
       )}
     </Container>
   )
@@ -37,16 +37,3 @@ const Container = styled.div`
   width: 1.5rem;
 `
 
-const InequalityContainer = styled.div<{ $backgroundColor: string }>`
-  height: inherit;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-
-  > div {
-    width: 30%;
-    height: 0.3125rem;
-    border-radius: 2px;
-    background-color: ${({ $backgroundColor }) => $backgroundColor};
-  }
-`
