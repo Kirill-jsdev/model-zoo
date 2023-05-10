@@ -258,6 +258,13 @@
     font-weight: 400;
 }
 
+.model-zoo-browser .insights .scale-generic .inequality {
+    height: 100%;
+    width: 1.5rem;
+    position: relative;
+    top: -9px;
+}
+
 .model-zoo-browser .insights .scale-generic .inequality-container {
     height: inherit;
     width: 100%;

@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { SliderProps } from '@material-ui/core'
 
 interface InequalityProps {
@@ -19,21 +18,15 @@ function shouldShowInequality(value: number | number[], side: 'left' | 'right', 
 }
 
 export const Inequality: React.FC<InequalityProps> = ({ value, $backgroundColor, side, max, min }) => {
-  if (value === undefined) return <Container />
+  if (value === undefined) return <div className='inequality' />
   return (
-    <Container>
+    <div className='inequality'>
       {shouldShowInequality(value, side, max, min) && (
         <div className='inequality-container'>
           <div className='iq-dot' style={{backgroundColor: $backgroundColor}}/>
           <div className='iq-dot' style={{backgroundColor: $backgroundColor}}/>
         </div>
       )}
-    </Container>
+    </div>
   )
 }
-
-const Container = styled.div`
-  height: 100%;
-  width: 1.5rem;
-`
-
