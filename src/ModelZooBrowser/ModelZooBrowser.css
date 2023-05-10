@@ -177,12 +177,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
 }
 
-.model-zoo-browser .data-info .model-details-par {
+.model-zoo-browser .data-info .model-details-header {
     margin: 0;
     color: #4d0246;
     font-size: 18px;
     font-weight: 500;
+}
+
+.model-zoo-browser .data-info .model-details {
+    display: flex;
+    gap: 10px;
 }
 

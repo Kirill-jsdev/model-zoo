@@ -54,6 +54,7 @@ export const useGetModel = (jobId: string, token: string) => {
     fetch(url, requestOptions)
       .then(response => response.json())
       .then(data => {
+        console.log("MODEL",data)
         setModel(data)
       })
       .catch(error => {
