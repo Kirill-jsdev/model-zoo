@@ -42,15 +42,15 @@ export const Scale: React.FC<ScaleProps> = ({
   const toggleTooltip = (show: boolean) => () => setShowTooltip(show)
 
   return (
-    <Container>
-      <Header>
-        <VariableName>{name.trim()}:</VariableName>
+    <div className='scale-generic'>
+      <div className='scale-header'>
+        <span className='variable-name'>{name.trim()}:</span>
         {label && (
           <PillLabel color={color} $backgroundColor={$backgroundColor}>
             {label}
           </PillLabel>
         )}
-      </Header>
+      </div>
       <ScaleContainer onMouseEnter={toggleTooltip(true)} onMouseLeave={toggleTooltip(false)}>
         <Inequality
           value={sliderProps?.value}
@@ -88,7 +88,7 @@ export const Scale: React.FC<ScaleProps> = ({
           $backgroundColor={$backgroundColor}
         />
       </ScaleContainer>
-    </Container>
+    </div>
   )
 }
 
