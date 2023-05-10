@@ -171,3 +171,18 @@
     width: 20%;
 }
 
+/* Data info */
+
+.model-zoo-browser .data-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.model-zoo-browser .data-info .model-details-par {
+    margin: 0;
+    color: #4d0246;
+    font-size: 18px;
+    font-weight: 500;
+}
+
