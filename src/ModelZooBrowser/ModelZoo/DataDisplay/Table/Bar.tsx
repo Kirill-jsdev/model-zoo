@@ -26,7 +26,7 @@ export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
       width: `${width}%`,
       left: `${left}%`
     }
-    return <div style={styles}></div>
+    return <div style={styles} key={`bar-${index}`}></div>
   })
 
   return (

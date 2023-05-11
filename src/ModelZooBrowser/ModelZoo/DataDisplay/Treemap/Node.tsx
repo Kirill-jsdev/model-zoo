@@ -1,5 +1,4 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
 import { Group } from '@visx/group'
 import { lighten } from '@material-ui/core'
 import { TreemapNode } from '../../../Utilities/Types'
@@ -106,37 +105,10 @@ export const Node: React.FC<NodeProps> = ({
         onClick={handleNodeClick}
       />
       <foreignObject width={width} height={height} dominantBaseline="middle" textAnchor="middle">
-        <TextContainer>
-          <Text $color={txtColor}>{data.label}</Text>
-        </TextContainer>
+        <div className='text-container'>
+          <p className='text-info' style={{color: txtColor}}>{data.label}</p>
+        </div>
       </foreignObject>
     </Group>
   )
 }
-
-// const rectAnimation = keyframes`
-//   0% { transform: scale(0); opacity: 0; }
-//   100% { transform:  scale(1); opacity: 100; }
-// `
-
-// const Rect = styled.rect`
-//   pointer-events: auto;
-//   animation: ${rectAnimation} 0.4s ease;
-// `
-
-const TextContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`
-
-const Text = styled.p<{ $color: string }>`
-  margin: 0.3125rem;
-  font-size: 0.75rem;
-  color: ${(props) => props.$color};
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
