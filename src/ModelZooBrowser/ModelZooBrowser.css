@@ -125,6 +125,18 @@
     height: inherit;
 }
 
+/* Treemap styles */
+
+.model-zoo-browser .data-visualization .treemap-container .rect {
+    pointer-events: auto;
+    animation: rect-animation 0.4s ease;
+}
+
+@keyframes rect-animation {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform:  scale(1); opacity: 100; }
+}
+
 /* TABLE */
 
 .model-zoo-browser .data-visualization .table-container {
@@ -189,10 +201,6 @@
     white-space: nowrap;
     overflow: hidden;
 }
-
-
-
-
 
 /* Data info */
 

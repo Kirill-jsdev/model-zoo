@@ -95,7 +95,7 @@ export const Node: React.FC<NodeProps> = ({
 
   return (
     <Group>
-      <Rect
+      <rect className='rect'
         width={width}
         height={height}
         stroke={'#fff'}
@@ -114,15 +114,15 @@ export const Node: React.FC<NodeProps> = ({
   )
 }
 
-const rectAnimation = keyframes`
-  0% { transform: scale(0); opacity: 0; }
-  100% { transform:  scale(1); opacity: 100; }
-`
+// const rectAnimation = keyframes`
+//   0% { transform: scale(0); opacity: 0; }
+//   100% { transform:  scale(1); opacity: 100; }
+// `
 
-const Rect = styled.rect`
-  pointer-events: auto;
-  animation: ${rectAnimation} 0.4s ease;
-`
+// const Rect = styled.rect`
+//   pointer-events: auto;
+//   animation: ${rectAnimation} 0.4s ease;
+// `
 
 const TextContainer = styled.div`
   display: flex;
