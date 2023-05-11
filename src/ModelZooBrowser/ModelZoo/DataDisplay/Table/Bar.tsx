@@ -25,7 +25,7 @@ export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
   }
 
   return (
-    <Container>
+    <div className='bar'>
       {colors.map((color, index) => (
         <Rectangle
           key={`model-zoo-table--bar-${value}--${color}-${index}`}
@@ -34,18 +34,10 @@ export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
         />
       ))}
 
-      <Text>{Math.round(value * 1000) / 1000}</Text>
-    </Container>
+      <span className='bar-caption'>{Math.round(value * 1000) / 1000}</span>
+    </div>
   )
 }
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-`
 
 const Rectangle = styled.span<RectangleProps>`
   position: absolute;
@@ -54,9 +46,4 @@ const Rectangle = styled.span<RectangleProps>`
   z-index: 1;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   width: ${({ width }) => `${width}%`};
-`
-
-const Text = styled.span`
-  padding-left: 0.25rem;
-  z-index: 2;
 `
