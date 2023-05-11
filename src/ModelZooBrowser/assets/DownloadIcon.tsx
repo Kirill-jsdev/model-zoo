@@ -21,3 +21,9 @@ export const DrawerArrows = () => {
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" className="drawer-arrows" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg>
     )
 }
+
+export const WaveIcon = () => {
+    return (
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wave-sine" className="wave-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M464 480c-90.52 0-132.84-107.94-173.8-212.31C258.64 187.2 222.88 96 176 96c-39.7 0-91.38 81.89-114.12 149a16 16 0 0 1-19.74 10.33l-30.72-9.21A16 16 0 0 1 .84 225.68C19.55 169.79 82.16 32 176 32c90.52 0 132.84 107.94 173.8 212.31C381.36 324.8 417.12 416 464 416c39.7 0 91.38-81.89 114.12-149a16 16 0 0 1 19.74-10.33l30.72 9.21a16 16 0 0 1 10.58 20.43C620.45 342.21 557.84 480 464 480z"></path></svg>
+    )
+}

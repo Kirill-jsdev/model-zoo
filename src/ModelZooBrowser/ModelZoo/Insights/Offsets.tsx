@@ -61,7 +61,7 @@ export const Offsets: React.FC = () => {
   if (!selectedModelIndex || offsets.length < 1) return null
   return (
     <div>
-      <h6 className='var-off-header'>Variable offsets</h6>
+      <h6 className='insights-subheader'>Variable offsets</h6>
       <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} originalSamplingPeriod={originalSamplingPeriod} />
       <div>
         {enhancedOffsets.filter(shouldDisplay).map((offset, index) => (

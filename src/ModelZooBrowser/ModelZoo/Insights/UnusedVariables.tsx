@@ -1,9 +1,9 @@
 import React, { useMemo, useContext } from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
-import styled from 'styled-components'
-import { color } from '../../Utilities/color'
 import {getPartLabel} from '../../Utilities/helpers'
 import {Term} from '../../Utilities/Types'
+import { WaveIcon } from '../../assets/DownloadIcon'
+// import 
 
 export const UnusedVariables: React.FC = () => {
 
@@ -18,39 +18,21 @@ export const UnusedVariables: React.FC = () => {
 
   return (
     <>
-      <StyledH6>Unused variables</StyledH6>
-      <Info>
+      <h6 className='insights-subheader'>Unused variables</h6>
+      <div className='unusedvars-container'>
         {unusedVariables.length > 0
           ? unusedVariables.map(({ variable, color }: {variable: any, color: any}, index: any) => (
-              <div key={`${color}-unused-${variable}`} style={{color: color}}>{variable}</div>
+              <div key={`${color}-unused-${variable}`} className='unused-var'>
+                <WaveIcon />
+                {variable}
+                <div className='dot' style={{backgroundColor: color}}></div>
+              </div>
             ))
           : 'All variables were used.'}
-      </Info>
+      </div>
     </>
   )
 }
-
-const StyledH6 = styled.h6`
-  margin: 0 0 1rem 0;
-  color: ${color.black};
-  font-size: 1rem;
-  text-transform: capitalize;
-  font-weight: 700;
-`
-
-const Info = styled.div`
-  padding-left: 0.5rem;
-  pointer-events: none;
-  font-size: 0.75rem;
-
-  & > * {
-    margin-bottom: 0.375rem;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-`
-
 
 //GUARDS AND HELPERS
 
