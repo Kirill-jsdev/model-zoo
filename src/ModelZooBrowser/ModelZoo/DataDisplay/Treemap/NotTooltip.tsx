@@ -10,10 +10,20 @@ export interface TooltipDataProps {
 
 const NotTooltip: React.FC<TooltipDataProps> = (props) => {
 
+    const { nodeData, onNodeDataChange } = useContext(ModelZooBrowserContext)
 
+    const handleMouseMove = () => {
+        onNodeDataChange({
+            term: props.term,
+            coefficient: props.coefficient,
+            color: props.color,
+            importance: props.importance
+        })
+        console.log(nodeData)
+    }
 
     return (
-        <div onMouseMove={() => console.log('TERM', props.color)} style={{width: '100%', height: '100%'}}>{props.children}</div>
+        <div onMouseMove={handleMouseMove} style={{width: '100%', height: '100%'}}>{props.children}</div>
     )
 }
 

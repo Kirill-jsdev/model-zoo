@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
+import { TooltipDataProps } from '../Utilities/Types'
 
 interface ModelZooBrowserContextValues {
     model: any,
@@ -18,6 +19,8 @@ interface ModelZooBrowserContextValues {
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => void
     isDrawerOpen: boolean
     onIsDrawerOpenChange: (isDrawerOpen: boolean) => void
+    nodeData: TooltipDataProps | undefined
+    onNodeDataChange: (nodeData: TooltipDataProps | undefined) => void
 }
 
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
@@ -38,7 +41,9 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     visualizeAs: 'treemap',
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {},
     isDrawerOpen: true,
-    onIsDrawerOpenChange: (isDrawerOpen: boolean) => {}
+    onIsDrawerOpenChange: (isDrawerOpen: boolean) => {},
+    nodeData: undefined,
+    onNodeDataChange: (nodeData: TooltipDataProps | undefined) => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
@@ -51,6 +56,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [selectedModelTerms, setSelectedModelTerms] = useState()
     const [visualizeAs, setVisualizeAs] = useState<'treemap' | 'table'>('treemap')
     const [isDrawerOpen, setIsDrawerOpen] = useState(true)
+    const [nodeData, setNodeData] = useState<TooltipDataProps | undefined>()
 
     const onModelChange = (model: any) => {
         setModel(model)
@@ -84,6 +90,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setIsDrawerOpen(isDrawerOpen)
     }
 
+    const onNodeDataChange = (nodeData: TooltipDataProps | undefined) => {
+        setNodeData(nodeData)
+    }
+
     const ctxValues = {
         model,
         onModelChange,
@@ -100,7 +110,9 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         visualizeAs,
         onVisualizeAsChange,
         isDrawerOpen,
-        onIsDrawerOpenChange
+        onIsDrawerOpenChange,
+        nodeData,
+        onNodeDataChange
     }
 
     return (
