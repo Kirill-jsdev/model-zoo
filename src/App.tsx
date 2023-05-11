@@ -1,7 +1,6 @@
 import React from 'react'
-import './App.css'
 import ModelZooBrowser from './ModelZooBrowser/ModelZooBrowser'
-import { useLogin, useGetModel, useGetVersions, useGetDataset } from './API/api'
+import { useLogin, useGetModel, useGetVersions} from './API/api'
 
 const JOB_ID = 'bd4f208e-808d-492d-a4c0-550e42924445'
 const DATASET_ID = '5522a4b9-ecc4-48d1-aa16-fb1563bf2a7e'
