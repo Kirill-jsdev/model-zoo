@@ -5,7 +5,7 @@ import { DrawerArrows } from '../../../Icons'
 
 const DataInfo = () => {
 
-    const { selectedModelIndex, selectedModelTerms, onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen } = useContext(ModelZooBrowserContext)
+    const { selectedModelIndex, selectedModelTerms, onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen, nodeData } = useContext(ModelZooBrowserContext)
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         onVisualizeAsChange(e.target.value as 'treemap' | 'table')
@@ -19,6 +19,16 @@ const DataInfo = () => {
         <div className="data-info">
             <h6 className='model-details-header'>{modelDetailsText}</h6>
             <div className='model-details'>
+                <div className='node-details'>
+                    <div>
+                        <div className='dn-mark' style={{backgroundColor: nodeData?.color}}></div>
+                    </div>
+                    <div className='dn-txt-info'>
+                        <span>{nodeData?.term}</span>
+                        <span>Importance: {nodeData?.importance.toFixed(3)}</span>
+                        <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>
+                    </div>
+                </div>
                 <span className='timescale-badge'>{timeScaleText}</span>
                 <select onChange={handleSelectChange} defaultValue='treemap' >
                     <option value="treemap">Treemap</option>
