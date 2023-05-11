@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Tooltip as MUITooltip, TooltipProps } from '@material-ui/core'
-import { color } from '../../../Utilities/color'
 import { standardFormatter } from '../../../Utilities/number'
 
 type Position = { x: number; y: number }
@@ -20,9 +19,9 @@ interface TreemapTooltipProps extends TooltipDataProps {
 }
 
 const TooltipData: React.FC<TooltipDataProps> = ({ term, importance, coefficient, color }) => (
-  <Container>
-    <Circle color={color} />
-    <DataContainer>
+  <div style={{display: 'flex', padding: '0.375rem', fontSize: '0.75rem', justifyContent: 'flex-start', color: '#000', backgroundColor: '#fff'}}>
+    <span style={{width: '1rem', height: '1rem', borderRadius: '50%', backgroundColor: color}} />
+    <div style={{display: 'flex', marginLeft: '0.375rem', flexDirection: 'column', justifyContent: 'flex-start'}}>
       <span className='tooltip-title'>
         <b>{term}</b>
       </span>
@@ -34,8 +33,8 @@ const TooltipData: React.FC<TooltipDataProps> = ({ term, importance, coefficient
           Coefficient: <b>{standardFormatter(coefficient)}</b>
         </span>
       )}
-    </DataContainer>
-  </Container>
+    </div>
+  </div>
 )
 
 const Tooltip: React.FC<TreemapTooltipProps> = ({ children, className, TooltipProps, ...props }) => (
@@ -56,37 +55,3 @@ export const TreemapTooltip = styled(Tooltip)<{ $position: Position }>`
     padding: 0;
   }
 `
-
-const Container = styled.div`
-  display: flex;
-  padding: 0.375rem;
-  font-size: 0.75rem;
-  justify-content: flex-start;
-  color: ${color.black};
-  background-color: ${color.white};
-  // background-color: yellow;
-`
-
-const DataContainer = styled.div`
-  display: flex;
-  margin-left: 0.375rem;
-  flex-direction: column;
-  justify-content: flex-start;
-`
-
-const Circle = styled.span<{ color: string }>`
-  width: 1rem;
-  height: 1rem;
-  border-radius: 0.5rem;
-  background-color: ${(props) => props.color};
-`
-
-// const Title = styled.span`
-//   margin-bottom: 0.25rem;
-//   font-weight: 700;
-// `
-
-// const Span = styled.span`
-//   // margin-left: 0.25rem;
-//   background-color: red;
-// `
