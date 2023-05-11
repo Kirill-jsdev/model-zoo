@@ -24,7 +24,7 @@ const DataInfo = () => {
                         <div className='dn-mark' style={{backgroundColor: nodeData?.color}}></div>
                     </div>
                     <div className='dn-txt-info'>
-                        <span>{nodeData?.term}</span>
+                        <span style={{fontWeight: '700'}}>{nodeData?.term}</span>
                         {nodeData?.importance && <span>Importance: {nodeData?.importance.toFixed(3)}</span>}
                         {nodeData?.coefficient && <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>}
                     </div>
