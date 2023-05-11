@@ -23,16 +23,16 @@ const TooltipData: React.FC<TooltipDataProps> = ({ term, importance, coefficient
   <Container>
     <Circle color={color} />
     <DataContainer>
-      <Title>
+      <span className='tooltip-title'>
         <b>{term}</b>
-      </Title>
-      <Span>
+      </span>
+      <span style={{marginLeft: '0.25rem'}}>
         Importance: <b>{standardFormatter(importance)}</b>
-      </Span>
+      </span>
       {typeof coefficient === 'number' && (
-        <Span>
+        <span style={{marginLeft: '0.25rem'}}>
           Coefficient: <b>{standardFormatter(coefficient)}</b>
-        </Span>
+        </span>
       )}
     </DataContainer>
   </Container>
@@ -64,6 +64,7 @@ const Container = styled.div`
   justify-content: flex-start;
   color: ${color.black};
   background-color: ${color.white};
+  // background-color: yellow;
 `
 
 const DataContainer = styled.div`
@@ -80,11 +81,12 @@ const Circle = styled.span<{ color: string }>`
   background-color: ${(props) => props.color};
 `
 
-const Title = styled.span`
-  margin-bottom: 0.25rem;
-  font-weight: 700;
-`
+// const Title = styled.span`
+//   margin-bottom: 0.25rem;
+//   font-weight: 700;
+// `
 
-const Span = styled.span`
-  margin-left: 0.25rem;
-`
+// const Span = styled.span`
+//   // margin-left: 0.25rem;
+//   background-color: red;
+// `

@@ -153,6 +153,17 @@
     white-space: nowrap;
 }
 
+.model-zoo-browser .data-visualization .treemap-container .tooltip-title {
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+/* .model-zoo-browser .data-visualization .treemap-container .circle {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 0.5rem;
+} */
+
 /* TABLE */
 
 .model-zoo-browser .data-visualization .table-container {
