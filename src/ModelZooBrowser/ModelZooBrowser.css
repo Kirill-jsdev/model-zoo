@@ -184,6 +184,12 @@
     z-index: 2;
 }
 
+.model-zoo-browser .data-visualization .table-container .term-cell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 
 
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { Tooltip, TooltipProps } from '@material-ui/core'
 
 interface TooltipEnhancedProps extends Partial<TooltipProps> {
@@ -33,15 +32,9 @@ export const TooltipEnhancedDiv: React.FC<TooltipEnhancedDivProps> = ({ children
 
   return (
     <TooltipEnhanced visible={showTooltip} {...TooltipProps}>
-      <Div {...props} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className='term-cell' {...props} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {children}
-      </Div>
+      </div>
     </TooltipEnhanced>
   )
 }
-
-const Div = styled.div`
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`
