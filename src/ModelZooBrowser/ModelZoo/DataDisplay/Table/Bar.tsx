@@ -1,17 +1,9 @@
 import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import { lighten } from '@material-ui/core'
 
 interface BarProps {
   biggestValue: number
   value: number
   colors: string[]
-}
-
-interface RectangleProps {
-  left: number
-  width: number
-  $backgroundColor: string
 }
 
 export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
@@ -24,26 +16,23 @@ export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
     return { width, left: leftOffset }
   }
 
+  const bars = colors.map((color, index): JSX.Element => {
+    const {width, left} = getRectangleProps(color, index)
+    const styles: React.CSSProperties = {
+      position: 'absolute',
+      height: '100%',
+      zIndex: '1',
+      backgroundColor: color,
+      width: `${width}%`,
+      left: `${left}%`
+    }
+    return <div style={styles}></div>
+  })
+
   return (
     <div className='bar'>
-      {colors.map((color, index) => (
-        <Rectangle
-          key={`model-zoo-table--bar-${value}--${color}-${index}`}
-          $backgroundColor={lighten(color, 0.4)}
-          {...getRectangleProps(color, index)}
-        />
-      ))}
-
+      { bars }
       <span className='bar-caption'>{Math.round(value * 1000) / 1000}</span>
     </div>
   )
 }
-
-const Rectangle = styled.span<RectangleProps>`
-  position: absolute;
-  height: 100%;
-  left: ${({ left }) => `${left}%`};
-  z-index: 1;
-  background-color: ${({ $backgroundColor }) => $backgroundColor};
-  width: ${({ width }) => `${width}%`};
-`
