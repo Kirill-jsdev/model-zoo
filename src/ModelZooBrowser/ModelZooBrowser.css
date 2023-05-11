@@ -294,13 +294,9 @@
 }
 
 .model-zoo-browser .insights .unusedvars-container {
-    /* padding-left: 0.5rem;
-    pointer-events: none;
-    font-size: 0.75rem; */
     display: flex;
     flex-direction: column;
     gap: 5px;
-
     font-weight: 500;
 }
 

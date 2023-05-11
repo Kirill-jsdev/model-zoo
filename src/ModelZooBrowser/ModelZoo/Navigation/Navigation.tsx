@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { ModelSelector } from './ModelSelector'
 import '../../ModelZooBrowser.css'
-import { DownloadIcon, ArrowUpIcon } from '../../assets/DownloadIcon'
+import { DownloadIcon, ArrowUpIcon } from '../../Icons'
 
 const Header = () => {
   const {onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)

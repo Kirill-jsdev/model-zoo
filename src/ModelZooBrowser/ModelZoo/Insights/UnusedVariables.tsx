@@ -2,8 +2,7 @@ import React, { useMemo, useContext } from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import {getPartLabel} from '../../Utilities/helpers'
 import {Term} from '../../Utilities/Types'
-import { WaveIcon } from '../../assets/DownloadIcon'
-// import 
+import { WaveIcon } from '../../Icons'
 
 export const UnusedVariables: React.FC = () => {
 
