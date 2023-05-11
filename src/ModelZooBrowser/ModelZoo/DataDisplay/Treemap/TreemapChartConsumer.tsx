@@ -7,6 +7,8 @@ import { Node } from './Node'
 import { Hierarchy, Data, MergedRef } from '../../../Utilities/Types'
 import { TreemapTooltip, TooltipDataProps as TooltipData } from './Tooltip'
 
+import NotTooltip from './NotTooltip'
+
 interface TreemapChartProps {
   className?: string
   root: Hierarchy
@@ -54,9 +56,12 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
       setPosition({ x: event.pageX, y: event.pageY })
     }
 
+    // console.log('TooltipDAta', tooltipData)
+
     return (
       <div className={`treemap-container ${className}`} ref={setDimensionsRef}>
-        <TreemapTooltip {...tooltipData} TooltipProps={{ onMouseMove: handleMouseMove }} $position={position}>
+        <NotTooltip {...tooltipData}>
+        {/* <TreemapTooltip {...tooltipData} TooltipProps={{ onMouseMove: handleMouseMove }} $position={position}> */}
           <svg className='treemap-svg' ref={svgRef}>
             <Treemap<Data>
               top={margin.top}
@@ -77,18 +82,20 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
                         left={node.x0 + margin.left}
                       >
                         {isLeaf(node.height) ? (
-                          <Node
-                            depth={node.depth}
-                            width={node.x1 - node.x0}
-                            height={node.y1 - node.y0}
-                            data={node.data.data}
-                            color={getColor(node.data.data.label)}
-                            hoveringLabel={hoveringLabel}
-                            hoverHandler={hoverHandler}
-                            leaveHandler={leaveHandler}
-                            nodesToHighlight={nodesToHighlight}
-                            onNodeClick={onNodeClick}
-                          />
+                          // <NotTooltip {...tooltipData}>
+                            <Node
+                              depth={node.depth}
+                              width={node.x1 - node.x0}
+                              height={node.y1 - node.y0}
+                              data={node.data.data}
+                              color={getColor(node.data.data.label)}
+                              hoveringLabel={hoveringLabel}
+                              hoverHandler={hoverHandler}
+                              leaveHandler={leaveHandler}
+                              nodesToHighlight={nodesToHighlight}
+                              onNodeClick={onNodeClick}
+                            />
+                          // </NotTooltip>
                         ) : (
                           <rect
                             width={node.x1 - node.x0}
@@ -104,7 +111,8 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
               )}
             </Treemap>
           </svg>
-        </TreemapTooltip>
+        {/* </TreemapTooltip> */}
+        </NotTooltip>
       </div>
     )
   },
