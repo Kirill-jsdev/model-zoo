@@ -1,3 +1,5 @@
+import {useContext} from 'react'
+import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
 export interface TooltipDataProps {
     term: string
     importance: number
@@ -8,8 +10,10 @@ export interface TooltipDataProps {
 
 const NotTooltip: React.FC<TooltipDataProps> = (props) => {
 
+
+
     return (
-        <div onMouseEnter={() => console.log('TERM', props.term)} style={{width: '100%', height: '100%'}}>{props.children}</div>
+        <div onMouseMove={() => console.log('TERM', props.color)} style={{width: '100%', height: '100%'}}>{props.children}</div>
     )
 }
 
