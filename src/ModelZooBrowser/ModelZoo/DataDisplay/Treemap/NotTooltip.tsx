@@ -23,7 +23,7 @@ const NotTooltip: React.FC<TooltipDataProps> = (props) => {
     }
 
     return (
-        <div onMouseMove={handleMouseMove} style={{width: '100%', height: '100%'}}>{props.children}</div>
+        <div onMouseMove={handleMouseMove} onMouseLeave={() => onNodeDataChange(undefined)} style={{width: '100%', height: '100%'}}>{props.children}</div>
     )
 }
 

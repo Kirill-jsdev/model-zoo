@@ -25,8 +25,8 @@ const DataInfo = () => {
                     </div>
                     <div className='dn-txt-info'>
                         <span>{nodeData?.term}</span>
-                        <span>Importance: {nodeData?.importance.toFixed(3)}</span>
-                        <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>
+                        {nodeData?.importance && <span>Importance: {nodeData?.importance.toFixed(3)}</span>}
+                        {nodeData?.coefficient && <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>}
                     </div>
                 </div>
                 <span className='timescale-badge'>{timeScaleText}</span>
