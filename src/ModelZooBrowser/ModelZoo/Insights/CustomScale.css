@@ -5,6 +5,7 @@
     grid-template-columns: repeat(10, 1fr);
     border-left: 1px solid #c2c5d2;
     position: relative;
+    /* overflow-y: hidden; */
 }
 
 .mzb-scale::before {

@@ -16,10 +16,13 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
 
   const {from, to} = scaledUnusedOffsets
 
-  const barLength = from && to ? Math.abs((from + to) * 10) + '%': ''
-  const offsetRight = to ? Math.abs(to * 10) + '%' : ''
+  // const barLength = from && to ? Math.abs((from + to) * 10) + '%': ''
+  // const offsetRight = to ? Math.abs(to * 10) + '%' : ''
 
-  console.log(from, to)
+  const barLength = typeof from === 'number' && typeof to === 'number' ? Math.abs((to - from) * 10) + '%': ''
+  const offsetRight = typeof to === 'number' ? to * 10 + '%' : ''
+
+  console.log(barLength, from, to)
 
   return (
     <div className='mzb-scale-wrapper'>
