@@ -20,7 +20,9 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
   // const offsetRight = to ? Math.abs(to * 10) + '%' : ''
 
   const barLength = typeof from === 'number' && typeof to === 'number' ? Math.abs((to - from) * 10) + '%': ''
-  const offsetRight = typeof to === 'number' ? Math.abs(to * 10) + '%' : ''
+  const offsetRight = typeof to === 'number' ? Math.abs(to * 10) : 0
+
+  const offset =  typeof to === 'number' && to > 0 ? offsetRight * - 1  + '%' : offsetRight + '%'
 
   console.log(barLength, from, to)
 
@@ -48,7 +50,8 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
 
       <div className='mzb-result-line-container' >
         <div className='mzb-result-line-100'>
-          <div className='mzb-result-line-color' style={{backgroundColor: color, width: barLength, right: offsetRight }}></div>
+          <div className='mzb-result-line-color' style={{backgroundColor: color, width: barLength, right: offset }}></div>
+          {/* <div className='mzb-result-line-color' style={{backgroundColor: color, width: '50%', right: '-25%' }}></div> */}
         </div>
       </div>
 
