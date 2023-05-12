@@ -59,6 +59,8 @@ export const Offsets: React.FC = () => {
 
   const shouldDisplay = ({ usedOffsets }: VariableOffsets) => Boolean(usedOffsets)
 
+  console.log('enhancedOffsetsenhancedOffsets', enhancedOffsets)
+
   if (!selectedModelIndex || offsets.length < 1) return null
   return (
     <div>
