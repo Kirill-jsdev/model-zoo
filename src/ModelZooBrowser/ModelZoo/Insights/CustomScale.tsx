@@ -20,7 +20,7 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
   // const offsetRight = to ? Math.abs(to * 10) + '%' : ''
 
   const barLength = typeof from === 'number' && typeof to === 'number' ? Math.abs((to - from) * 10) + '%': ''
-  const offsetRight = typeof to === 'number' ? to * 10 + '%' : ''
+  const offsetRight = typeof to === 'number' ? Math.abs(to * 10) + '%' : ''
 
   console.log(barLength, from, to)
 
