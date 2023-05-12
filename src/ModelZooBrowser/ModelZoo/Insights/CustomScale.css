@@ -55,21 +55,28 @@
     margin: 50px 0;
 }
 
-.mzb-scale-wrapper .mzb-result-line {
+.mzb-scale-wrapper .mzb-result-line-container {
     width: 90%;
     height: 3px;
-    background-color: blue;
     border-radius: 3px;
-    overflow: hidden;
-
     position: relative;
     top: -8px;
+    /* background-color: blue; */
 }
 
-.mzb-scale-wrapper .mzb-result-line .mzb-result-line-color {
-    width: 55.56%;
+.mzb-scale-wrapper .mzb-result-line-container .mzb-result-line-100 {
+    position: relative;
+    width: 56%;
     height: 100%;
-    background-color: yellow;
     margin-left: auto;
     border-radius: 3px;
+    /* background-color: yellow; */
+}
+
+.mzb-scale-wrapper .mzb-result-line-container .mzb-result-line-100 .mzb-result-line-color {
+    height: 100%;
+    position: absolute;
+    border-radius: 3px;
+    z-index: 1000;
+    margin-left: auto;
 }

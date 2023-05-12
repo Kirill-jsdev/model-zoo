@@ -19,8 +19,10 @@ const CustomScale = () => {
         <div className="mzb-scale-p"><span className='mzb-scale-badge'>+2</span></div>
       </div>
 
-      <div className='mzb-result-line' >
-        <div className='mzb-result-line-color'></div>
+      <div className='mzb-result-line-container' >
+        <div className='mzb-result-line-100'>
+          <div className='mzb-result-line-color' style={{backgroundColor: 'blue', width: '90%', right: '20%' }}></div>
+        </div>
       </div>
     </div>
   )
