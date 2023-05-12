@@ -383,8 +383,6 @@ export function buildPredictorPalette(variables: any[]) { //the type of argument
   return predictorPalette
 }
 
-
-
 ///GUARD FOR Table.tsx
 
 export function roundStandardFormatter(n: number, fractionDigits: number): number {
@@ -403,11 +401,6 @@ export function getTermLabel(term: Term): string {
     .join(' & ')
 }
 
-
-
-
-
-////////////////////////////////////
 ////////////////////////////////////CODE FOR MODEL ZOO NAVIGATION
 
 export interface VariableProperties {
@@ -429,3 +422,35 @@ export const getVariablePropertiesSum = (treemapNodes: TreemapNode[]): number =>
 
 export const mapVariablePropertiesToTerms = (properties: VariableProperties[]): Term[] =>
   properties.map(({ importance, name }) => ({ importance, parts: [{ type: 'Identity', predictor: name }] }))
+
+
+///LIGHTEN COLOR
+
+export const lightenColor = (color: string, percent: number) => {
+  // validate color input
+  if (color.indexOf('#') !== 0 || (color.length !== 4 && color.length !== 7)) {
+    throw new Error('Invalid color format. Expected format: "#rgb" or "#rrggbb"')
+  }
+
+  // convert 3-digit color to 6-digit
+  if (color.length === 4) {
+    color = '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3]
+  }
+
+  // convert hex color to RGB
+  const r = parseInt(color.slice(1, 3), 16)
+  const g = parseInt(color.slice(3, 5), 16)
+  const b = parseInt(color.slice(5, 7), 16)
+
+  // lighten RGB values
+  const delta = Math.round(255 * (percent / 100))
+  const newR = Math.min(r + delta, 255)
+  const newG = Math.min(g + delta, 255)
+  const newB = Math.min(b + delta, 255)
+
+  // convert RGB back to hex color
+  const newColor = '#' + ((1 << 24) + (newR << 16) + (newG << 8) + newB).toString(16).slice(1)
+
+  return newColor
+}
+
