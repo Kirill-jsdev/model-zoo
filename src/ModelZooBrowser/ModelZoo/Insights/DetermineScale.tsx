@@ -56,13 +56,9 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
   const handleScaleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
     onChange(e.target.value as DataAvailabilityScale)
 
-
-  console.log('SCALE OPTIONS', scaleOptions)
-  console.log('SCALEEE', scale)
-
-  return (
-    <>
-      <CustomSelect label='Scale' options={scaleOptions} handleScaleChange={handleScaleChange} value={scale ?? ''}  />
-    </>
-  )
+  return <CustomSelect
+            label='Scale' options={scaleOptions}
+            handleScaleChange={handleScaleChange}
+            value={scale ?? ''}
+          />
 }
