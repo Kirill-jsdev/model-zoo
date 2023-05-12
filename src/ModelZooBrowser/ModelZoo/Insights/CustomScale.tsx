@@ -5,10 +5,22 @@ type CustomScaleProps = {
   label: string
   name: string
   tooltipLabel: string
+  scaledUnusedOffsets: {
+    from?: number
+    to?: number
+  }
 }
 
 
-const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLabel}) => {
+const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLabel, scaledUnusedOffsets}) => {
+
+  const {from, to} = scaledUnusedOffsets
+
+  const barLength = from && to ? Math.abs((from + to) * 10) + '%': ''
+  const offsetRight = to ? Math.abs(to * 10) + '%' : ''
+
+  console.log(from, to)
+
   return (
     <div className='mzb-scale-wrapper'>
       <div className='mzb-scale-header'>
@@ -33,7 +45,7 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
 
       <div className='mzb-result-line-container' >
         <div className='mzb-result-line-100'>
-          <div className='mzb-result-line-color' style={{backgroundColor: color, width: '90%', right: '20%' }}></div>
+          <div className='mzb-result-line-color' style={{backgroundColor: color, width: barLength, right: offsetRight }}></div>
         </div>
       </div>
 
