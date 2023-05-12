@@ -1,4 +1,3 @@
-
 type OptionType = {
     option: string
     value: number
@@ -13,15 +12,13 @@ type CustomSelectProps = {
 
 const CustomSelect: React.FC<CustomSelectProps> = ({label, value, options, handleScaleChange}) => {
 
-    console.log('asdasdasdas', value)
-
     return (
         <div>
             <label htmlFor="">{label}</label>
-            <select name="" id="" onChange={(e) => handleScaleChange(e as React.ChangeEvent<HTMLSelectElement>)}>
+            <select name="" id="" onChange={(e) => handleScaleChange(e as React.ChangeEvent<HTMLSelectElement>)} value={value}>
                 {options.map((opt: OptionType) => {
                     return (
-                        <option value={opt.value} selected={opt.value === value} >{opt.option}</option>
+                        <option key={opt.value} value={opt.value}>{opt.option}</option>
                     )
                 })}
             </select>
