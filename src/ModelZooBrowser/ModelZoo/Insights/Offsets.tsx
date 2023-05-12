@@ -12,7 +12,6 @@ export interface Mark {
   label?: React.ReactNode;
 }
 
-
 const MARK_STEP = 2
 const MARK_MAX = 10
 const AXIS_OFFSET = -8

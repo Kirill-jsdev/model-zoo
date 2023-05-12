@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
-import { color as coreColor } from '../../Utilities/color'
-import { Select } from './Select'
 import {DataAvailabilityScale} from './useDatasetAvailability-hook'
+import CustomSelect from './CustomSelect'
 
 export type VariableOffsets = {
   variable: string
@@ -57,13 +56,13 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
   const handleScaleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
     onChange(e.target.value as DataAvailabilityScale)
 
+
+  console.log('SCALE OPTIONS', scaleOptions)
+  console.log('SCALEEE', scale)
+
   return (
-    <Select
-      label="Scale"
-      options={scaleOptions}
-      value={scale ?? ''}
-      onChange={handleScaleChange}
-      focusColor={coreColor.shades.smoke.dd}
-    />
+    <>
+      <CustomSelect label='Scale' options={scaleOptions} handleScaleChange={handleScaleChange} value={scale ?? ''}  />
+    </>
   )
 }
