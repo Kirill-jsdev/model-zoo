@@ -1,8 +1,20 @@
 import './CustomScale.css'
 
-const CustomScale = () => {
+type CustomScaleProps = {
+  color: string
+  label: string
+  name: string
+  tooltipLabel: string
+}
+
+
+const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLabel}) => {
   return (
     <div className='mzb-scale-wrapper'>
+      <div className='mzb-scale-header'>
+        <div>{name}</div>
+        <div className='mzb-scale-label' style={{backgroundColor: color}}>{label}</div>
+      </div>
       <div className="mzb-scale">
         <div className="mzb-scale-p">
           <span className='mzb-scale-badge start'>-18</span>
@@ -21,9 +33,15 @@ const CustomScale = () => {
 
       <div className='mzb-result-line-container' >
         <div className='mzb-result-line-100'>
-          <div className='mzb-result-line-color' style={{backgroundColor: 'blue', width: '90%', right: '20%' }}></div>
+          <div className='mzb-result-line-color' style={{backgroundColor: color, width: '90%', right: '20%' }}></div>
         </div>
       </div>
+
+      <div className='mzb-scale-tooltip-label'>
+        <div className='mzb-scale-label-mark' style={{backgroundColor: color}}></div>
+        <div className='mzb-scale-label-text'>{tooltipLabel}</div>
+      </div>
+
     </div>
   )
 }

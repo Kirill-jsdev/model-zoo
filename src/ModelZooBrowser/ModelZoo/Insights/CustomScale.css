@@ -53,6 +53,7 @@
 
 .mzb-scale-wrapper {
     margin: 50px 0;
+    position: relative;
 }
 
 .mzb-scale-wrapper .mzb-result-line-container {
@@ -79,4 +80,53 @@
     border-radius: 3px;
     z-index: 1000;
     margin-left: auto;
+}
+
+
+
+
+/* LABEL LOGIC */
+
+.mzb-scale-wrapper .mzb-scale-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.mzb-scale-wrapper .mzb-scale-label {
+    color: #fff;
+    padding: 1px 3px;
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.mzb-scale-wrapper .mzb-scale-tooltip-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    scale: 0;
+    transition: all 0.2s ease-in-out;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 20px;
+    box-shadow: -4px 6px 14px -6px rgba(0,0,0,0.75);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mzb-scale-wrapper:hover .mzb-scale-tooltip-label {
+    scale: 1;
+}
+
+.mzb-scale-wrapper .mzb-scale-label-mark {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
 }

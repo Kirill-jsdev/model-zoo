@@ -74,7 +74,7 @@ export const Scale: React.FC<ScaleProps> = ({
 
   return (
     <>
-      <CustomScale />
+      <CustomScale color={color} label={label(usedOffsets)} name={variable} tooltipLabel={tooltipLabelFromValue} />
       <ScaleComponent
         name={variable}
         label={label(usedOffsets)}
