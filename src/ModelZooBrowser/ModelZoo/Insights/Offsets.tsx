@@ -1,14 +1,16 @@
 import React, { useState, useMemo, useContext } from 'react'
-import { Mark } from '@material-ui/core'
 import { color as coreColor } from '../../Utilities/color'
-
 import { Scale } from './Scale'
 import { DetermineScale } from './DetermineScale'
-
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { useSelectedModelOffsets, VariableOffsets, DataAvailabilityScale, useOriginalSamplingPeriod } from './insights-hooks'
 import { useDataAvailability } from './useDatasetAvailability-hook'
 import { useTarget } from '../../Utilities/Hooks'
+
+export interface Mark {
+  value: number;
+  label?: React.ReactNode;
+}
 
 
 const MARK_STEP = 2
