@@ -1,5 +1,6 @@
 import {useContext} from 'react'
 import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
+
 export interface TooltipDataProps {
     term: string
     importance: number
@@ -7,8 +8,7 @@ export interface TooltipDataProps {
     color: string
 }
 
-
-const NotTooltip: React.FC<TooltipDataProps> = (props) => {
+const NodeWrapper: React.FC<TooltipDataProps> = (props) => {
 
     const { nodeData, onNodeDataChange } = useContext(ModelZooBrowserContext)
 
@@ -27,4 +27,4 @@ const NotTooltip: React.FC<TooltipDataProps> = (props) => {
     )
 }
 
-export default NotTooltip
+export default NodeWrapper

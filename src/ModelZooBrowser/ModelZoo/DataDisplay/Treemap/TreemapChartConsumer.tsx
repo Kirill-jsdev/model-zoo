@@ -1,19 +1,24 @@
-import React, { forwardRef, useState, useRef, useImperativeHandle } from 'react'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 import { Group } from '@visx/group'
 import { Treemap, treemapSquarify } from '@visx/hierarchy'
 import { TreemapNode, Direction } from '../../../Utilities/Types'
 import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Node } from './Node'
 import { Hierarchy, Data, MergedRef } from '../../../Utilities/Types'
-import { TreemapTooltip, TooltipDataProps as TooltipData } from './Tooltip'
+import NodeWrapper from './NodeWrapper'
 
-import NotTooltip from './NotTooltip'
+export interface TooltipDataProps {
+  term: string
+  importance: number
+  coefficient?: number
+  color: string
+}
 
 interface TreemapChartProps {
   className?: string
   root: Hierarchy
   margin: Direction
-  tooltipData: TooltipData
+  tooltipData: TooltipDataProps
   hoveringLabel: string | null
   nodesToHighlight?: string[]
   isLeaf: (height: number) => boolean
@@ -40,7 +45,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
     },
     ref,
   ) => {
-    const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
     const [setDimensionsRef, dimensions] = useResizeListener()
     const svgRef = useRef<SVGSVGElement>(null)
     const tooltipRef = useRef<HTMLDivElement>(null)
@@ -50,18 +54,9 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
       getTooltipRef: () => tooltipRef.current,
     }))
 
-    const handleMouseMove = (event: React.MouseEvent) => {
-      event.preventDefault()
-      event.stopPropagation()
-      setPosition({ x: event.pageX, y: event.pageY })
-    }
-
-    // console.log('TooltipDAta', tooltipData)
-
     return (
       <div className={`treemap-container ${className}`} ref={setDimensionsRef}>
-        <NotTooltip {...tooltipData}>
-        {/* <TreemapTooltip {...tooltipData} TooltipProps={{ onMouseMove: handleMouseMove }} $position={position}> */}
+        <NodeWrapper {...tooltipData}>
           <svg className='treemap-svg' ref={svgRef}>
             <Treemap<Data>
               top={margin.top}
@@ -82,7 +77,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
                         left={node.x0 + margin.left}
                       >
                         {isLeaf(node.height) ? (
-                          // <NotTooltip {...tooltipData}>
                             <Node
                               depth={node.depth}
                               width={node.x1 - node.x0}
@@ -95,7 +89,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
                               nodesToHighlight={nodesToHighlight}
                               onNodeClick={onNodeClick}
                             />
-                          // </NotTooltip>
                         ) : (
                           <rect
                             width={node.x1 - node.x0}
@@ -111,8 +104,7 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
               )}
             </Treemap>
           </svg>
-        {/* </TreemapTooltip> */}
-        </NotTooltip>
+        </NodeWrapper>
       </div>
     )
   },
