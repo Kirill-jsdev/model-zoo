@@ -1,9 +1,24 @@
 .mzb-scale {
     width: 100%;
-    height: 10px;
+    height: 15px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     border-left: 1px solid #c2c5d2;
+    margin: 50px 0;
+
+    position: relative;
+}
+
+.mzb-scale::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #c2c5d2;
+    transform: translateY(50%);
 }
 
 .mzb-scale .mzb-scale-p {

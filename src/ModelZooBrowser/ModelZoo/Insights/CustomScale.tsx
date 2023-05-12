@@ -16,3 +16,5 @@ const CustomScale = () => {
     </div>
   )
 }
+
+export default CustomScale

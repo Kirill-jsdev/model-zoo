@@ -3,6 +3,8 @@ import { SliderProps } from '@material-ui/core'
 import { DatasetVariable } from '../../Utilities/Types'
 import { DataAvailabilityScale } from './useDatasetAvailability-hook'
 import { Scale as ScaleComponent } from './ScaleGeneric'
+import CustomScale from './CustomScale'
+
 
 export type VariableOffsets = {
   variable: string
@@ -71,16 +73,19 @@ export const Scale: React.FC<ScaleProps> = ({
   const tooltipLabelFromValue = useMemo(() => tooltipLabel(scale, value), [scale, value])
 
   return (
-    <ScaleComponent
-      name={variable}
-      label={label(usedOffsets)}
-      tooltipLabel={tooltipLabelFromValue}
-      color={textColor}
-      $backgroundColor={color}
-      sliderProps={{
-        value: scaledUnusedOffsets ? [scaledUnusedOffsets.from, scaledUnusedOffsets.to] : undefined,
-        ...sliderProps,
-      }}
-    />
+    <>
+      <CustomScale />
+      <ScaleComponent
+        name={variable}
+        label={label(usedOffsets)}
+        tooltipLabel={tooltipLabelFromValue}
+        color={textColor}
+        $backgroundColor={color}
+        sliderProps={{
+          value: scaledUnusedOffsets ? [scaledUnusedOffsets.from, scaledUnusedOffsets.to] : undefined,
+          ...sliderProps,
+        }}
+      />
+    </>
   )
 }
