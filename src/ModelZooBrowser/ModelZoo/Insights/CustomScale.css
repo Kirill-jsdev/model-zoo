@@ -5,7 +5,6 @@
     grid-template-columns: repeat(10, 1fr);
     border-left: 1px solid #c2c5d2;
     position: relative;
-    /* overflow-y: hidden; */
 }
 
 .mzb-scale::before {
@@ -64,6 +63,7 @@
     position: relative;
     top: -8px;
     /* background-color: blue; */
+    overflow: hidden;
 }
 
 .mzb-scale-wrapper .mzb-result-line-container .mzb-result-line-100 {
@@ -79,7 +79,7 @@
     height: 100%;
     position: absolute;
     border-radius: 3px;
-    z-index: 1000;
+    /* z-index: 1000; */
     margin-left: auto;
 }
 
