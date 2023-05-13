@@ -62,7 +62,6 @@
     border-radius: 3px;
     position: relative;
     top: -8px;
-    /* background-color: blue; */
     overflow: hidden;
 }
 
@@ -83,8 +82,18 @@
     margin-left: auto;
 }
 
+.mzb-scale-wrapper .mzb-overflow-dot {
+    height: 3px;
+    width: 3px;
+    display: block;
+    background-color: red !important;
+    position: absolute;
+    bottom: 8px;
+    /* left: -25px; */
+}
 
-
+.mzb-scale-wrapper .mzb-overflow-dot.first { width: 5px; left: -15px; }
+.mzb-scale-wrapper .mzb-overflow-dot.second {width: 5px; left: -7px;}
 
 /* LABEL LOGIC */
 

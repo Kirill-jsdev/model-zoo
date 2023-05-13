@@ -23,6 +23,9 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
   const offsetRight = typeof to === 'number' ? Math.abs(to * 10) : 0
 
   const offset =  typeof to === 'number' && to > 0 ? offsetRight * - 1  + '%' : offsetRight + '%'
+  const offsetNum =  typeof to === 'number' && to > 0 ? offsetRight * - 1 : offsetRight
+
+  const areDotsVisible = typeof from === 'number' && typeof to === 'number' && Math.abs((to - from) * 10) + offsetNum > 180 ? true : false
 
   console.log(barLength, from, to)
 
@@ -54,6 +57,8 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
           {/* <div className='mzb-result-line-color' style={{backgroundColor: color, width: '50%', right: '-25%' }}></div> */}
         </div>
       </div>
+      {areDotsVisible && <div className='mzb-overflow-dot first'></div>}
+      {areDotsVisible && <div className='mzb-overflow-dot second'></div>}
 
       <div className='mzb-scale-tooltip-label'>
         <div className='mzb-scale-label-mark' style={{backgroundColor: color}}></div>
