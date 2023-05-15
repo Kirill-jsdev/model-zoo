@@ -16,7 +16,8 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
 
   const {from, to} = scaledUnusedOffsets
 
-  const barLength = typeof from === 'number' && typeof to === 'number' ? Math.abs((to - from) * 10) : 0
+  let barLength = typeof from === 'number' && typeof to === 'number' ? Math.abs((to - from) * 10) : 0
+  barLength = typeof from === 'number' && typeof to === 'number' && to === from ? 4 : barLength
   const offsetRight = typeof to === 'number' ? Math.abs(to * 10) : 0
   const offset =  typeof to === 'number' && to > 0 ? offsetRight * - 1 : offsetRight
   const areDotsVisible = typeof from === 'number' && typeof to === 'number' && barLength + offset > 180 ? true : false
