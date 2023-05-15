@@ -47,7 +47,7 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
 
       <div className='mzb-result-line-container' >
         <div className='mzb-result-line-100'>
-          <div className='mzb-result-line-color' style={{backgroundColor: color, width: `${barLength}%`, right: `${offset}%` }}></div>
+          {offset < 180 && <div className='mzb-result-line-color' style={{backgroundColor: color, width: `${barLength}%`, right: `${offset}%` }}></div>}
           {/* <div className='mzb-result-line-color' style={{backgroundColor: color, width: '50%', right: '-25%' }}></div> */}
         </div>
       </div>
