@@ -18,7 +18,6 @@ interface TreemapChartProps {
   className?: string
   root: Hierarchy
   margin: Direction
-  tooltipData: TooltipDataProps
   hoveringLabel: string | null
   nodesToHighlight?: string[]
   isLeaf: (height: number) => boolean
@@ -34,7 +33,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
       className,
       root,
       margin,
-      tooltipData,
       hoveringLabel,
       nodesToHighlight = [],
       isLeaf,
@@ -56,7 +54,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
 
     return (
       <div className={`treemap-container ${className}`} ref={setDimensionsRef}>
-        {/* <NodeWrapper {...tooltipData}> */}
           <svg className='treemap-svg' ref={svgRef}>
             <Treemap<Data>
               top={margin.top}
@@ -104,7 +101,6 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
               )}
             </Treemap>
           </svg>
-        {/* </NodeWrapper> */}
       </div>
     )
   },

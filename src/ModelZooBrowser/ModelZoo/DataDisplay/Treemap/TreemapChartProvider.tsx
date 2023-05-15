@@ -4,7 +4,6 @@ import { TreemapNode, DatasetVariable, Direction } from '../../../Utilities/Type
 import { TreemapChartConsumer } from './TreemapChartConsumer'
 import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from '../../../Utilities/Util'
 import { Hierarchy, MergedRef } from '../../../Utilities/Types'
-import { TooltipDataProps as TooltipData } from '../../../Utilities/Types'
 
 export interface TreemapChartProps {
   className?: string
@@ -26,12 +25,6 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
   const mergedRef = useRef<MergedRef>(null)
   const [root, setRoot] = useState<Hierarchy>()
   const [hoveringLabel, setHoveringLabel] = useState<string | null>(null)
-  const [tooltipData, setTooltipData] = useState<TooltipData>({
-    term: '',
-    coefficient: 0,
-    importance: 0,
-    color: '',
-  })
 
   const { onNodeDataChange } = useContext(ModelZooBrowserContext)
 
@@ -52,14 +45,12 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
     const tooltipData = getTooltipData(node, depth, predictorPalette)
 
     onNodeDataChange(tooltipData)
-
     setHoveringLabel(tooltipData.term)
-    // setTooltipData(tooltipData)
   }
 
   const handlePointerLeave = () => {
     onNodeDataChange(undefined)
-    // setHoveringLabel(null)
+    setHoveringLabel(null)
   }
 
   if (!root) return null
@@ -70,7 +61,6 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
       ref={mergedRef}
       root={root}
       margin={margin}
-      tooltipData={tooltipData}
       hoveringLabel={hoveringLabel}
       nodesToHighlight={nodesToHighlight}
       isLeaf={isLeaf}
