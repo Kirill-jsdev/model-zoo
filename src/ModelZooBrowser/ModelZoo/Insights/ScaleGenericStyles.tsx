@@ -1,3 +1,4 @@
+//THIS COMPONENT WILL BE REMOVED
 import { SliderProps } from '@material-ui/core'
 import styled from 'styled-components'
 import { Slider } from '@material-ui/core'

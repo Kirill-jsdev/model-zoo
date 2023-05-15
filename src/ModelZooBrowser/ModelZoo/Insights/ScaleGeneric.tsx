@@ -1,3 +1,4 @@
+//THIS COMPONENT WILL BE REMOVED
 import React, { useState, useMemo } from 'react'
 import styled from 'styled-components'
 import { SliderProps, lighten } from '@material-ui/core'

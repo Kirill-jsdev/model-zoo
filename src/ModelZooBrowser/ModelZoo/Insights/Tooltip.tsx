@@ -1,3 +1,4 @@
+//THIS COMPONENT WILL BE REMOVED
 import React from 'react'
 import styled from 'styled-components'
 import { Tooltip as MUITooltip, ValueLabelProps, SliderProps } from '@material-ui/core'

@@ -1,3 +1,4 @@
+//THIS COMPONENT WILL BE REMOVED
 import React from 'react'
 import { SliderProps } from '@material-ui/core'
 
