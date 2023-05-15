@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { Term } from '../../../Utilities/helpers'
-import { DatasetVariable } from '../../../Utilities/Types'
+// import { Term } from '../../../Utilities/helpers'
+import { DatasetVariable, Term } from '../../../Utilities/Types'
 import { color } from '../../../Utilities/color'
 import { Part } from '../../../Utilities/helpers'
 import { standardFormatter } from '../../../Utilities/helpers'

@@ -1,15 +1,16 @@
 import {useMemo, useEffect, useState} from 'react'
+import { ModelVariableOffset } from '../../Utilities/helpers';
 
 export type VariableOffsets = {
     variable: string
     usedOffsets?: { from: number; to: number }
 }
 
-export type ModelVariableOffset = {
-    name: string
-    dataFrom: number
-    dataTo: number
-}
+// export type ModelVariableOffset = {
+//     name: string
+//     dataFrom: number
+//     dataTo: number
+// }
 
 export function useSelectedModelOffsets(variablesWithColors: any, selectedModelIndex: any, model: any): VariableOffsets[] {
 

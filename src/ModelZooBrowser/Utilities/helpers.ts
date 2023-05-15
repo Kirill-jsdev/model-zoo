@@ -1,4 +1,4 @@
-import { TreemapNode } from './Types'
+import { Term, TreemapNode } from './Types'
 const ROOT_LABEL = 'root'
 const ROOT_ELEMENT: TreemapNode = { label: ROOT_LABEL, parentLabel: null, importance: null }
 
@@ -127,10 +127,10 @@ export interface InterceptDictionary extends DictionaryBase {
 
 export type Part = Dictionary | BetaDictionary
 
-export interface Term {
-    importance: number | null
-    parts: Part[]
-  }
+// export interface Term {
+//     importance: number | null
+//     parts: Part[]
+//   }
 
   type CaseVariableOffset = {
     name: string
