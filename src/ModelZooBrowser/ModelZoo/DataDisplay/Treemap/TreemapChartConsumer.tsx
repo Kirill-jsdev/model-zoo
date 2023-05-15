@@ -5,7 +5,7 @@ import { TreemapNode, Direction } from '../../../Utilities/Types'
 import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Node } from './Node'
 import { Hierarchy, Data, MergedRef } from '../../../Utilities/Types'
-import NodeWrapper from './NodeWrapper'
+// import NodeWrapper from './NodeWrapper'
 
 export interface TooltipDataProps {
   term: string

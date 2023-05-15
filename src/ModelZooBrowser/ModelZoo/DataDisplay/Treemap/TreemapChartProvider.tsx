@@ -53,7 +53,7 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
 
     onNodeDataChange(tooltipData)
 
-    // setHoveringLabel(tooltipData.term)
+    setHoveringLabel(tooltipData.term)
     // setTooltipData(tooltipData)
   }
 

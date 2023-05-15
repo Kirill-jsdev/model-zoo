@@ -72,10 +72,6 @@ export const Scale: React.FC<ScaleProps> = ({
 
   const tooltipLabelFromValue = useMemo(() => tooltipLabel(scale, value), [scale, value])
 
-  // console.log('sliderProps', sliderProps)
-
-  // console.log('scaledUnusedOffsets.from, scaledUnusedOffsets.to', scaledUnusedOffsets?.from, scaledUnusedOffsets?.to)
-
   return (
     <>
       <CustomScale color={color} label={label(usedOffsets)} name={variable} tooltipLabel={tooltipLabelFromValue} scaledUnusedOffsets={{from: scaledUnusedOffsets?.from, to: scaledUnusedOffsets?.to}} />
