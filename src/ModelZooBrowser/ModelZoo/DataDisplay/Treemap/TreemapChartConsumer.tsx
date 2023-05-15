@@ -56,7 +56,7 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
 
     return (
       <div className={`treemap-container ${className}`} ref={setDimensionsRef}>
-        <NodeWrapper {...tooltipData}>
+        {/* <NodeWrapper {...tooltipData}> */}
           <svg className='treemap-svg' ref={svgRef}>
             <Treemap<Data>
               top={margin.top}
@@ -104,7 +104,7 @@ export const TreemapChartConsumer = forwardRef<MergedRef, TreemapChartProps>(
               )}
             </Treemap>
           </svg>
-        </NodeWrapper>
+        {/* </NodeWrapper> */}
       </div>
     )
   },

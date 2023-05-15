@@ -100,7 +100,7 @@ export const Node: React.FC<NodeProps> = ({
         stroke={'#fff'}
         strokeWidth={depth === 1 ? 2 : 0}
         fill={bgColor}
-        onPointerMove={(e) => hoverHandler(e, data, depth)}
+        onPointerEnter={(e) => hoverHandler(e, data, depth)}
         onPointerLeave={leaveHandler}
         onClick={handleNodeClick}
       />

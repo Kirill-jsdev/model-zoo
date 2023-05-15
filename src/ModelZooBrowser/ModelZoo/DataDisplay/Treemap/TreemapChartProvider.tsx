@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
 import { TreemapNode, DatasetVariable, Direction } from '../../../Utilities/Types'
 import { TreemapChartConsumer } from './TreemapChartConsumer'
 import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from '../../../Utilities/Util'
@@ -32,6 +33,8 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
     color: '',
   })
 
+  const { onNodeDataChange } = useContext(ModelZooBrowserContext)
+
   useEffect(() => {
     try {
       const hierarchy = treemapToHierarchy(treemap)
@@ -48,11 +51,16 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
   const handlePointerMove = (event: React.PointerEvent<SVGRectElement>, node: TreemapNode, depth: number) => {
     const tooltipData = getTooltipData(node, depth, predictorPalette)
 
-    setHoveringLabel(tooltipData.term)
-    setTooltipData(tooltipData)
+    onNodeDataChange(tooltipData)
+
+    // setHoveringLabel(tooltipData.term)
+    // setTooltipData(tooltipData)
   }
 
-  const handlePointerLeave = () => setHoveringLabel(null)
+  const handlePointerLeave = () => {
+    onNodeDataChange(undefined)
+    // setHoveringLabel(null)
+  }
 
   if (!root) return null
 
