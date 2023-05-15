@@ -34,7 +34,7 @@ const DataInfo = () => {
                     <option value="treemap">Treemap</option>
                     <option value="table">Table</option>
                 </select>
-                {!isDrawerOpen && 
+                {!isDrawerOpen &&
                     <div className='open-drawer' onClick={() => onIsDrawerOpenChange(true)}>
                         <DrawerArrows />
                         <span>Insights</span>

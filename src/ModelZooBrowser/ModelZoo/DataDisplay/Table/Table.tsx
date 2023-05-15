@@ -7,13 +7,13 @@ import { standardFormatter } from '../../../Utilities/helpers'
 import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../../../Utilities/helpers'
 import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Bar } from './Bar'
-import { TooltipEnhancedDiv } from './TooltipEnhanced'
+// import { TooltipEnhancedDiv } from './TooltipEnhanced'
 
 type VariablesColors = { variablesColors: DatasetVariable[] }
 
 interface ModelZooTableProps extends VariablesColors {
   className?: string
-  terms?: Term[] //should be: Term[]
+  terms?: Term[]
 }
 
 const INDEX = 'Index'
@@ -62,9 +62,10 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
             return (
               <tr key={`mzb-table-body-${index}`}>
                 <td className='index-cell' ref={setIndexColumnRef}>{index + 1}</td>
-                <td className='terms-cell' style={{width: tableWidth}}>
+                {/* <td className='terms-cell' style={{width: tableWidth}}>
                   <TooltipEnhancedDiv TooltipProps={{ title: termLabel }}>{termLabel}</TooltipEnhancedDiv>
-                </td>
+                </td> */}
+                <td className='terms-cell' title={termLabel} style={{width: tableWidth}}>{termLabel}</td>
                 {hasCoefficient && (
                   <td className='coefficient-cell'>
                     <Bar biggestValue={biggestCoefficient} value={coefficient} colors={colors} />

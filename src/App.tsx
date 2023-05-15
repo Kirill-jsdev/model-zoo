@@ -16,7 +16,7 @@ const DATASET_ID_TWO = 'b5a4cd8c-b7df-431b-869c-5f0f914774b6' //not changed yet
 function App() {
 
     const { user } = useLogin()
-    const {model} = useGetModel(JOB_ID_FOUR, user?.token)
+    const {model} = useGetModel(JOB_ID_TREE, user?.token)
     const {versions} = useGetVersions(DATASET_ID_TWO, user?.token)
 
     let variables: any
