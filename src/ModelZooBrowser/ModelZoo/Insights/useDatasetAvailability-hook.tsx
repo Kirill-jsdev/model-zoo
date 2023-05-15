@@ -1,4 +1,5 @@
 import {useState, useEffect, useMemo} from 'react'
+import { Variable } from '../../Utilities/Types'
 
 export enum DataAvailabilityScale {
     SAMPLE = 1,
@@ -69,16 +70,16 @@ export type UseDataAvailability = () => {
     setScale: (scale: DataAvailabilityScale) => void
 }
 
-export type Variable = {
-    name: string
-    type?: 'Numerical' | 'Boolean'
-    firstTimestamp?: string
-    lastTimestamp?: string
-    minimumValue?: number
-    maximumValue?: number
-    averageValue?: number
-    missingObservations?: number | null
-}
+// export type Variable = {
+//     name: string
+//     type?: 'Numerical' | 'Boolean'
+//     firstTimestamp?: string
+//     lastTimestamp?: string
+//     minimumValue?: number
+//     maximumValue?: number
+//     averageValue?: number
+//     missingObservations?: number | null
+// }
 
 //HELPER FUNCTIONS
 function getVariableAvailabilities(variables: Variable[]): VariableAvailability[] {

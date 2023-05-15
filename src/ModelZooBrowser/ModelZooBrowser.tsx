@@ -5,10 +5,11 @@ import { ModelZooBrowserContextProvider } from './Context/ModelZooBrowserContext
 import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
 import ModelZoo from './ModelZoo/ModelZoo'
 import { DetectionModel } from './ADModelTypes'
+import { DatasetVersion } from './VersionType'
 
 type ModelZooBrowserProps = {
     model: DetectionModel
-    dataset: any
+    dataset: DatasetVersion
 }
 
 const ModelZooBrowser: React.FC<ModelZooBrowserProps> = ({model, dataset}) => {

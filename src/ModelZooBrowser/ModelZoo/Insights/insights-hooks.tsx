@@ -1,5 +1,6 @@
 import {useMemo, useEffect, useState} from 'react'
 import { ModelVariableOffset } from '../../Utilities/helpers';
+import { DatasetVersion } from '../../VersionType';
 
 export type VariableOffsets = {
     variable: string
@@ -102,31 +103,31 @@ export function useOriginalSamplingPeriod(datasetVersion?: DatasetVersion): numb
     return samplingPeriod
 }
 
-export type Variable = {
-    name: string
-    type?: 'Numerical' | 'Boolean'
-    firstTimestamp?: string
-    lastTimestamp?: string
-    minimumValue?: number
-    maximumValue?: number
-    averageValue?: number
-    missingObservations?: number | null
-}
+// export type Variable = {
+//     name: string
+//     type?: 'Numerical' | 'Boolean'
+//     firstTimestamp?: string
+//     lastTimestamp?: string
+//     minimumValue?: number
+//     maximumValue?: number
+//     averageValue?: number
+//     missingObservations?: number | null
+// }
 
 export type Entity = { id: string }
 export type Status = 'Registered' | 'Running' | 'Finished' | 'FinishedWithWarning' | 'Failed' | 'Queued'
 
-export type DatasetVersion = {
-    id: string
-    dataset: Entity
-    estimatedSamplingPeriod: string
-    size: number
-    numberOfObservations: number
-    firstTimestamp: number
-    lastTimestamp: number
-    variables: Variable[]
-    createdAt: number
-    status: Status
-    name?: string
-}
+// export type DatasetVersion = {
+//     id: string
+//     dataset: Entity
+//     estimatedSamplingPeriod: string
+//     size: number
+//     numberOfObservations: number
+//     firstTimestamp: number
+//     lastTimestamp: number
+//     variables: Variable[]
+//     createdAt: number
+//     status: Status
+//     name?: string
+// }
 
