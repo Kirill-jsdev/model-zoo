@@ -4,8 +4,14 @@ import { buildPredictorPalette } from './Utilities/helpers'
 import { ModelZooBrowserContextProvider } from './Context/ModelZooBrowserContextProvider'
 import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
 import ModelZoo from './ModelZoo/ModelZoo'
+import { DetectionModel } from './ADModelTypes'
 
-const ModelZooBrowser: React.FC<any> = ({model, dataset}) => {
+type ModelZooBrowserProps = {
+    model: DetectionModel
+    dataset: any
+}
+
+const ModelZooBrowser: React.FC<ModelZooBrowserProps> = ({model, dataset}) => {
 
     const variablesWithColors = buildPredictorPalette(dataset.variables)
 
