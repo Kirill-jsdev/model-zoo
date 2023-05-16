@@ -1,3 +1,4 @@
+import { Model } from '../ADModelTypes'
 import { Term, TreemapNode } from './Types'
 const ROOT_LABEL = 'root'
 const ROOT_ELEMENT: TreemapNode = { label: ROOT_LABEL, parentLabel: null, importance: null }
@@ -132,15 +133,15 @@ export type Part = Dictionary | BetaDictionary
 //     parts: Part[]
 //   }
 
-  type CaseVariableOffset = {
-    name: string
-    dataTo: number
-  }
+  // type CaseVariableOffset = {
+  //   name: string
+  //   dataTo: number
+  // }
 
-type ModelCase = {
-dayTime?: string | null
-variableOffsets: CaseVariableOffset[]
-}
+// type ModelCase = {
+// dayTime?: string | null
+// variableOffsets: CaseVariableOffset[]
+// }
 
 export type ModelVariableOffset = {
     name: string
@@ -148,20 +149,20 @@ export type ModelVariableOffset = {
     dataTo: number
   }
 
-export interface Model {
-    index: number
-    terms: Term[]
-    dayTime?: string | null
-    variableOffsets: ModelVariableOffset[]
-    samplesAhead: number[]
-    modelQuality: number
-    predictionIntervals: number[]
-    lastTargetTimestamp: string
-    RInv: number[]
-    g: number[]
-    mx: number[]
-    cases: ModelCase[]
-  }
+// export interface Model {
+//     index: number
+//     terms: Term[]
+//     dayTime?: string | null
+//     variableOffsets: ModelVariableOffset[]
+//     samplesAhead: number[]
+//     modelQuality: number
+//     predictionIntervals: number[]
+//     lastTargetTimestamp: string
+//     RInv: number[]
+//     g: number[]
+//     mx: number[]
+//     cases: ModelCase[]
+//   }
 export type PartiallyRequired<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
 export type FeatureModel = PartiallyRequired<Model, 'index' | 'terms'>
 

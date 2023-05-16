@@ -6,9 +6,10 @@ import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
 import ModelZoo from './ModelZoo/ModelZoo'
 import { DetectionModel } from './ADModelTypes'
 import { DatasetVersion } from './VersionType'
+import { ForecastModel } from './FTypes'
 
 type ModelZooBrowserProps = {
-    model: DetectionModel
+    model: DetectionModel | ForecastModel
     dataset: DatasetVersion
 }
 
