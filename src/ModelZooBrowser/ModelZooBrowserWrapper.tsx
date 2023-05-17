@@ -11,6 +11,9 @@ const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children
 
     const {onModelChange, onDatasetChange, onVariablesWithColorsChange} = useContext(ModelZooBrowserContext)
 
+    const models =  model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models
+    const variableProperties = model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models
+
     useEffect(() => {
         onModelChange(model)
         onDatasetChange(dataset)
