@@ -6,7 +6,8 @@ import { DrawerArrows } from '../../Icons'
 
 export const Insights: React.FC = () => {
 
-    const { onIsDrawerOpenChange } =  useContext(ModelZooBrowserContext)
+    const { onIsDrawerOpenChange, model } =  useContext(ModelZooBrowserContext)
+    const difficulty = model?.model?.modelZoo?.difficulty
 
     return (
         <div className='insights'>
@@ -17,6 +18,7 @@ export const Insights: React.FC = () => {
           <div className='settings-panel'>
             <Offsets />
             <UnusedVariables />
+            {difficulty && <div>Difficulty: {difficulty.toFixed(3)}%</div>}
           </div>
         </div>
       )

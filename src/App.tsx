@@ -13,11 +13,12 @@ const DATASET_ID_TWO = 'b5a4cd8c-b7df-431b-869c-5f0f914774b6' //not changed yet
 
 //FORECASTING JOBS
 const JOB_ID_SIX = 'c727bb46-3c37-4e29-a5ea-2a868e7c23e8'
+const JOB_ID_SEVEN = '14f25d7c-cca9-40a5-bcd8-fa7b34322824'
 
 function App() {
 
     const { user } = useLogin()
-    const {model} = useGetModel(JOB_ID_SIX, user?.token)
+    const {model} = useGetModel(JOB_ID_SEVEN, user?.token, 'forecast')
     const {versions} = useGetVersions(DATASET_ID_TWO, user?.token)
 
     let variables: any
