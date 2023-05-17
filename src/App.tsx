@@ -18,7 +18,7 @@ const JOB_ID_SEVEN = '14f25d7c-cca9-40a5-bcd8-fa7b34322824'
 function App() {
 
     const { user } = useLogin()
-    const {model} = useGetModel(JOB_ID_SEVEN, user?.token, 'forecast')
+    const {model} = useGetModel(JOB_ID_FIVE, user?.token, 'ad')
     const {versions} = useGetVersions(DATASET_ID_TWO, user?.token)
 
     let variables: any

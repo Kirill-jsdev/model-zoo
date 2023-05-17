@@ -6,7 +6,7 @@ import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesTo
 export const useModelOptions = () => {
 
     const {model} = useContext(ModelZooBrowserContext)
-    const models = model?.model?.modelZoo?.models
+    const models = model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models
     const options = useMemo<ModelOption[]>(() => {
         if(typeof models === 'undefined') return
         return models.map(({ index, dayTime }: {index: any, dayTime: any}) => ({
@@ -22,10 +22,9 @@ export function useDetectionModelResult() {
 
     const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange, model, selectedModelIndex } = useContext(ModelZooBrowserContext)
 
-    const variableProperties = model?.model?.normalBehavior?.variableProperties ?? model?.model?.modelZoo?.variableProperties
-    // const models = model?.model?.normalBehavior?.models ?? model?.model?.modelZoo?.models ?? []
+    const variableProperties = model?.model?.normalBehaviorModel?.variableProperties ?? model?.model?.modelZoo?.variableProperties
 
-    const models = useMemo(() => model?.model?.modelZoo?.models ?? model?.model?.normalBehavior?.models ?? [], [model])
+    const models = useMemo(() => model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models ?? [], [model])
     const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
 
     const variableImportancesModel = useMemo(() => {
@@ -38,10 +37,10 @@ export function useDetectionModelResult() {
     }, [variableImportancesModel])
 
     const isUnRelatedModel = useMemo(() => {
-        if (!model?.model?.modelZoo?.models) return
+        if (!models) return //Might be better to check the length of an array
         if (!variableProperties) return
         return variablesImportancesSum === 0
-    }, [model, variableProperties, variablesImportancesSum])
+    }, [models, variableProperties, variablesImportancesSum])
 
     const selectedModelTreemapNodes = useMemo(() => {
         if (models.length === 0) return

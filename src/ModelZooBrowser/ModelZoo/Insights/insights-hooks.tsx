@@ -16,7 +16,8 @@ export type VariableOffsets = {
 export function useSelectedModelOffsets(variablesWithColors: any, selectedModelIndex: any, model: any): VariableOffsets[] {
 
     return useMemo(() => {
-      const selectedModel = model?.model?.modelZoo?.models.find(({ index }: {index: number}) => index === selectedModelIndex)
+      const models = model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models ?? []
+      const selectedModel = models.find(({ index }: {index: number}) => index === selectedModelIndex)
       if (!selectedModel) return []
 
       return variablesWithColors.reduce((acc: any, { variable }: {variable: any}) => {
