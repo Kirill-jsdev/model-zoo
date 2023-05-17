@@ -3,9 +3,13 @@ import React, {useState} from 'react'
 import { TooltipDataProps } from '../Utilities/Types'
 
 interface ModelZooBrowserContextValues {
-    model: any,
+    model: any
     onModelChange: (model: any) => void
-    dataset: any,
+    models: any
+    onModelsChange: (model: any) => void
+    variableProperties: any
+    onVariablePropertiesChange: (variableProperties: any) => void
+    dataset: any
     onDatasetChange: (dataset: any) => void
     selectedModelIndex: number | undefined
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
@@ -27,6 +31,10 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     model: undefined,
      // eslint-disable-next-line
     onModelChange: (model: any) => {},
+    models: undefined,
+    onModelsChange: (models: any) => {},
+    variableProperties: undefined,
+    onVariablePropertiesChange: (variableProperties: any) => {},
     dataset: undefined,
     onDatasetChange: (dataset: any) => {},
     selectedModelIndex: undefined,
@@ -49,6 +57,8 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState()
+    const [models, setModels] = useState()
+    const [variableProperties, setVariableProperties] = useState()
     const [dataset, setDataset] = useState()
     const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
@@ -60,6 +70,14 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const onModelChange = (model: any) => {
         setModel(model)
+    }
+
+    const onModelsChange = (models: any) => {
+        setModels(models)
+    }
+
+    const onVariablePropertiesChange = (variableProperties: any) => {
+        setVariableProperties(variableProperties)
     }
 
     const onDatasetChange = (dataset: any) => {
@@ -97,6 +115,10 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const ctxValues = {
         model,
         onModelChange,
+        models,
+        onModelsChange,
+        variableProperties,
+        onVariablePropertiesChange,
         dataset,
         onDatasetChange,
         selectedModelIndex,
