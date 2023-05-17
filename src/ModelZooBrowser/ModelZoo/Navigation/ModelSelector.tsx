@@ -5,8 +5,8 @@ import ModelSelectButton from './ModelSelectButton'
 
 export const ModelSelector: React.FC = () => {
 
-  const {selectedModelIndex, onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)
-  const detectionModelResult = useDetectionModelResult(model, selectedModelIndex)
+  const {selectedModelIndex, onSelectedModelIndexChange} = useContext(ModelZooBrowserContext)
+  const detectionModelResult = useDetectionModelResult()
   const options = useModelOptions()
 
   if (typeof options === 'undefined') return <></>

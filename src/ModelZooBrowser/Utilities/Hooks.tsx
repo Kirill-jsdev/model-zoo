@@ -6,8 +6,7 @@ import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesTo
 export const useModelOptions = () => {
 
     const {model} = useContext(ModelZooBrowserContext)
-    const models = model?.model?.normalBehaviorModel?.models
-
+    const models = model?.model?.modelZoo?.models
     const options = useMemo<ModelOption[]>(() => {
         if(typeof models === 'undefined') return
         return models.map(({ index, dayTime }: {index: any, dayTime: any}) => ({
@@ -19,16 +18,16 @@ export const useModelOptions = () => {
     return options
 }
 
-export function useDetectionModelResult(model: any, selectedModelIndex: number | undefined) {
+export function useDetectionModelResult() {
 
-    const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange } = useContext(ModelZooBrowserContext)
+    const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange, model, selectedModelIndex } = useContext(ModelZooBrowserContext)
 
-    const models = useMemo(() => model?.model?.normalBehaviorModel?.models ?? [], [model])
+    const models = useMemo(() => model?.model?.modelZoo?.models ?? [], [model])
     const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
 
     const variableImportancesModel = useMemo(() => {
-        if (!model?.model?.normalBehaviorModel?.variableProperties) return []
-        return mapVariablePropertiesToTreemapNodes(model?.model?.normalBehaviorModel?.variableProperties ?? [])
+        if (!model?.model?.modelZoo?.variableProperties) return []
+        return mapVariablePropertiesToTreemapNodes(model?.model?.modelZoo?.variableProperties ?? [])
     }, [model])
 
     const variablesImportancesSum = useMemo(() => {
@@ -36,8 +35,8 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
     }, [variableImportancesModel])
 
     const isUnRelatedModel = useMemo(() => {
-        if (!model?.model?.normalBehaviorModel?.models) return
-        if (!model.model?.normalBehaviorModel?.variableProperties) return
+        if (!model?.model?.modelZoo?.models) return
+        if (!model.model?.modelZoo?.variableProperties) return
         return variablesImportancesSum === 0
     }, [model, variablesImportancesSum])
 
@@ -52,8 +51,8 @@ export function useDetectionModelResult(model: any, selectedModelIndex: number |
         if (models.length === 0) return
         if (selectedModelIndex) return models.find(({ index }: { index: any }) => index === selectedModelIndex)?.terms
         if (isUnRelatedModel) return models[0]?.terms
-        return mapVariablePropertiesToTerms(model?.model?.normalBehaviorModel?.variableProperties ?? [])
-    }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.normalBehaviorModel?.variableProperties])
+        return mapVariablePropertiesToTerms(model?.model?.modelZoo?.variableProperties ?? [])
+    }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.modelZoo?.variableProperties])
 
     onSelectedModelTermsChange(selectedModelTerms)
     onSelectedModelTreemapNodesChange(selectedModelTreemapNodes)

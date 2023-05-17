@@ -34,14 +34,14 @@ export const useLogin = () => {
 }
 
 
-export const useGetModel = (jobId: string, token: string) => {
+export const useGetModel = (jobId: string, token: string, type: 'ad' | 'forecast' = 'forecast') => {
 
     const [model, setModel] = useState<any>()
     const [error, setError] = useState<any>()
 
     useEffect(() => {
 
-    const url = `https://tim-platform-dev.tangent.works/api/v5/detection-jobs/${jobId}/results/model`
+    const url = type !== 'forecast' ? `https://tim-platform-dev.tangent.works/api/v5/detection-jobs/${jobId}/results/model` : `https://tim-platform-dev.tangent.works/api/v5/forecast-jobs/${jobId}/results/model`
 
     const requestOptions = {
         method: 'GET',
