@@ -22,13 +22,16 @@ export function useDetectionModelResult() {
 
     const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange, model, selectedModelIndex } = useContext(ModelZooBrowserContext)
 
-    const models = useMemo(() => model?.model?.modelZoo?.models ?? [], [model])
+    const variableProperties = model?.model?.normalBehavior?.variableProperties ?? model?.model?.modelZoo?.variableProperties
+    // const models = model?.model?.normalBehavior?.models ?? model?.model?.modelZoo?.models ?? []
+
+    const models = useMemo(() => model?.model?.modelZoo?.models ?? model?.model?.normalBehavior?.models ?? [], [model])
     const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
 
     const variableImportancesModel = useMemo(() => {
-        if (!model?.model?.modelZoo?.variableProperties) return []
-        return mapVariablePropertiesToTreemapNodes(model?.model?.modelZoo?.variableProperties ?? [])
-    }, [model])
+        if (!variableProperties) return []
+        return mapVariablePropertiesToTreemapNodes(variableProperties ?? [])
+    }, [variableProperties])
 
     const variablesImportancesSum = useMemo(() => {
         return getVariablePropertiesSum(variableImportancesModel)
@@ -36,9 +39,9 @@ export function useDetectionModelResult() {
 
     const isUnRelatedModel = useMemo(() => {
         if (!model?.model?.modelZoo?.models) return
-        if (!model.model?.modelZoo?.variableProperties) return
+        if (!variableProperties) return
         return variablesImportancesSum === 0
-    }, [model, variablesImportancesSum])
+    }, [model, variableProperties, variablesImportancesSum])
 
     const selectedModelTreemapNodes = useMemo(() => {
         if (models.length === 0) return
@@ -51,8 +54,8 @@ export function useDetectionModelResult() {
         if (models.length === 0) return
         if (selectedModelIndex) return models.find(({ index }: { index: any }) => index === selectedModelIndex)?.terms
         if (isUnRelatedModel) return models[0]?.terms
-        return mapVariablePropertiesToTerms(model?.model?.modelZoo?.variableProperties ?? [])
-    }, [models, isUnRelatedModel, selectedModelIndex, model?.model?.modelZoo?.variableProperties])
+        return mapVariablePropertiesToTerms(variableProperties ?? [])
+    }, [models, isUnRelatedModel, selectedModelIndex, variableProperties])
 
     onSelectedModelTermsChange(selectedModelTerms)
     onSelectedModelTreemapNodesChange(selectedModelTreemapNodes)
