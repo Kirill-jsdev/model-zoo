@@ -70,7 +70,7 @@ const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber, isDail
         <DatasetIcon />
         <div>Day + {dayNumber}</div>
       </div>
-      <div className='mzb-forecast-selector-group-body' style={{height: isOpen ? 'auto' : '0', margin: isOpen ? '0 auto' : '0', padding: isOpen ? '20px 0' : '0' }}>
+      <div className='mzb-forecast-selector-group-body' style={{maxHeight: isOpen ? '10000px' : '0'}}>
         {options.map((opt, index) => {
           return (
             <ModelSelectButton

@@ -1,4 +1,4 @@
-.mzb-forecast-selector-group {margin: 10px auto; color: #fff;}
+.mzb-forecast-selector-group {margin: 0 auto; color: #fff;}
 .mzb-forecast-selector-group-header {
     display: flex;
     align-items: center;
@@ -6,6 +6,8 @@
     width: 100%;
     height: 40px;
     padding: 0 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 5px;
     background-color: #4d0246;
     cursor: pointer;
@@ -25,6 +27,7 @@
 
     max-width: 169px;
     margin: 0 auto;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     overflow: hidden;
+    transition: all 0.3s;
 }
