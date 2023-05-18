@@ -9,14 +9,15 @@ import { DatasetIcon } from '../../Icons'
 export const ModelSelector: React.FC = () => {
 
   const {selectedModelIndex, onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)
-
-  //Forecasting model has modelZoo property whereas AD - normalBehaviorModel instead. Based on this the decision is made
-  const isForecasting = !!model?.model?.modelZoo
-
   const detectionModelResult = useDetectionModelResult()
   const options = useModelOptions()
 
-  console.log('OPTIONS', options)
+  //Forecasting model has modelZoo property whereas AD - normalBehaviorModel instead. Based on this the decision is made
+  const isForecasting = !!model?.model?.modelZoo
+  const showInGroups = isForecasting && detectionModelResult.isDailyCycle
+
+  const chunks = divideArrayIntoChunks(options, 24)
+  console.log('chunks', chunks)
 
   if (typeof options === 'undefined') return <></>
 
@@ -33,7 +34,7 @@ export const ModelSelector: React.FC = () => {
           />
         ))}
       </div>
-      <SelectorGroup options={options} />
+      {showInGroups && <SelectorGroup options={options} />}
     </aside>
   )
 }
@@ -67,4 +68,15 @@ const SelectorGroup: React.FC<SelectorGroupProps> = ({options}) => {
       </div>
     </div>
   )
+}
+
+function divideArrayIntoChunks(array: {value: number, option: string}[], chunkSize: number) {
+  const dividedArrays = [];
+
+  for (let i = 0; i < array.length; i += chunkSize) {
+    const chunk = array.slice(i, i + chunkSize);
+    dividedArrays.push(chunk);
+  }
+
+  return dividedArrays;
 }
