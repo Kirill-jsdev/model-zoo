@@ -27,3 +27,9 @@ export const WaveIcon = () => {
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wave-sine" className="wave-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M464 480c-90.52 0-132.84-107.94-173.8-212.31C258.64 187.2 222.88 96 176 96c-39.7 0-91.38 81.89-114.12 149a16 16 0 0 1-19.74 10.33l-30.72-9.21A16 16 0 0 1 .84 225.68C19.55 169.79 82.16 32 176 32c90.52 0 132.84 107.94 173.8 212.31C381.36 324.8 417.12 416 464 416c39.7 0 91.38-81.89 114.12-149a16 16 0 0 1 19.74-10.33l30.72 9.21a16 16 0 0 1 10.58 20.43C620.45 342.21 557.84 480 464 480z"></path></svg>
     )
 }
+
+export const DatasetIcon = () => {
+    return (
+        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="table" className="dataset-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM160 448H48c-8.837 0-16-7.163-16-16v-80h128v96zm0-128H32v-96h128v96zm0-128H32V96h128v96zm160 256H192v-96h128v96zm0-128H192v-96h128v96zm0-128H192V96h128v96zm160 160v80c0 8.837-7.163 16-16 16H352v-96h128zm0-32H352v-96h128v96zm0-128H352V96h128v96z"></path></svg>
+    )
+}

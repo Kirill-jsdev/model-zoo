@@ -1,0 +1,16 @@
+.mzb-forecast-selector-group-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: #4d0246;
+    cursor: pointer;
+}
+
+.mzb-forecast-selector-group-header > svg {
+    width: 25px;
+    color:#fff;
+}

@@ -1,7 +1,10 @@
-import React, {useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { useModelOptions, useDetectionModelResult } from '../../Utilities/Hooks'
 import ModelSelectButton from './ModelSelectButton'
+
+import './ModelSelector.css'
+import { DatasetIcon } from '../../Icons'
 
 export const ModelSelector: React.FC = () => {
 
@@ -28,6 +31,26 @@ export const ModelSelector: React.FC = () => {
           />
         ))}
       </div>
+      <SelectorGroup />
     </aside>
+  )
+}
+
+const SelectorGroup = () => {
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+    alert(isOpen)
+  }
+
+  return (
+    <div className='mzb-forecast-selector-group'>
+      <div className='mzb-forecast-selector-group-header' onClick={handleClick}>
+        <DatasetIcon />
+      </div>
+      <div className='mzb-forecast-selector-group-body'></div>
+    </div>
   )
 }
