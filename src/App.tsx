@@ -14,6 +14,7 @@ const DATASET_ID_TWO = 'b5a4cd8c-b7df-431b-869c-5f0f914774b6' //not changed yet
 //FORECASTING JOBS
 const JOB_ID_SIX = 'c727bb46-3c37-4e29-a5ea-2a868e7c23e8'
 const JOB_ID_SEVEN = '14f25d7c-cca9-40a5-bcd8-fa7b34322824' //TWO DAYS
+const JOB_ID_EIGHT = 'f5d95215-21e3-41f8-8de1-17daec229121' //TWO DAYS
 
 function App() {
 
