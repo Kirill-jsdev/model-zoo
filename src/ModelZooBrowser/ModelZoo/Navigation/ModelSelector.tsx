@@ -87,7 +87,8 @@ const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber, isDail
   )
 }
 
-function divideArrayIntoChunks(array: {value: number, option: string}[], chunkSize: number) {
+function divideArrayIntoChunks(array: {value: number, option: string}[] = [], chunkSize: number) {
+
   const dividedArrays = [];
 
   for (let i = 0; i < array.length; i += chunkSize) {
