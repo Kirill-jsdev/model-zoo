@@ -9,6 +9,7 @@
     border-radius: 5px;
     background-color: #4d0246;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .mzb-forecast-selector-group-header > svg {

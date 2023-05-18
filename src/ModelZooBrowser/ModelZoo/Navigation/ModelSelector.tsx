@@ -23,7 +23,7 @@ export const ModelSelector: React.FC = () => {
 
   return (
     <aside className='sidebar'>
-      <div className='content'>
+      {!showInGroups && <div className='content'>
         {options.map(({ option, value }) => (
           <ModelSelectButton
             key={`${option}-${value}`}
@@ -33,7 +33,7 @@ export const ModelSelector: React.FC = () => {
             isDailyCycle={detectionModelResult.isDailyCycle}
           />
         ))}
-      </div>
+      </div>}
       {showInGroups && chunks.map((chunk, index) => {
         return <SelectorGroup key={`selector-group-${index}`} options={chunk} dayNumber={index + 1} />
       })}
