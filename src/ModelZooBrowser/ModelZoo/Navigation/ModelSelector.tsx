@@ -35,7 +35,14 @@ export const ModelSelector: React.FC = () => {
         ))}
       </div>}
       {showInGroups && chunks.map((chunk, index) => {
-        return <SelectorGroup key={`selector-group-${index}`} options={chunk} dayNumber={index + 1} />
+        return <SelectorGroup
+                key={`selector-group-${index}`}
+                options={chunk}
+                dayNumber={index + 1}
+                onClickHandler={onSelectedModelIndexChange}
+                selectedModelIndex={selectedModelIndex}
+                isDailyCycle={detectionModelResult.isDailyCycle}
+                />
       })}
     </aside>
   )
@@ -44,9 +51,12 @@ export const ModelSelector: React.FC = () => {
 type SelectorGroupProps = {
   options: {value: number, option: string}[]
   dayNumber: number
+  onClickHandler: any
+  selectedModelIndex: number | undefined
+  isDailyCycle: boolean
 }
 
-const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber}) => {
+const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber, isDailyCycle, onClickHandler, selectedModelIndex}) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -64,8 +74,11 @@ const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber}) => {
         {options.map((opt, index) => {
           return (
             <ModelSelectButton
+              key={`selector-group-${index}-${opt.value}`}
               text={opt.option}
-              isDailyCycle={true}
+              onClickHandler={() => onClickHandler(opt.value)}
+              isSelected={opt.value === selectedModelIndex}
+              isDailyCycle={isDailyCycle }
             />
           )
         })}
