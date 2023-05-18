@@ -14,3 +14,15 @@
     width: 25px;
     color:#fff;
 }
+
+.mzb-forecast-selector-group-body {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+
+    max-width: 169px;
+    margin: 0 auto;
+    padding: 20px 0;
+    overflow: hidden;
+}

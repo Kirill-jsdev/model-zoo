@@ -16,10 +16,12 @@ export const ModelSelector: React.FC = () => {
   const detectionModelResult = useDetectionModelResult()
   const options = useModelOptions()
 
+  console.log('OPTIONS', options)
+
   if (typeof options === 'undefined') return <></>
 
   return (
-    <aside className='sidebar' style={{backgroundColor: isForecasting ? 'yellow' : 'blue'}}>
+    <aside className='sidebar'>
       <div className='content'>
         {options.map(({ option, value }) => (
           <ModelSelectButton
@@ -31,18 +33,21 @@ export const ModelSelector: React.FC = () => {
           />
         ))}
       </div>
-      <SelectorGroup />
+      <SelectorGroup options={options} />
     </aside>
   )
 }
 
-const SelectorGroup = () => {
+type SelectorGroupProps = {
+  options: {value: number, option: string}[]
+}
+
+const SelectorGroup: React.FC<SelectorGroupProps> = ({options}) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
     setIsOpen(!isOpen)
-    alert(isOpen)
   }
 
   return (
@@ -50,7 +55,16 @@ const SelectorGroup = () => {
       <div className='mzb-forecast-selector-group-header' onClick={handleClick}>
         <DatasetIcon />
       </div>
-      <div className='mzb-forecast-selector-group-body'></div>
+      <div className='mzb-forecast-selector-group-body' style={{height: isOpen ? 'auto' : '0', margin: isOpen ? '0 auto' : '0', padding: isOpen ? '20px 0' : '0' }}>
+        {options.map((opt, index) => {
+          return (
+            <ModelSelectButton
+              text={opt.option}
+              isDailyCycle={true}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
