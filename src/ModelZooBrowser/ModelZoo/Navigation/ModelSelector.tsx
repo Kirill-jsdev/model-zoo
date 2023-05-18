@@ -34,16 +34,19 @@ export const ModelSelector: React.FC = () => {
           />
         ))}
       </div>
-      {showInGroups && <SelectorGroup options={options} />}
+      {showInGroups && chunks.map((chunk, index) => {
+        return <SelectorGroup key={`selector-group-${index}`} options={chunk} dayNumber={index + 1} />
+      })}
     </aside>
   )
 }
 
 type SelectorGroupProps = {
   options: {value: number, option: string}[]
+  dayNumber: number
 }
 
-const SelectorGroup: React.FC<SelectorGroupProps> = ({options}) => {
+const SelectorGroup: React.FC<SelectorGroupProps> = ({options, dayNumber}) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -55,6 +58,7 @@ const SelectorGroup: React.FC<SelectorGroupProps> = ({options}) => {
     <div className='mzb-forecast-selector-group'>
       <div className='mzb-forecast-selector-group-header' onClick={handleClick}>
         <DatasetIcon />
+        <div>Day + {dayNumber}</div>
       </div>
       <div className='mzb-forecast-selector-group-body' style={{height: isOpen ? 'auto' : '0', margin: isOpen ? '0 auto' : '0', padding: isOpen ? '20px 0' : '0' }}>
         {options.map((opt, index) => {
