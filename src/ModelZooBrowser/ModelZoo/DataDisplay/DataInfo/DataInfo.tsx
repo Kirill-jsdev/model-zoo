@@ -33,7 +33,7 @@ const DataInfo = () => {
                         {nodeData?.coefficient && <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>}
                     </div>
                 </div>
-                <span className='timescale-badge'>{timeScaleText}</span>
+                <span className='mzb-timescale-badge'>{timeScaleText}</span>
                 <select onChange={handleSelectChange} defaultValue='treemap' className='mzb-select' >
                     <option value="treemap">Treemap</option>
                     <option value="table">Table</option>
