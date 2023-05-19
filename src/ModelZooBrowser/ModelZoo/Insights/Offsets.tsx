@@ -61,7 +61,7 @@ export const Offsets: React.FC = () => {
 
   if (!selectedModelIndex || offsets.length < 1) return null
   return (
-    <div>
+    <div className='mzb-offsets-section'>
       <h6 className='insights-subheader'>Variable offsets</h6>
       <DetermineScale offsets={enhancedOffsets} scale={scale} onChange={setScale} originalSamplingPeriod={originalSamplingPeriod} />
       <div>

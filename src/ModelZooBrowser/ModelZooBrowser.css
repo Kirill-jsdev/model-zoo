@@ -321,15 +321,23 @@
 }
 
 .model-zoo-browser .insights .settings-panel {
-    flex: 1;
-    padding: 1.25rem 1.5rem 1.25rem 1rem;
+    padding: 15px 15px 15px 25px;
     overflow-y: scroll;
     height: 372px;
     background-color: #ebecf0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.model-zoo-browser .insights .mzb-offsets-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .model-zoo-browser .insights .insights-subheader {
-    margin: 0 0 15px;
+    margin: 0;
     text-align: left;
     font-size: 16px;
     color: #000;
@@ -411,5 +419,4 @@
 
 .model-zoo-browser .insights .mzb-f-difficulty {
     font-weight: 500;
-    margin-top: 15px;
 }
