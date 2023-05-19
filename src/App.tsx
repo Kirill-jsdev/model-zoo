@@ -28,7 +28,7 @@ function App() {
       variables = versions[0].variables
 
   return (
-    <div className="App">
+    <div className="App" style={{width: '80%', margin: '20px auto'}}>
         {model && variables && <ModelZooBrowser model={model} dataset={versions[0]} />}
     </div>
   );

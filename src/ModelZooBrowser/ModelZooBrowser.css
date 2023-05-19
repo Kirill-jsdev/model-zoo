@@ -304,6 +304,8 @@
 
 .model-zoo-browser .data-info .open-drawer span {position: relative; top: -1px;}
 
+.model-zoo-browser .insights {overflow: hidden;}
+
 .model-zoo-browser .insights .header {
     width: 100%;
     display: flex;
@@ -426,4 +428,9 @@
 
 .model-zoo-browser .insights .mzb-f-difficulty {
     font-weight: 500;
+}
+
+/* SELECT */
+.model-zoo-browser .mzb-select {
+    border: 1px solid #ebecf0;
 }

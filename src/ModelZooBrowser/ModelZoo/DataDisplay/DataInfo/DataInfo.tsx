@@ -34,7 +34,7 @@ const DataInfo = () => {
                     </div>
                 </div>
                 <span className='timescale-badge'>{timeScaleText}</span>
-                <select onChange={handleSelectChange} defaultValue='treemap' >
+                <select onChange={handleSelectChange} defaultValue='treemap' className='mzb-select' >
                     <option value="treemap">Treemap</option>
                     <option value="table">Table</option>
                 </select>
