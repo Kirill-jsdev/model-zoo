@@ -10,6 +10,9 @@
 
 .model-zoo-browser .mzb-navigation {
     background-color: #ebecf0;
+    height: 420px;
+    overflow: hidden;
+    /* overflow-x: scroll; */
 }
 
 .model-zoo-browser .nav-header {
@@ -63,13 +66,14 @@
 
 /* Model Selector */
 
-.model-zoo-browser .sidebar {
+.model-zoo-browser .mzb-sidebar {
     padding: 15px;
-    overflow-x: hidden;
+    height: 372px;
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
-.model-zoo-browser .sidebar .content {
+.model-zoo-browser .mzb-sidebar .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
@@ -78,7 +82,7 @@
     max-width: 169px;
 }
 
-.model-zoo-browser .sidebar .selector-btn {
+.model-zoo-browser .mzb-sidebar .selector-btn {
     background-color: #C9C4D4;
     color: #4D0246;
     border-radius: 0.3125rem;
@@ -97,16 +101,16 @@
     font-weight: 400;
 }
 
-.model-zoo-browser .sidebar .selector-btn.selected {
+.model-zoo-browser .mzb-sidebar .selector-btn.selected {
     background-color: #4d0246;
     color: #fff;
 }
 
-.model-zoo-browser .sidebar .selector-btn svg {
+.model-zoo-browser .mzb-sidebar .selector-btn svg {
     width: 15px;
 }
 
-.model-zoo-browser .sidebar .selector-btn.selected .clock {
+.model-zoo-browser .mzb-sidebar .selector-btn.selected .clock {
     color: rgb(250, 250, 229);
 }
 

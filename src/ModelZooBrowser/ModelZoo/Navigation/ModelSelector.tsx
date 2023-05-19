@@ -22,7 +22,7 @@ export const ModelSelector: React.FC = () => {
   if (typeof options === 'undefined') return <></>
 
   return (
-    <aside className='sidebar'>
+    <aside className='mzb-sidebar'>
       {!showInGroups && <div className='content'>
         {options.map(({ option, value }) => (
           <ModelSelectButton
