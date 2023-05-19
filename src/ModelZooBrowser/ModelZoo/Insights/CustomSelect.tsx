@@ -13,9 +13,9 @@ type CustomSelectProps = {
 const CustomSelect: React.FC<CustomSelectProps> = ({label, value, options, handleScaleChange}) => {
 
     return (
-        <div>
-            <label htmlFor="">{label}</label>
-            <select name="" id="" onChange={(e) => handleScaleChange(e as React.ChangeEvent<HTMLSelectElement>)} value={value}>
+        <div className="mzb-offset-select-container">
+            <label className="mzb-offset-select-label">{label}</label>
+            <select className="mzb-offset-select" onChange={(e) => handleScaleChange(e as React.ChangeEvent<HTMLSelectElement>)} value={value}>
                 {options.map((opt: OptionType) => {
                     return (
                         <option key={opt.value} value={opt.value}>{opt.option}</option>
