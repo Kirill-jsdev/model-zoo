@@ -44,7 +44,7 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
   return (
     <div className={`mzb-table-container ${className}`} ref={setTableRef}>
       <table aria-label="terms table">
-        <thead>
+        <thead className='mzb-table-header'>
           <tr>
             <td className='index-cell'>{INDEX}</td>
             <td className='terms-cell'>{TERMS}</td>
