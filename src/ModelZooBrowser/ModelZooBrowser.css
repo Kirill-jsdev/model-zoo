@@ -360,7 +360,7 @@
 
 .model-zoo-browser .insights .settings-panel {
     padding: 15px 15px 15px 25px;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 372px;
     background-color: #ebecf0;
     display: flex;
