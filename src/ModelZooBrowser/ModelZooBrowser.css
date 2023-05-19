@@ -47,8 +47,12 @@
     border-radius: 4px;
 }
 
-.model-zoo-browser .nav-header .download {
-    color: #fff;
+.model-zoo-browser .nav-header .mzb-download {
+    position: relative;
+    width: 25px;
+    top: 3px;
+    color: #4d0246;
+    cursor: pointer;
 }
 
 .model-zoo-browser .nav-header .arrow-up {
