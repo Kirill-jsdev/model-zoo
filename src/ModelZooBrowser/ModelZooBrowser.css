@@ -408,3 +408,8 @@
     height: 8px;
     border-radius: 50%;
 }
+
+.model-zoo-browser .insights .mzb-f-difficulty {
+    font-weight: 500;
+    margin-top: 15px;
+}

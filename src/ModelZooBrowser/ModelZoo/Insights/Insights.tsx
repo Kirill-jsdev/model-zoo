@@ -18,7 +18,7 @@ export const Insights: React.FC = () => {
           <div className='settings-panel'>
             <Offsets />
             <UnusedVariables />
-            {difficulty && <div>Difficulty: {difficulty.toFixed(3)}%</div>}
+            {difficulty && <div className='mzb-f-difficulty'>Difficulty: {difficulty.toFixed(3)}%</div>}
           </div>
         </>
       )
