@@ -10,7 +10,7 @@ export const Insights: React.FC = () => {
     const difficulty = model?.model?.modelZoo?.difficulty
 
     return (
-        <div className='insights'>
+        <>
           <div className='header' onClick={() => onIsDrawerOpenChange(false)}>
             <DrawerArrows />
             <h6>Insights</h6>
@@ -20,6 +20,6 @@ export const Insights: React.FC = () => {
             <UnusedVariables />
             {difficulty && <div>Difficulty: {difficulty.toFixed(3)}%</div>}
           </div>
-        </div>
+        </>
       )
 }

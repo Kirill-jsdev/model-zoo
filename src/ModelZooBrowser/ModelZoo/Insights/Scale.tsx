@@ -75,7 +75,7 @@ export const Scale: React.FC<ScaleProps> = ({
   return (
     <>
       <CustomScale color={color} label={label(usedOffsets)} name={variable} tooltipLabel={tooltipLabelFromValue} scaledUnusedOffsets={{from: scaledUnusedOffsets?.from, to: scaledUnusedOffsets?.to}} />
-      <ScaleComponent
+      {/* <ScaleComponent
         name={variable}
         label={label(usedOffsets)}
         tooltipLabel={tooltipLabelFromValue}
@@ -85,7 +85,7 @@ export const Scale: React.FC<ScaleProps> = ({
           value: scaledUnusedOffsets ? [scaledUnusedOffsets.from, scaledUnusedOffsets.to] : undefined,
           ...sliderProps,
         }}
-      />
+      /> */}
     </>
   )
 }

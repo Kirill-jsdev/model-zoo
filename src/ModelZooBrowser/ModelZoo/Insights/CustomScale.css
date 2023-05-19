@@ -106,9 +106,10 @@
 
 .mzb-scale-wrapper .mzb-scale-label {
     color: #fff;
-    padding: 1px 3px;
+    padding: 2px 3px;
     border-radius: 5px;
     font-size: 10px;
+    flex-shrink: 0;
 }
 
 .mzb-scale-wrapper .mzb-scale-tooltip-label {

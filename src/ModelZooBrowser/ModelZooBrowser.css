@@ -323,7 +323,9 @@
 .model-zoo-browser .insights .settings-panel {
     flex: 1;
     padding: 1.25rem 1.5rem 1.25rem 1rem;
-    overflow-y: auto;
+    overflow-y: scroll;
+    height: 372px;
+    background-color: #ebecf0;
 }
 
 .model-zoo-browser .insights .insights-subheader {
