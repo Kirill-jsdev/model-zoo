@@ -15,13 +15,13 @@ const DataInfo = () => {
         onVisualizeAsChange(e.target.value as 'treemap' | 'table')
     }
 
-    const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length} Terms)` : 'Overview'
+    // const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length} Terms)` : 'Overview'
     // const timeScale = model?.model?.settings?.data?.timeScale
     const timeScaleText = `Timescale: ${labelValue}`
 
     return (
         <div className="data-info">
-            <h6 className='model-details-header'>{modelDetailsText}</h6>
+            {/* <h6 className='model-details-header'>{modelDetailsText}</h6> */}
             <div className='model-details'>
                 <div className='node-details'>
                     <div>

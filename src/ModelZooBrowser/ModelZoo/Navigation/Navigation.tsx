@@ -5,7 +5,9 @@ import '../../ModelZooBrowser.css'
 import { DownloadIcon, ArrowUpIcon } from '../../Icons'
 
 const Header = () => {
-  const {onSelectedModelIndexChange, model} = useContext(ModelZooBrowserContext)
+  const {onSelectedModelIndexChange, model,  selectedModelIndex, selectedModelTerms,} = useContext(ModelZooBrowserContext)
+
+  const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length} Terms)` : 'Overview'
 
   const handleClick = () => {
     onSelectedModelIndexChange(undefined)
@@ -26,9 +28,9 @@ const Header = () => {
 
   return (
     <div className='nav-header'>
-      <div className='title' onClick={handleClick}>
-        <ArrowUpIcon />
-        <h6>overview</h6>
+      <div className='title'>
+        <div title={'Back to overview'} onClick={handleClick} className='mzb-back'><ArrowUpIcon /></div>
+        <h6>{modelDetailsText}</h6>
       </div>
       <div className='mzb-download' onClick={handleDownloadJSON}><DownloadIcon /></div>
     </div>
