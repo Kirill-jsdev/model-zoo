@@ -263,7 +263,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3px 10px;
+    padding: 0 10px;
+    height: 47px;
 }
 
 .model-zoo-browser .mzb-timescale-badge {
@@ -292,20 +293,22 @@
     height: 40px;
 }
 
-.model-zoo-browser .data-info .node-details {
+.model-zoo-browser .data-info .mzb-node-details {
     display: flex;
     gap: 10px;
 
     font-size: 10px;
     max-width: 300px;
+    max-height: 40px;
+    overflow: hidden;
 }
 
-.model-zoo-browser .data-info .node-details .dn-txt-info {
+.model-zoo-browser .data-info .mzb-node-details .dn-txt-info {
     display: flex;
     flex-direction: column;
 }
 
-.model-zoo-browser .data-info .node-details .dn-mark {
+.model-zoo-browser .data-info .mzb-node-details .dn-mark {
     width: 12px;
     height: 12px;
     border-radius: 50%;

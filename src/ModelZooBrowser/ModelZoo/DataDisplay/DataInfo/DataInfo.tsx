@@ -5,7 +5,7 @@ import { DrawerArrows } from '../../../Icons'
 
 const DataInfo = () => {
 
-    const { selectedModelIndex, selectedModelTerms, onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen, nodeData } = useContext(ModelZooBrowserContext)
+    const { onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen, nodeData } = useContext(ModelZooBrowserContext)
 
     const timePeriodISO8601 = model?.model?.modelZoo?.samplingPeriod ?? model?.model?.normalBehaviorModel?.samplingPeriod
 
@@ -15,24 +15,23 @@ const DataInfo = () => {
         onVisualizeAsChange(e.target.value as 'treemap' | 'table')
     }
 
-    // const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length} Terms)` : 'Overview'
-    // const timeScale = model?.model?.settings?.data?.timeScale
     const timeScaleText = `Timescale: ${labelValue}`
 
     return (
         <div className="data-info">
-            {/* <h6 className='model-details-header'>{modelDetailsText}</h6> */}
-            <div className='model-details'>
-                <div className='node-details'>
-                    <div>
-                        <div className='dn-mark' style={{backgroundColor: nodeData?.color}}></div>
-                    </div>
-                    <div className='dn-txt-info'>
-                        <span style={{fontWeight: '700'}}>{nodeData?.term}</span>
-                        {nodeData?.importance && <span>Importance: {nodeData?.importance.toFixed(3)}</span>}
-                        {nodeData?.coefficient && <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>}
-                    </div>
+
+            <div className='mzb-node-details'>
+                <div>
+                    <div className='dn-mark' style={{backgroundColor: nodeData?.color}}></div>
                 </div>
+                <div className='dn-txt-info'>
+                    <span style={{fontWeight: '700'}}>{nodeData?.term}</span>
+                    {nodeData?.importance && <span>Importance: {nodeData?.importance.toFixed(3)}</span>}
+                    {nodeData?.coefficient && <span>Coefficient: {nodeData?.coefficient?.toFixed(3)}</span>}
+                </div>
+            </div>
+
+            <div className='model-details'>
                 <span className='mzb-timescale-badge'>{timeScaleText}</span>
                 <select onChange={handleSelectChange} defaultValue='treemap' className='mzb-select' >
                     <option value="treemap">Treemap</option>
