@@ -15,7 +15,7 @@ const DataInfo = () => {
         onVisualizeAsChange(e.target.value as 'treemap' | 'table')
     }
 
-    const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length}) Terms` : 'Overview'
+    const modelDetailsText = selectedModelIndex ? `Model Index ${selectedModelIndex} (${selectedModelTerms?.length} Terms)` : 'Overview'
     // const timeScale = model?.model?.settings?.data?.timeScale
     const timeScaleText = `Timescale: ${labelValue}`
 
