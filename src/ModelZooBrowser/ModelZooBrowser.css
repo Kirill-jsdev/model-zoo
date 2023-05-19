@@ -173,18 +173,19 @@
 
 /* TABLE */
 
-.model-zoo-browser .data-visualization .table-container {
+.model-zoo-browser .data-visualization .mzb-table-container {
     width: 100%;
-    overflow-x: auto;
+    height: 374px;
+    overflow-y: auto;
 }
 
-.model-zoo-browser .data-visualization .table-container table {
+.model-zoo-browser .data-visualization .mzb-table-container table {
     width: 100%;
     background-color: #f3eff2;
     border-spacing: 2px;
     text-align: left;
 }
-.model-zoo-browser .data-visualization .table-container table thead {
+.model-zoo-browser .data-visualization .mzb-table-container table thead {
     display: table-header-group;
     width: 100%;
     background-color: #936487;
@@ -201,23 +202,23 @@
     background-color: #fff;
 }
 
-.model-zoo-browser .data-visualization .table-container .index-cell {
+.model-zoo-browser .data-visualization .mzb-table-container .index-cell {
     width: 5%;
 }
 
-.model-zoo-browser .data-visualization .table-container .terms-cell {
+.model-zoo-browser .data-visualization .mzb-table-container .terms-cell {
     width: 55%;
 }
 
-.model-zoo-browser .data-visualization .table-container .coefficient-cell {
+.model-zoo-browser .data-visualization .mzb-table-container .coefficient-cell {
     width: 20%;
 }
 
-.model-zoo-browser .data-visualization .table-container .importance-cell {
+.model-zoo-browser .data-visualization .mzb-table-container .importance-cell {
     width: 20%;
 }
 
-.model-zoo-browser .data-visualization .table-container .bar {
+.model-zoo-browser .data-visualization .mzb-table-container .bar {
     width: 100%;
     height: 100%;
     position: relative;
@@ -225,12 +226,12 @@
     align-items: center;
 }
 
-.model-zoo-browser .data-visualization .table-container .bar-caption {
+.model-zoo-browser .data-visualization .mzb-table-container .bar-caption {
     padding-left: 0.25rem;
     z-index: 2;
 }
 
-.model-zoo-browser .data-visualization .table-container .term-cell {
+.model-zoo-browser .data-visualization .mzb-table-container .term-cell {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

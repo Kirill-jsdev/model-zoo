@@ -42,7 +42,7 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
   const compare = (a: Term, b: Term) => (b.importance ?? 0) - (a.importance ?? 0)
 
   return (
-    <div className={`table-container ${className}`} ref={setTableRef}>
+    <div className={`mzb-table-container ${className}`} ref={setTableRef}>
       <table aria-label="terms table">
         <thead>
           <tr>
