@@ -1,13 +1,18 @@
 import { useContext } from 'react'
 import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
 import { DrawerArrows } from '../../../Icons'
+import { DetectionModel } from '../../../ADModelTypes'
+import { ForecastModel } from '../../../FTypes'
 
 
 const DataInfo = () => {
 
     const { onVisualizeAsChange, model, onIsDrawerOpenChange, isDrawerOpen, nodeData } = useContext(ModelZooBrowserContext)
 
-    const timePeriodISO8601 = model?.model?.modelZoo?.samplingPeriod ?? model?.model?.normalBehaviorModel?.samplingPeriod
+    const detectionModel = model as DetectionModel
+    const forecastModel = model as ForecastModel
+
+    const timePeriodISO8601 = forecastModel?.model?.modelZoo?.samplingPeriod ?? detectionModel?.model?.normalBehaviorModel?.samplingPeriod
 
     const labelValue = convertTimePeriodFromISO8601(timePeriodISO8601)?.labelValue
 

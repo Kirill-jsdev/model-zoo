@@ -7,6 +7,7 @@ import { DrawerArrows } from '../../Icons'
 export const Insights: React.FC = () => {
 
     const { onIsDrawerOpenChange, model } =  useContext(ModelZooBrowserContext)
+    //@ts-ignore
     const difficulty = model?.model?.modelZoo?.difficulty
 
     return (

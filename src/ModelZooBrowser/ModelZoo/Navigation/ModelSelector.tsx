@@ -13,6 +13,7 @@ export const ModelSelector: React.FC = () => {
   const options = useModelOptions()
 
   //Forecasting model has modelZoo property whereas AD - normalBehaviorModel instead. Based on this the decision is made
+  //@ts-ignore
   const isForecasting = !!model?.model?.modelZoo
   const showInGroups = isForecasting && detectionModelResult.isDailyCycle
 
