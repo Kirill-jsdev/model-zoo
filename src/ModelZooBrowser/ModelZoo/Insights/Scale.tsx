@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react'
-import { SliderProps } from '@material-ui/core'
 import { DatasetVariable } from '../../Utilities/Types'
 import { DataAvailabilityScale } from './useDatasetAvailability-hook'
-import { Scale as ScaleComponent } from './ScaleGeneric'
 import CustomScale from './CustomScale'
 
 
@@ -15,7 +13,6 @@ export type VariableOffsets = {
 interface ScaleProps extends VariableOffsets, Omit<DatasetVariable, 'variable'> {
   scale: DataAvailabilityScale
   scaleRatio: number
-  sliderProps?: SliderProps
 }
 
 const ROUND_FACTOR = 100
@@ -53,7 +50,6 @@ function tooltipLabel(scale: DataAvailabilityScale, value?: number[]): string {
 
 export const Scale: React.FC<ScaleProps> = ({
   usedOffsets,
-  sliderProps,
   scale,
   scaleRatio,
   variable,
@@ -74,18 +70,13 @@ export const Scale: React.FC<ScaleProps> = ({
 
   return (
     <>
-      <CustomScale color={color} label={label(usedOffsets)} name={variable} tooltipLabel={tooltipLabelFromValue} scaledUnusedOffsets={{from: scaledUnusedOffsets?.from, to: scaledUnusedOffsets?.to}} />
-      {/* <ScaleComponent
-        name={variable}
+      <CustomScale
+        color={color}
         label={label(usedOffsets)}
+        name={variable}
         tooltipLabel={tooltipLabelFromValue}
-        color={textColor}
-        $backgroundColor={color}
-        sliderProps={{
-          value: scaledUnusedOffsets ? [scaledUnusedOffsets.from, scaledUnusedOffsets.to] : undefined,
-          ...sliderProps,
-        }}
-      /> */}
+        scaledUnusedOffsets={{from: scaledUnusedOffsets?.from, to: scaledUnusedOffsets?.to}}
+      />
     </>
   )
 }
