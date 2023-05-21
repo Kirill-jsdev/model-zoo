@@ -1,9 +1,11 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
 import { TooltipDataProps } from '../Utilities/Types'
+import { DetectionModel } from '../ADModelTypes'
+import { ForecastModel } from '../FTypes'
 
 interface ModelZooBrowserContextValues {
-    model: any
+    model: DetectionModel | ForecastModel | undefined
     onModelChange: (model: any) => void
     dataset: any
     onDatasetChange: (dataset: any) => void

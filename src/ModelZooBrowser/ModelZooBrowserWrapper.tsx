@@ -1,8 +1,10 @@
 import React, {useEffect, useContext} from 'react'
 import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider'
+import { DetectionModel } from './ADModelTypes'
+import { ForecastModel } from './FTypes'
 
 interface ModelZooBrowserWrapperProps {
-    model?: any
+    model?: DetectionModel | ForecastModel
     dataset?: any
     variablesWithColors?: any
 }
@@ -12,14 +14,10 @@ const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children
     const {onModelChange, onDatasetChange, onVariablesWithColorsChange} = useContext(ModelZooBrowserContext)
 
     useEffect(() => {
-
-
         onModelChange(model)
         onDatasetChange(dataset)
         onVariablesWithColorsChange(variablesWithColors)
-
     }, [model, dataset, variablesWithColors, onModelChange, onDatasetChange, onVariablesWithColorsChange])
-
 
     return(
         <>

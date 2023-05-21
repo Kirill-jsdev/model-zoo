@@ -2,18 +2,26 @@ import { useContext, useMemo } from 'react'
 import { ModelOption } from "./Types"
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './helpers'
+import { DetectionModel } from '../ADModelTypes'
+import { ForecastModel } from '../FTypes'
 
 export const useModelOptions = () => {
 
     const {model} = useContext(ModelZooBrowserContext)
-    const models = model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models
+
+    const detectionModel = model as DetectionModel
+    const forecastModel = model as ForecastModel
+
+    const models = forecastModel?.model?.modelZoo?.models ?? detectionModel?.model?.normalBehaviorModel?.models
+
     const options = useMemo<ModelOption[]>(() => {
-        if(typeof models === 'undefined') return
-        return models.map(({ index, dayTime }: {index: any, dayTime: any}) => ({
-        value: index,
-        option: dayTime ? dayTime : `Index ${index}`,
-        }))
-    }, [models])
+        if (typeof models === 'undefined') return [];
+
+        return models.map(({ index, dayTime }) => ({
+          value: index,
+          option: dayTime ? dayTime : `Index ${index}`,
+        }));
+      }, [models]);
 
     return options
 }
@@ -22,10 +30,13 @@ export function useDetectionModelResult() {
 
     const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange, model, selectedModelIndex } = useContext(ModelZooBrowserContext)
 
-    const variableProperties = model?.model?.normalBehaviorModel?.variableProperties ?? model?.model?.modelZoo?.variableProperties
+    const detectionModel = model as DetectionModel
+    const forecastModel = model as ForecastModel
 
-    const models = useMemo(() => model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models ?? [], [model])
-    const isDailyCycle = useMemo(() => models.some(({ dayTime }: { dayTime: any }) => typeof dayTime === 'string'), [models])
+    const variableProperties = detectionModel?.model?.normalBehaviorModel?.variableProperties ?? forecastModel?.model?.modelZoo?.variableProperties
+
+    const models = useMemo(() => forecastModel?.model?.modelZoo?.models ?? detectionModel?.model?.normalBehaviorModel?.models ?? [], [detectionModel?.model?.normalBehaviorModel?.models, forecastModel?.model?.modelZoo?.models])
+    const isDailyCycle = useMemo(() => models.some(({ dayTime }) => typeof dayTime === 'string'), [models])
 
     const variableImportancesModel = useMemo(() => {
         if (!variableProperties) return []
@@ -73,7 +84,8 @@ export function useDetectionModelResult() {
 
 export const useTarget = () => {
     const {model, variablesWithColors} = useContext(ModelZooBrowserContext)
-    const targetColumn = model?.model?.settings?.data?.KPIColumn
+    const detectionModel = model as DetectionModel
+    const targetColumn = detectionModel?.model?.settings?.data?.KPIColumn
     const target = targetColumn ? variablesWithColors.find((v: any) => v.name === targetColumn) : undefined
     return target
 }
