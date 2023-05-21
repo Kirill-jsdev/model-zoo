@@ -23,7 +23,7 @@ export const Bar: React.FC<BarProps> = ({ biggestValue, value, colors }) => {
       position: 'absolute',
       height: '100%',
       zIndex: '1',
-      backgroundColor: lightenColor(color, 25),
+      backgroundColor: lightenColor(color, 5),
       width: `${width}%`,
       left: `${left}%`
     }
