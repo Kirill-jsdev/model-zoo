@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-// import { Term } from '../../../Utilities/helpers'
 import { DatasetVariable, Term } from '../../../Utilities/Types'
 import { color } from '../../../Utilities/color'
 import { Part } from '../../../Utilities/helpers'
@@ -7,7 +6,6 @@ import { standardFormatter } from '../../../Utilities/helpers'
 import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '../../../Utilities/helpers'
 import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Bar } from './Bar'
-// import { TooltipEnhancedDiv } from './TooltipEnhanced'
 
 type VariablesColors = { variablesColors: DatasetVariable[] }
 
@@ -62,9 +60,6 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
             return (
               <tr key={`mzb-table-body-${index}`}>
                 <td className='index-cell' ref={setIndexColumnRef}>{index + 1}</td>
-                {/* <td className='terms-cell' style={{width: tableWidth}}>
-                  <TooltipEnhancedDiv TooltipProps={{ title: termLabel }}>{termLabel}</TooltipEnhancedDiv>
-                </td> */}
                 <td className='terms-cell' title={termLabel} style={{width: tableWidth}}>{termLabel}</td>
                 {hasCoefficient && (
                   <td className='coefficient-cell'>

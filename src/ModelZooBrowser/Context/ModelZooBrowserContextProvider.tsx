@@ -3,12 +3,13 @@ import React, {useState} from 'react'
 import { TooltipDataProps } from '../Utilities/Types'
 import { DetectionModel } from '../ADModelTypes'
 import { ForecastModel } from '../FTypes'
+import { DatasetVersion } from '../VersionType'
 
 interface ModelZooBrowserContextValues {
     model: DetectionModel | ForecastModel | undefined
     onModelChange: (model: any) => void
-    dataset: any
-    onDatasetChange: (dataset: any) => void
+    dataset: DatasetVersion | undefined
+    onDatasetChange: (dataset: DatasetVersion | undefined) => void
     selectedModelIndex: number | undefined
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
     selectedModelTreemapNodes: any

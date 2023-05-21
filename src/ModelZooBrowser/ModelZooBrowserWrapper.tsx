@@ -2,10 +2,11 @@ import React, {useEffect, useContext} from 'react'
 import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider'
 import { DetectionModel } from './ADModelTypes'
 import { ForecastModel } from './FTypes'
+import { DatasetVersion } from './VersionType'
 
 interface ModelZooBrowserWrapperProps {
     model?: DetectionModel | ForecastModel
-    dataset?: any
+    dataset?: DatasetVersion
     variablesWithColors?: any
 }
 
