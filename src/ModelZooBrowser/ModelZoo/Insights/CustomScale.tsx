@@ -2,6 +2,7 @@ import './CustomScale.css'
 
 type CustomScaleProps = {
   color: string
+  textColor: string
   label: string
   name: string
   tooltipLabel: string
@@ -12,7 +13,7 @@ type CustomScaleProps = {
 }
 
 
-const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLabel, scaledUnusedOffsets}) => {
+const CustomScale: React.FC<CustomScaleProps> = ({color, textColor, label, name, tooltipLabel, scaledUnusedOffsets}) => {
 
   const {from, to} = scaledUnusedOffsets
 
@@ -28,7 +29,7 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, label, name, tooltipLab
     <div className='mzb-scale-wrapper'>
       <div className='mzb-scale-header'>
         <div>{name}</div>
-        <div className='mzb-scale-label' style={{backgroundColor: color}}>{label}</div>
+        <div className='mzb-scale-label' style={{backgroundColor: color, color: textColor}}>{label}</div>
       </div>
       <div className="mzb-scale">
         <div className="mzb-scale-p">
