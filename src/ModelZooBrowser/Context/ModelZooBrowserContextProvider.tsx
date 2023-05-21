@@ -5,10 +5,6 @@ import { TooltipDataProps } from '../Utilities/Types'
 interface ModelZooBrowserContextValues {
     model: any
     onModelChange: (model: any) => void
-    models: any
-    onModelsChange: (model: any) => void
-    variableProperties: any
-    onVariablePropertiesChange: (variableProperties: any) => void
     dataset: any
     onDatasetChange: (dataset: any) => void
     selectedModelIndex: number | undefined
@@ -31,34 +27,35 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     model: undefined,
      // eslint-disable-next-line
     onModelChange: (model: any) => {},
-    models: undefined,
-    onModelsChange: (models: any) => {},
-    variableProperties: undefined,
-    onVariablePropertiesChange: (variableProperties: any) => {},
     dataset: undefined,
+     // eslint-disable-next-line
     onDatasetChange: (dataset: any) => {},
     selectedModelIndex: undefined,
      // eslint-disable-next-line
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
     selectedModelTreemapNodes: undefined,
+     // eslint-disable-next-line
     onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: any) => {},
     selectedModelTerms: undefined,
+     // eslint-disable-next-line
     onSelectedModelTermsChange: (selectedModelTerms: any) => {},
     variablesWithColors: undefined,
+     // eslint-disable-next-line
     onVariablesWithColorsChange: (variablesWithColors: any) => {},
     visualizeAs: 'treemap',
+     // eslint-disable-next-line
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {},
     isDrawerOpen: true,
+     // eslint-disable-next-line
     onIsDrawerOpenChange: (isDrawerOpen: boolean) => {},
     nodeData: undefined,
+     // eslint-disable-next-line
     onNodeDataChange: (nodeData: TooltipDataProps | undefined) => {}
 })
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState()
-    const [models, setModels] = useState()
-    const [variableProperties, setVariableProperties] = useState()
     const [dataset, setDataset] = useState()
     const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
@@ -70,14 +67,6 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const onModelChange = (model: any) => {
         setModel(model)
-    }
-
-    const onModelsChange = (models: any) => {
-        setModels(models)
-    }
-
-    const onVariablePropertiesChange = (variableProperties: any) => {
-        setVariableProperties(variableProperties)
     }
 
     const onDatasetChange = (dataset: any) => {
@@ -115,10 +104,6 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const ctxValues = {
         model,
         onModelChange,
-        models,
-        onModelsChange,
-        variableProperties,
-        onVariablePropertiesChange,
         dataset,
         onDatasetChange,
         selectedModelIndex,
