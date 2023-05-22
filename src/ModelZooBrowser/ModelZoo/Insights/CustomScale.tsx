@@ -23,8 +23,6 @@ const CustomScale: React.FC<CustomScaleProps> = ({color, textColor, label, name,
   const offset =  typeof to === 'number' && to > 0 ? offsetRight * - 1 : offsetRight
   const areDotsVisible = typeof from === 'number' && typeof to === 'number' && barLength + offset > 180 ? true : false
 
-  console.log(barLength, from, to)
-
   return (
     <div className='mzb-scale-wrapper'>
       <div className='mzb-scale-header'>

@@ -18,7 +18,6 @@ export const ModelSelector: React.FC = () => {
   const showInGroups = isForecasting && detectionModelResult.isDailyCycle
 
   const chunks = divideArrayIntoChunks(options, 24)
-  console.log('chunks', chunks)
 
   if (typeof options === 'undefined') return <></>
 
