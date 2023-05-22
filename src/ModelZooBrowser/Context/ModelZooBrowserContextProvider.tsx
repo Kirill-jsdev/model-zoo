@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
-import { TooltipDataProps } from '../Utilities/Types'
+import { Term, TooltipDataProps, TreemapNode } from '../Utilities/Types'
 import { DetectionModel } from '../ADModelTypes'
 import { ForecastModel } from '../FTypes'
 import { DatasetVersion } from '../VersionType'
@@ -12,10 +12,10 @@ interface ModelZooBrowserContextValues {
     onDatasetChange: (dataset: DatasetVersion | undefined) => void
     selectedModelIndex: number | undefined
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => void
-    selectedModelTreemapNodes: any
-    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: any) => void
-    selectedModelTerms: any
-    onSelectedModelTermsChange: (selectedModelTerms: any) => void
+    selectedModelTreemapNodes: TreemapNode[] | undefined
+    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: TreemapNode[] | undefined) => void
+    selectedModelTerms: Term[] | undefined
+    onSelectedModelTermsChange: (selectedModelTerms: Term[] | undefined) => void
     variablesWithColors: any
     onVariablesWithColorsChange: (variablesWithColors: any) => void
     visualizeAs: 'treemap' | 'table'
@@ -29,7 +29,7 @@ interface ModelZooBrowserContextValues {
 export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContextValues>({
     model: undefined,
      // eslint-disable-next-line
-    onModelChange: (model: any) => {},
+    onModelChange: (model: DetectionModel | ForecastModel | undefined) => {},
     dataset: undefined,
      // eslint-disable-next-line
     onDatasetChange: (dataset: any) => {},
@@ -38,10 +38,10 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
     selectedModelTreemapNodes: undefined,
      // eslint-disable-next-line
-    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: any) => {},
+    onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: TreemapNode[] | undefined) => {},
     selectedModelTerms: undefined,
      // eslint-disable-next-line
-    onSelectedModelTermsChange: (selectedModelTerms: any) => {},
+    onSelectedModelTermsChange: (selectedModelTerms: Term[] | undefined) => {},
     variablesWithColors: undefined,
      // eslint-disable-next-line
     onVariablesWithColorsChange: (variablesWithColors: any) => {},
