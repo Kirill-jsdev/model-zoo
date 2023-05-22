@@ -47,7 +47,10 @@ export const Offsets: React.FC = () => {
   const [scale, setScale] = useState<DataAvailabilityScale>(availabilityScale)
   const exceedsOne = useMemo(() => offsets.some(usedOffsetsExceedsOne), [offsets])
   const sliderProps = useMemo(() => getSliderConfiguration(exceedsOne), [exceedsOne])
-  const scaleRatio = useMemo(() => originalSamplingPeriod! / scale, [scale, originalSamplingPeriod])
+
+  const scaleRatio = useMemo(() => {
+    return originalSamplingPeriod! / scale
+  } , [scale, originalSamplingPeriod])
 
   const enhancedOffsets = useMemo(() => {
     return offsets.map((offset) => {

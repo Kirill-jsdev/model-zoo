@@ -69,7 +69,7 @@ interface TimePeriod {
     labelValue: string;
   }
 
-const convertTimePeriodFromISO8601 = (timePeriod: string | undefined): TimePeriod | null => {
+export const convertTimePeriodFromISO8601 = (timePeriod: string | undefined): TimePeriod | null => {
     if (!timePeriod) return null
 
     const regex = /P(?:(\d+)D)?T?(\d+)?(\w+)/
