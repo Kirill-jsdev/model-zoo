@@ -62,8 +62,8 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [dataset, setDataset] = useState()
     const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
-    const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState()
-    const [selectedModelTerms, setSelectedModelTerms] = useState()
+    const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState<TreemapNode[] | undefined>()
+    const [selectedModelTerms, setSelectedModelTerms] = useState<Term[] | undefined>()
     const [visualizeAs, setVisualizeAs] = useState<'treemap' | 'table'>('treemap')
     const [isDrawerOpen, setIsDrawerOpen] = useState(true)
     const [nodeData, setNodeData] = useState<TooltipDataProps | undefined>()
@@ -80,11 +80,11 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setSelectedModelIndex(selectedModelIndex)
     }
 
-    const onSelectedModelTreemapNodesChange = (selectedModelTreemapNodes: any) => {
+    const onSelectedModelTreemapNodesChange = (selectedModelTreemapNodes: TreemapNode[] | undefined) => {
         setSelectedModelTreemapNodes(selectedModelTreemapNodes)
     }
 
-    const onSelectedModelTermsChange = (selectedModelTerms: any) => {
+    const onSelectedModelTermsChange = (selectedModelTerms: Term[] | undefined) => {
         setSelectedModelTerms(selectedModelTerms)
     }
 
