@@ -1,6 +1,9 @@
 import {useMemo, useEffect, useState} from 'react'
 import { ModelVariableOffset } from '../../Utilities/helpers';
 import { DatasetVersion } from '../../VersionType';
+import { VariableWithColors } from '../../Utilities/Types';
+import { DetectionModel } from '../../ADModelTypes';
+import { ForecastModel } from '../../FTypes';
 
 export type VariableOffsets = {
     variable: string
@@ -13,10 +16,13 @@ export type VariableOffsets = {
 //     dataTo: number
 // }
 
-export function useSelectedModelOffsets(variablesWithColors: any, selectedModelIndex: any, model: any): VariableOffsets[] {
+export function useSelectedModelOffsets(variablesWithColors: VariableWithColors[], selectedModelIndex: number, model: DetectionModel | ForecastModel): VariableOffsets[] {
+
+    const ADmodel = model as DetectionModel
+    const Fmodel = model as ForecastModel
 
     return useMemo(() => {
-      const models = model?.model?.modelZoo?.models ?? model?.model?.normalBehaviorModel?.models ?? []
+      const models = Fmodel?.model?.modelZoo?.models ?? ADmodel?.model?.normalBehaviorModel?.models ?? []
       const selectedModel = models.find(({ index }: {index: number}) => index === selectedModelIndex)
       if (!selectedModel) return []
 
@@ -29,7 +35,7 @@ export function useSelectedModelOffsets(variablesWithColors: any, selectedModelI
 
         return [...acc, variableOffset]
       }, [])
-    }, [model, selectedModelIndex, variablesWithColors])
+    }, [ADmodel, Fmodel, selectedModelIndex, variablesWithColors])
   }
 
   function transformModelVariableOffset({ dataFrom, dataTo }: ModelVariableOffset): VariableOffsets['usedOffsets'] {

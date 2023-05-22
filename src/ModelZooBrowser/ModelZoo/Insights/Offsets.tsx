@@ -46,7 +46,8 @@ export const Offsets: React.FC = () => {
   const forecastModel = model as ForecastModel
   const timePeriodISO8601 = forecastModel?.model?.modelZoo?.samplingPeriod ?? detectionModel?.model?.normalBehaviorModel?.samplingPeriod
 
-  const offsets = useSelectedModelOffsets(variablesWithColors, selectedModelIndex, model)
+  // eslint-disable-next-line
+  const offsets = useSelectedModelOffsets(variablesWithColors!, selectedModelIndex!, model!)
   let originalSamplingPeriod = useOriginalSamplingPeriod(dataset)
   if (!originalSamplingPeriod) originalSamplingPeriod = 0
 
