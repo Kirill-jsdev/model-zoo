@@ -7,7 +7,7 @@ import { DatasetVersion } from '../VersionType'
 
 interface ModelZooBrowserContextValues {
     model: DetectionModel | ForecastModel | undefined
-    onModelChange: (model: any) => void
+    onModelChange: (model: DetectionModel | ForecastModel | undefined) => void
     dataset: DatasetVersion | undefined
     onDatasetChange: (dataset: DatasetVersion | undefined) => void
     selectedModelIndex: number | undefined
@@ -58,7 +58,7 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
 
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
-    const [model, setModel] = useState()
+    const [model, setModel] = useState<DetectionModel | ForecastModel | undefined>()
     const [dataset, setDataset] = useState()
     const [variablesWithColors, setVariablesWithColors] = useState()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
@@ -68,7 +68,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(true)
     const [nodeData, setNodeData] = useState<TooltipDataProps | undefined>()
 
-    const onModelChange = (model: any) => {
+    const onModelChange = (model: DetectionModel | ForecastModel | undefined) => {
         setModel(model)
     }
 
