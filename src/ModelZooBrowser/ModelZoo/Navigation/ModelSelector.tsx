@@ -51,7 +51,7 @@ export const ModelSelector: React.FC = () => {
 type SelectorGroupProps = {
   options: {value: number, option: string}[]
   dayNumber: number
-  onClickHandler: any
+  onClickHandler: (selectedModelIndex: number | undefined) => void
   selectedModelIndex: number | undefined
   isDailyCycle: boolean
 }

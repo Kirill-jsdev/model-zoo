@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { ModelOption } from "./Types"
+import { ModelOption, Variable, VariableWithColors } from "./Types"
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './helpers'
 import { DetectionModel } from '../ADModelTypes'
@@ -62,7 +62,7 @@ export function useDetectionModelResult() {
 
     const selectedModelTerms = useMemo(() => {
         if (models.length === 0) return
-        if (selectedModelIndex) return models.find(({ index }: { index: any }) => index === selectedModelIndex)?.terms
+        if (selectedModelIndex) return models.find(({ index }) => index === selectedModelIndex)?.terms
         if (isUnRelatedModel) return models[0]?.terms
         return mapVariablePropertiesToTerms(variableProperties ?? [])
     }, [models, isUnRelatedModel, selectedModelIndex, variableProperties])
@@ -87,6 +87,6 @@ export const useTarget = () => {
     const detectionModel = model as DetectionModel
     const targetColumn = detectionModel?.model?.settings?.data?.KPIColumn
      // eslint-disable-next-line
-    const target = targetColumn ? variablesWithColors!.find((v: any) => v.name === targetColumn) : undefined
+    const target = targetColumn ? variablesWithColors!.find((v: VariableWithColors) => v.name === targetColumn) : undefined
     return target
 }

@@ -1,5 +1,5 @@
 import { Model } from '../ADModelTypes'
-import { Term, TreemapNode, Variable } from './Types'
+import { Term, TreemapNode, Variable, VariableWithColors } from './Types'
 const ROOT_LABEL = 'root'
 const ROOT_ELEMENT: TreemapNode = { label: ROOT_LABEL, parentLabel: null, importance: null }
 
@@ -371,17 +371,18 @@ const colorMap = [
   { color: '#7A434F', textColor: '#EBECF0'},
 ]
 
-export function buildPredictorPalette(variables: Variable[]) { //the type of argument was changed from '[]' to 'any[]'
-  const predictorPalette = variables.map((v: any, i: number) => {
+export function buildPredictorPalette(variables: Variable[]): VariableWithColors[] {
+  const predictorPalette = variables.map((v: Variable, i: number) => {
     const colorIndex = i < colorMap.length ? i : 0
-    v.variable = v.name
-    v.color = colorMap[colorIndex].color
-    v.textColor = colorMap[colorIndex].textColor
+    const temp = {...v} as VariableWithColors
+    temp.variable = v.name
+    temp.color = colorMap[colorIndex].color
+    temp.textColor = colorMap[colorIndex].textColor
 
-    return v
+    return temp
   })
 
-  return predictorPalette
+  return predictorPalette as VariableWithColors[]
 }
 
 ///GUARD FOR Table.tsx
