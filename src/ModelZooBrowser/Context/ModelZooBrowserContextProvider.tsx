@@ -32,7 +32,7 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     onModelChange: (model: DetectionModel | ForecastModel | undefined) => {},
     dataset: undefined,
      // eslint-disable-next-line
-    onDatasetChange: (dataset: any) => {},
+    onDatasetChange: (dataset: DatasetVersion | undefined) => {},
     selectedModelIndex: undefined,
      // eslint-disable-next-line
     onSelectedModelIndexChange: (selectedModelIndex: number | undefined) => {},
@@ -59,7 +59,7 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
 export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState<DetectionModel | ForecastModel | undefined>()
-    const [dataset, setDataset] = useState()
+    const [dataset, setDataset] = useState<DatasetVersion | undefined>()
     const [variablesWithColors, setVariablesWithColors] = useState<VariableWithColors[] | undefined>()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
     const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState<TreemapNode[] | undefined>()
@@ -72,7 +72,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setModel(model)
     }
 
-    const onDatasetChange = (dataset: any) => {
+    const onDatasetChange = (dataset: DatasetVersion | undefined) => {
         setDataset(dataset)
     }
 
