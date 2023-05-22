@@ -5,10 +5,7 @@ import { DetermineScale } from './DetermineScale'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { useSelectedModelOffsets, VariableOffsets, DataAvailabilityScale, useOriginalSamplingPeriod } from './insights-hooks'
 import { useDataAvailability } from './useDatasetAvailability-hook'
-import { useTarget } from '../../Utilities/Hooks'
-import { DetectionModel } from '../../ADModelTypes'
-import { ForecastModel } from '../../FTypes'
-import { TimePeriod, convertTimePeriodFromISO8601 } from '../DataDisplay/DataInfo/DataInfo'
+import { useConvertTimePeriodFromISO8601, useTarget } from '../../Utilities/Hooks'
 
 export interface Mark {
   value: number;
@@ -41,11 +38,6 @@ function usedOffsetsExceedsOne({ usedOffsets }: VariableOffsets): boolean {
 export const Offsets: React.FC = () => {
 
   const { selectedModelIndex, model, variablesWithColors, dataset } = useContext(ModelZooBrowserContext)
-
-  const detectionModel = model as DetectionModel
-  const forecastModel = model as ForecastModel
-  const timePeriodISO8601 = forecastModel?.model?.modelZoo?.samplingPeriod ?? detectionModel?.model?.normalBehaviorModel?.samplingPeriod
-
   // eslint-disable-next-line
   const offsets = useSelectedModelOffsets(variablesWithColors!, selectedModelIndex!, model!)
   let originalSamplingPeriod = useOriginalSamplingPeriod(dataset)
@@ -58,15 +50,18 @@ export const Offsets: React.FC = () => {
   const exceedsOne = useMemo(() => offsets.some(usedOffsetsExceedsOne), [offsets])
   const sliderProps = useMemo(() => getSliderConfiguration(exceedsOne), [exceedsOne])
 
+  const timeValue = useConvertTimePeriodFromISO8601(model)?.value
+  const timeUnit = useConvertTimePeriodFromISO8601(model)?.timeUnit
+
   const scaleRatio = useMemo(() => {
     //@ts-ignore
     if (scale === '1') {
-      const {value, timeUnit} = convertTimePeriodFromISO8601(timePeriodISO8601) as TimePeriod
-      return originalSamplingPeriod! / (value * SCALE_IN_SECONDS[timeUnit.toLocaleUpperCase()])
+    // eslint-disable-next-line
+    return originalSamplingPeriod! / (timeValue! * SCALE_IN_SECONDS[timeUnit!.toLocaleUpperCase()])
     }
 
     return originalSamplingPeriod! / scale
-  } , [scale, originalSamplingPeriod, timePeriodISO8601])
+  } , [scale, originalSamplingPeriod, timeValue, timeUnit])
 
   const enhancedOffsets = useMemo(() => {
     return offsets.map((offset) => {

@@ -91,7 +91,15 @@ export const useTarget = () => {
     return target
 }
 
-export const useConvertTimePeriodFromISO8601 = (model: DetectionModel | ForecastModel | undefined) => {
+export interface TimePeriod {
+    value: number
+    timeUnit: string
+    labelValue: string
+    timePeriodISO8601: string
+    multiplier: number
+}
+
+export const useConvertTimePeriodFromISO8601 = (model: DetectionModel | ForecastModel | undefined): TimePeriod | null => {
 
     if (!model) return null
 
