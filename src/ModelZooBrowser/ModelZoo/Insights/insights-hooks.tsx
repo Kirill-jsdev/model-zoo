@@ -26,7 +26,7 @@ export function useSelectedModelOffsets(variablesWithColors: VariableWithColors[
       const selectedModel = models.find(({ index }: {index: number}) => index === selectedModelIndex)
       if (!selectedModel) return []
 
-      return variablesWithColors.reduce((acc: any, { variable }) => {
+      return variablesWithColors.reduce((acc: VariableOffsets[], { variable }) => {
         const offsets = selectedModel.variableOffsets.find(({ name }) => name === variable)
         const variableOffset = {
           variable,
@@ -41,9 +41,6 @@ export function useSelectedModelOffsets(variablesWithColors: VariableWithColors[
   function transformModelVariableOffset({ dataFrom, dataTo }: ModelVariableOffset): VariableOffsets['usedOffsets'] {
     return { from: dataFrom, to: dataTo }
   }
-
-
-  ///import { useDataAvailability, useSelectedDatasetVersion, DataAvailabilityScale } from 'src/context/Dataset' //IMPORTS LINE FROM Offset.tsx
 
 export enum DataAvailabilityScale {
     SAMPLE = 1,
