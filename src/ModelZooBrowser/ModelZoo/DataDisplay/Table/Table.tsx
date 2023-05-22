@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { DatasetVariable, Term } from '../../../Utilities/Types'
+import { Term, VariableWithColors } from '../../../Utilities/Types'
 import { color } from '../../../Utilities/color'
 import { Part } from '../../../Utilities/helpers'
 import { standardFormatter } from '../../../Utilities/helpers'
@@ -7,11 +7,12 @@ import { getPartLabel, isBetaDictionary, getCoefficient, getTermLabel } from '..
 import { useResizeListener } from '../../../Utilities/useResizeListener'
 import { Bar } from './Bar'
 
-type VariablesColors = { variablesColors: DatasetVariable[] }
+// type VariablesColors = { variablesColors: DatasetVariable[] }
 
-interface ModelZooTableProps extends VariablesColors {
+interface ModelZooTableProps {
   className?: string
   terms?: Term[]
+  variablesColors?: VariableWithColors[]
 }
 
 const INDEX = 'Index'
@@ -32,7 +33,7 @@ export const ModelZooTable: React.FC<ModelZooTableProps> = ({ className, terms =
   }, [tableDimensions, indexColumnDimensions])
 
   const getPartColor = (part: Part) =>
-    variablesColors.find(({ variable }) => getPartLabel(part, standardFormatter).includes(variable))?.color ??
+    variablesColors!.find(({ variable }) => getPartLabel(part, standardFormatter).includes(variable))?.color ??
     color.shades.smoke.l
 
   const getColors = (term: Term) => term.parts.filter((part) => !isBetaDictionary(part)).map(getPartColor)

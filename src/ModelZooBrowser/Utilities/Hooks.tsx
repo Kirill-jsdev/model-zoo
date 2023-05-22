@@ -86,6 +86,7 @@ export const useTarget = () => {
     const {model, variablesWithColors} = useContext(ModelZooBrowserContext)
     const detectionModel = model as DetectionModel
     const targetColumn = detectionModel?.model?.settings?.data?.KPIColumn
-    const target = targetColumn ? variablesWithColors.find((v: any) => v.name === targetColumn) : undefined
+     // eslint-disable-next-line
+    const target = targetColumn ? variablesWithColors!.find((v: any) => v.name === targetColumn) : undefined
     return target
 }

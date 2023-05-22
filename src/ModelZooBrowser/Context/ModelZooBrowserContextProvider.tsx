@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
-import { Term, TooltipDataProps, TreemapNode } from '../Utilities/Types'
+import { Term, TooltipDataProps, TreemapNode, VariableWithColors } from '../Utilities/Types'
 import { DetectionModel } from '../ADModelTypes'
 import { ForecastModel } from '../FTypes'
 import { DatasetVersion } from '../VersionType'
@@ -16,8 +16,8 @@ interface ModelZooBrowserContextValues {
     onSelectedModelTreemapNodesChange: (selectedModelTreemapNodes: TreemapNode[] | undefined) => void
     selectedModelTerms: Term[] | undefined
     onSelectedModelTermsChange: (selectedModelTerms: Term[] | undefined) => void
-    variablesWithColors: any
-    onVariablesWithColorsChange: (variablesWithColors: any) => void
+    variablesWithColors: VariableWithColors[] | undefined
+    onVariablesWithColorsChange: (variablesWithColors: VariableWithColors[] | undefined) => void
     visualizeAs: 'treemap' | 'table'
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => void
     isDrawerOpen: boolean
@@ -44,7 +44,7 @@ export const ModelZooBrowserContext = React.createContext<ModelZooBrowserContext
     onSelectedModelTermsChange: (selectedModelTerms: Term[] | undefined) => {},
     variablesWithColors: undefined,
      // eslint-disable-next-line
-    onVariablesWithColorsChange: (variablesWithColors: any) => {},
+    onVariablesWithColorsChange: (variablesWithColors: VariableWithColors[] | undefined) => {},
     visualizeAs: 'treemap',
      // eslint-disable-next-line
     onVisualizeAsChange: (visualizeAs: 'treemap' | 'table') => {},
@@ -60,7 +60,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
 
     const [model, setModel] = useState<DetectionModel | ForecastModel | undefined>()
     const [dataset, setDataset] = useState()
-    const [variablesWithColors, setVariablesWithColors] = useState()
+    const [variablesWithColors, setVariablesWithColors] = useState<VariableWithColors[] | undefined>()
     const [selectedModelIndex, setSelectedModelIndex] = useState<number | undefined>()
     const [selectedModelTreemapNodes, setSelectedModelTreemapNodes] = useState<TreemapNode[] | undefined>()
     const [selectedModelTerms, setSelectedModelTerms] = useState<Term[] | undefined>()
@@ -88,7 +88,7 @@ export const ModelZooBrowserContextProvider: React.FC = ({children}) => {
         setSelectedModelTerms(selectedModelTerms)
     }
 
-    const onVariablesWithColorsChange = (variablesWithColors: any) => {
+    const onVariablesWithColorsChange = (variablesWithColors: VariableWithColors[] | undefined) => {
         setVariablesWithColors(variablesWithColors)
     }
 

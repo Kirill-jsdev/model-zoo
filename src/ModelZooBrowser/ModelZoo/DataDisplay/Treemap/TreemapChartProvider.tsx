@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { ModelZooBrowserContext } from '../../../Context/ModelZooBrowserContextProvider'
-import { TreemapNode, DatasetVariable, Direction } from '../../../Utilities/Types'
+import { TreemapNode, DatasetVariable, Direction, VariableWithColors } from '../../../Utilities/Types'
 import { TreemapChartConsumer } from './TreemapChartConsumer'
 import { treemapToHierarchy, hierarchyToRoot, isLeaf, getTooltipData } from '../../../Utilities/Util'
 import { Hierarchy, MergedRef } from '../../../Utilities/Types'
@@ -9,9 +9,10 @@ export interface TreemapChartProps {
   className?: string
   margin?: Direction
   treemap: TreemapNode[]
-  predictorPalette: DatasetVariable[]
+  // predictorPalette: DatasetVariable[]
   nodesToHighlight?: string[]
   onNodeClick?: (node: string) => void
+  predictorPalette: VariableWithColors[] | undefined
 }
 
 const TreemapChartProvider: React.FC<TreemapChartProps> = ({
@@ -38,11 +39,13 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
     }
   }, [treemap])
 
-  const getColor = (part: string) =>
-    predictorPalette.find(({ variable }) => part.includes(variable))?.color ?? '#958CAB'
+  const getColor = (part: string) => {
+  // eslint-disable-next-line
+   return predictorPalette!.find(({ variable }) => part.includes(variable))?.color ?? '#958CAB'
+  }
 
   const handlePointerMove = (event: React.PointerEvent<SVGRectElement>, node: TreemapNode, depth: number) => {
-    const tooltipData = getTooltipData(node, depth, predictorPalette)
+    const tooltipData = getTooltipData(node, depth, predictorPalette as DatasetVariable[])
 
     onNodeDataChange(tooltipData)
     setHoveringLabel(tooltipData.term)

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
-import { DatasetVariable } from '../../Utilities/Types'
 import { DataAvailabilityScale } from './useDatasetAvailability-hook'
 import CustomScale from './CustomScale'
+import { Mark } from './Offsets'
 
 
 export type VariableOffsets = {
@@ -10,9 +10,19 @@ export type VariableOffsets = {
   availableOffset?: number
 }
 
-interface ScaleProps extends VariableOffsets, Omit<DatasetVariable, 'variable'> {
+interface ScaleProps {
   scale: DataAvailabilityScale
   scaleRatio: number
+  sliderProps: {
+    max: number;
+    min: number;
+    marks: Mark[];
+  },
+  variable: string
+  usedOffsets?: { from: number; to: number }
+  availableOffset?: number
+  color: string
+  textColor: string
 }
 
 const ROUND_FACTOR = 100

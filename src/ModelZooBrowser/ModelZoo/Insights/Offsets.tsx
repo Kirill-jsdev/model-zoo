@@ -68,7 +68,8 @@ export const Offsets: React.FC = () => {
 
   const enhancedOffsets = useMemo(() => {
     return offsets.map((offset) => {
-      const datasetVariable = variablesWithColors.find(({ variable }: { variable: any }) => variable === offset.variable)
+     // eslint-disable-next-line
+      const datasetVariable = variablesWithColors!.find(({ variable }: { variable: any }) => variable === offset.variable)
       if (!datasetVariable) return { ...offset, color: coreColor.main.smoke, textColor: coreColor.black }
       return { ...offset, ...datasetVariable }
     })
