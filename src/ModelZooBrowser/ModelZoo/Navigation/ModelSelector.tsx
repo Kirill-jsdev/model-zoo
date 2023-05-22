@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
-import { useModelOptions, useDetectionModelResult } from '../../Utilities/Hooks'
+import { useModelOptions, useDetectionModelResult, useConvertTimePeriodFromISO8601 } from '../../Utilities/Hooks'
 import ModelSelectButton from './ModelSelectButton'
 
 import './ModelSelector.css'
@@ -16,8 +16,8 @@ export const ModelSelector: React.FC = () => {
   //@ts-ignore
   const isForecasting = !!model?.model?.modelZoo
   const showInGroups = isForecasting && detectionModelResult.isDailyCycle
-
-  const chunks = divideArrayIntoChunks(options, 24)
+  const multiplier = useConvertTimePeriodFromISO8601(model)?.multiplier as number
+  const chunks = divideArrayIntoChunks(options, 24 * multiplier)
 
   if (typeof options === 'undefined') return <></>
 

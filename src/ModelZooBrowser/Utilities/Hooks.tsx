@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { ModelOption, Variable, VariableWithColors } from "./Types"
+import { ModelOption, VariableWithColors } from "./Types"
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './helpers'
 import { DetectionModel } from '../ADModelTypes'
@@ -90,3 +90,54 @@ export const useTarget = () => {
     const target = targetColumn ? variablesWithColors!.find((v: VariableWithColors) => v.name === targetColumn) : undefined
     return target
 }
+
+export const useConvertTimePeriodFromISO8601 = (model: DetectionModel | ForecastModel | undefined) => {
+
+    if (!model) return null
+
+    const detectionModel = model as DetectionModel
+    const forecastModel = model as ForecastModel
+    const timePeriodISO8601 = forecastModel?.model?.modelZoo?.samplingPeriod ?? detectionModel?.model?.normalBehaviorModel?.samplingPeriod
+
+    const regex = /P(?:(\d+)D)?T?(\d+)?(\w+)/
+    const matches = timePeriodISO8601.match(regex)
+
+    if (matches) {
+        let value = 0
+        let timeUnit = ''
+        if (matches[1]) {
+            value += parseInt(matches[1])
+            timeUnit = 'day';
+        }
+        if (matches[2]) {
+            value += parseInt(matches[2])
+            timeUnit = matches[3]
+        }
+        const timeUnitMapping: { [key: string]: string } = {
+            H: 'hour',
+            M: 'minute',
+            S: 'second',
+            D: 'day',
+        }
+
+        const multipliers: { [key: string]: number } = {
+            H: 1,
+            M: 60,
+            S: 3600,
+        }
+
+        const labelValue = `${value} ${timeUnitMapping[timeUnit]}${value > 1 ? 's' : ''}`
+
+        return {
+            value,
+            timeUnit: timeUnitMapping[timeUnit],
+            labelValue,
+            timePeriodISO8601,
+            multiplier: multipliers[timeUnit]
+        }
+    }
+
+    return null // Invalid time period format
+}
+
+
