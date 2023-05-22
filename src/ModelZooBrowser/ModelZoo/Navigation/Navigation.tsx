@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <div className='nav-header'>
       <div className='title'>
-        <div title={'Back to overview'} onClick={handleClick} className='mzb-back'><ArrowUpIcon /></div>
+        {selectedModelIndex && <div title={'Back to overview'} onClick={handleClick} className='mzb-back'><ArrowUpIcon /></div>}
         <h6>{modelDetailsText}</h6>
       </div>
       <div className='mzb-download' onClick={handleDownloadJSON}><DownloadIcon /></div>
