@@ -56,17 +56,10 @@ const DataInfo = () => {
 export default DataInfo
 
 
-interface TimePeriod {
-    value: number;
-    timeUnit: string;
-    labelValue: string;
-}
-
-
-interface TimePeriod {
-    value: number;
-    timeUnit: string;
-    labelValue: string;
+export interface TimePeriod {
+    value: number
+    timeUnit: string
+    labelValue: string
   }
 
 export const convertTimePeriodFromISO8601 = (timePeriod: string | undefined): TimePeriod | null => {

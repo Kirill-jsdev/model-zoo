@@ -51,10 +51,14 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
   }, [offsets])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => onChange(determineScale(originalSamplingPeriod * maxOffset)), [originalSamplingPeriod, maxOffset])
+  useEffect(() => {
+    console.log('originalSamplingPeriod * maxOffset', originalSamplingPeriod * maxOffset)
+    onChange(determineScale(originalSamplingPeriod * maxOffset))
+  } , [originalSamplingPeriod, maxOffset, onChange])
 
-  const handleScaleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
-    onChange(e.target.value as DataAvailabilityScale)
+  const handleScaleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+      onChange(e.target.value as DataAvailabilityScale)
+  }
 
   return <CustomSelect
             label='Scale' options={scaleOptions}
@@ -62,3 +66,4 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
             value={scale ?? ''}
           />
 }
+

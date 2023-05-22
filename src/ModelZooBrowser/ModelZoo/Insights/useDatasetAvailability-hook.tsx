@@ -70,17 +70,6 @@ export type UseDataAvailability = () => {
     setScale: (scale: DataAvailabilityScale) => void
 }
 
-// export type Variable = {
-//     name: string
-//     type?: 'Numerical' | 'Boolean'
-//     firstTimestamp?: string
-//     lastTimestamp?: string
-//     minimumValue?: number
-//     maximumValue?: number
-//     averageValue?: number
-//     missingObservations?: number | null
-// }
-
 //HELPER FUNCTIONS
 function getVariableAvailabilities(variables: Variable[]): VariableAvailability[] {
     return variables.map(({ name, lastTimestamp }) => lastTimestamp ? ({
