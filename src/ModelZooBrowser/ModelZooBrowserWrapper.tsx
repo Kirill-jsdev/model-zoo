@@ -3,11 +3,12 @@ import { ModelZooBrowserContext } from './Context/ModelZooBrowserContextProvider
 import { DetectionModel } from './ADModelTypes'
 import { ForecastModel } from './FTypes'
 import { DatasetVersion } from './VersionType'
+import { VariableWithColors } from './Utilities/Types'
 
 interface ModelZooBrowserWrapperProps {
     model?: DetectionModel | ForecastModel
     dataset?: DatasetVersion
-    variablesWithColors?: any
+    variablesWithColors?: VariableWithColors[]
 }
 
 const ModelZooBrowserWrapper: React.FC<ModelZooBrowserWrapperProps> = ({children, model, variablesWithColors, dataset}) => {
