@@ -52,7 +52,8 @@ export const Offsets: React.FC = () => {
   if (!originalSamplingPeriod) originalSamplingPeriod = 0
 
   const target = useTarget()
-  const { scale: availabilityScale } = useDataAvailability(dataset, target, originalSamplingPeriod)
+  // eslint-disable-next-line
+  const { scale: availabilityScale } = useDataAvailability(dataset!, target!, originalSamplingPeriod)
   const [scale, setScale] = useState<DataAvailabilityScale>(availabilityScale)
   const exceedsOne = useMemo(() => offsets.some(usedOffsetsExceedsOne), [offsets])
   const sliderProps = useMemo(() => getSliderConfiguration(exceedsOne), [exceedsOne])
@@ -70,7 +71,7 @@ export const Offsets: React.FC = () => {
   const enhancedOffsets = useMemo(() => {
     return offsets.map((offset) => {
      // eslint-disable-next-line
-      const datasetVariable = variablesWithColors!.find(({ variable }: { variable: any }) => variable === offset.variable)
+      const datasetVariable = variablesWithColors!.find(({ variable }) => variable === offset.variable)
       if (!datasetVariable) return { ...offset, color: coreColor.main.smoke, textColor: coreColor.black }
       return { ...offset, ...datasetVariable }
     })

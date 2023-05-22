@@ -10,7 +10,7 @@ export const UnusedVariables: React.FC = () => {
 
   const unusedVariables = useMemo(() => {
     if (variablesWithColors && selectedModelTerms)
-      return variablesWithColors.filter(({ variable }: {variable: any}) => !selectedModelTerms.some(checkForVariableInTerm(variable)))
+      return variablesWithColors.filter(({ variable }) => !selectedModelTerms.some(checkForVariableInTerm(variable)))
     else
       return []
   }, [variablesWithColors, selectedModelTerms])
@@ -20,7 +20,7 @@ export const UnusedVariables: React.FC = () => {
       <h6 className='insights-subheader'>Unused variables</h6>
       <div className='unusedvars-container'>
         {unusedVariables.length > 0
-          ? unusedVariables.map(({ variable, color }: {variable: any, color: any}, index: any) => (
+          ? unusedVariables.map(({ variable, color }) => (
               <div key={`${color}-unused-${variable}`} className='unused-var'>
                 <WaveIcon />
                 {variable}

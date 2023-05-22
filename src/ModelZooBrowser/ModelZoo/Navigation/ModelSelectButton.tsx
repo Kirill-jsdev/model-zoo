@@ -1,6 +1,13 @@
 import { ClockIcon, WaveIcon } from "../../Icons"
 
-const ModelSelectButton: React.FC<any> = ({text, isDailyCycle, isSelected, onClickHandler}) => {
+type ModelSelectButtonProps = {
+    text: string
+    isDailyCycle: boolean
+    isSelected: boolean
+    onClickHandler: () => void
+}
+
+const ModelSelectButton: React.FC<ModelSelectButtonProps> = ({text, isDailyCycle, isSelected, onClickHandler}) => {
 
     const buttonText = isDailyCycle ? text.substring(0, text.length - 4) : text
 

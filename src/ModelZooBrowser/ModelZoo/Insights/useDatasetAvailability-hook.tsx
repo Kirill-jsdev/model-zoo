@@ -1,5 +1,6 @@
 import {useState, useEffect, useMemo} from 'react'
-import { Variable } from '../../Utilities/Types'
+import { Variable, VariableWithColors } from '../../Utilities/Types'
+import { DatasetVersion } from '../../VersionType'
 
 export enum DataAvailabilityScale {
     SAMPLE = 1,
@@ -14,7 +15,7 @@ export enum DataAvailabilityScale {
 
 export const SCALE_MAX = 10
 
-export const useDataAvailability: any = (selectedVersion: any, target: any, originalSamplingPeriod: number) => {
+export const useDataAvailability = (selectedVersion: DatasetVersion, target: VariableWithColors, originalSamplingPeriod: number) => {
     const [scale, setScale] = useState<DataAvailabilityScale>(DataAvailabilityScale.SAMPLE)
 
     const targetLatest = useMemo(() => (target?.lastTimestamp ? new Date(target.lastTimestamp).getTime() : undefined), [target])

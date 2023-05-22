@@ -26,8 +26,8 @@ export function useSelectedModelOffsets(variablesWithColors: VariableWithColors[
       const selectedModel = models.find(({ index }: {index: number}) => index === selectedModelIndex)
       if (!selectedModel) return []
 
-      return variablesWithColors.reduce((acc: any, { variable }: {variable: any}) => {
-        const offsets = selectedModel.variableOffsets.find(({ name }: {name: any}) => name === variable)
+      return variablesWithColors.reduce((acc: any, { variable }) => {
+        const offsets = selectedModel.variableOffsets.find(({ name }) => name === variable)
         const variableOffset = {
           variable,
           usedOffsets: offsets ? transformModelVariableOffset(offsets) : undefined,
