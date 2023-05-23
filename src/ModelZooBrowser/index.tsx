@@ -9,16 +9,18 @@ import { ForecastModel } from './Utilities/FTypes'
 import { DetectionModel } from './Utilities/ADModelTypes'
 
 type ModelZooBrowserProps = {
+    //@ts-ignore
     model: any
+    //@ts-ignore
     dataset: any
 }
 
 const ModelZooBrowser: React.FC<ModelZooBrowserProps> = ({model, dataset}) => {
 
-    if (!model || !dataset) return <div>Model Zoo Browser did not receive necessary data</div>
+    if (!model || !dataset) return <div>Data fetching...</div>
+    if (model.code || dataset.code) return <div>Model Zoo Browser did not receive necessary data. Please, check your credentials for API data endpoints</div>
 
     const variablesWithColors = buildPredictorPalette(dataset.variables)
-
     const modelData = model as ForecastModel | DetectionModel
     const datasetVersion = dataset as DatasetVersion
 
