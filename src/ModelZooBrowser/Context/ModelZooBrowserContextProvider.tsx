@@ -1,9 +1,9 @@
 /* eslint-disable max-lines */
 import React, {useState} from 'react'
 import { Term, TooltipDataProps, TreemapNode, VariableWithColors } from '../Utilities/Types'
-import { DetectionModel } from '../ADModelTypes'
 import { ForecastModel } from '../Utilities/FTypes'
 import { DatasetVersion } from '../Utilities/VersionType'
+import { DetectionModel } from '../Utilities/ADModelTypes'
 
 interface ModelZooBrowserContextValues {
     model: DetectionModel | ForecastModel | undefined

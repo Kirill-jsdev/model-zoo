@@ -30,13 +30,8 @@ const TreemapChartProvider: React.FC<TreemapChartProps> = ({
   const { onNodeDataChange } = useContext(ModelZooBrowserContext)
 
   useEffect(() => {
-    try {
       const hierarchy = treemapToHierarchy(treemap)
       setRoot(hierarchyToRoot(hierarchy))
-    }
-    finally {
-        console.log('Treemap component')
-    }
   }, [treemap])
 
   const getColor = (part: string) => {

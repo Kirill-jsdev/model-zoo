@@ -60,7 +60,7 @@ export const useGetModel = (jobId: string, token: string, type: 'ad' | 'forecast
       .catch(error => {
         setError(error)
       })
-    }, [jobId, token])
+    }, [jobId, token, type])
 
     return {model, error}
 }

@@ -52,7 +52,6 @@ export const DetermineScale: React.FC<DetermineScaleProps> = ({ offsets, scale, 
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    console.log('originalSamplingPeriod * maxOffset', originalSamplingPeriod * maxOffset)
     onChange(determineScale(originalSamplingPeriod * maxOffset))
   } , [originalSamplingPeriod, maxOffset, onChange])
 
