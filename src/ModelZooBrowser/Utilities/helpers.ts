@@ -1,4 +1,4 @@
-import { Model } from '../ADModelTypes'
+import { Model } from './ADModelTypes'
 import { Term, TreemapNode, Variable, VariableWithColors } from './Types'
 const ROOT_LABEL = 'root'
 const ROOT_ELEMENT: TreemapNode = { label: ROOT_LABEL, parentLabel: null, importance: null }
@@ -128,41 +128,12 @@ export interface InterceptDictionary extends DictionaryBase {
 
 export type Part = Dictionary | BetaDictionary
 
-// export interface Term {
-//     importance: number | null
-//     parts: Part[]
-//   }
-
-  // type CaseVariableOffset = {
-  //   name: string
-  //   dataTo: number
-  // }
-
-// type ModelCase = {
-// dayTime?: string | null
-// variableOffsets: CaseVariableOffset[]
-// }
-
 export type ModelVariableOffset = {
     name: string
     dataFrom: number
     dataTo: number
   }
 
-// export interface Model {
-//     index: number
-//     terms: Term[]
-//     dayTime?: string | null
-//     variableOffsets: ModelVariableOffset[]
-//     samplesAhead: number[]
-//     modelQuality: number
-//     predictionIntervals: number[]
-//     lastTargetTimestamp: string
-//     RInv: number[]
-//     g: number[]
-//     mx: number[]
-//     cases: ModelCase[]
-//   }
 export type PartiallyRequired<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
 export type FeatureModel = PartiallyRequired<Model, 'index' | 'terms'>
 

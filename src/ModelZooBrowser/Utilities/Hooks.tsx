@@ -2,8 +2,8 @@ import { useContext, useMemo } from 'react'
 import { ModelOption, VariableWithColors } from "./Types"
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './helpers'
-import { DetectionModel } from '../ADModelTypes'
 import { ForecastModel } from './FTypes'
+import { DetectionModel } from './ADModelTypes'
 
 export const useModelOptions = () => {
 
