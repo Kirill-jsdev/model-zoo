@@ -2,19 +2,13 @@ import {useMemo, useEffect, useState} from 'react'
 import { ModelVariableOffset } from '../../Utilities/helpers';
 import { DatasetVersion } from '../../Utilities/VersionType';
 import { VariableWithColors } from '../../Utilities/Types';
-import { DetectionModel } from '../../ADModelTypes';
 import { ForecastModel } from '../../Utilities/FTypes';
+import { DetectionModel } from '../../Utilities/ADModelTypes';
 
 export type VariableOffsets = {
     variable: string
     usedOffsets?: { from: number; to: number }
 }
-
-// export type ModelVariableOffset = {
-//     name: string
-//     dataFrom: number
-//     dataTo: number
-// }
 
 export function useSelectedModelOffsets(variablesWithColors: VariableWithColors[], selectedModelIndex: number, model: DetectionModel | ForecastModel): VariableOffsets[] {
 
