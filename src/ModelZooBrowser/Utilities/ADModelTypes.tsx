@@ -1,5 +1,5 @@
-import { Term } from "./Utilities/Types"
-import { ModelVariableOffset } from "./Utilities/helpers"
+import { Term } from "./Types"
+import { ModelVariableOffset } from "./helpers"
 
 //AD
 export type DetectionModel = {

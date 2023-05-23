@@ -1,9 +1,9 @@
 import {useMemo, useEffect, useState} from 'react'
 import { ModelVariableOffset } from '../../Utilities/helpers';
-import { DatasetVersion } from '../../VersionType';
+import { DatasetVersion } from '../../Utilities/VersionType';
 import { VariableWithColors } from '../../Utilities/Types';
 import { DetectionModel } from '../../ADModelTypes';
-import { ForecastModel } from '../../FTypes';
+import { ForecastModel } from '../../Utilities/FTypes';
 
 export type VariableOffsets = {
     variable: string

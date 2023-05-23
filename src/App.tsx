@@ -1,5 +1,5 @@
 import React from 'react'
-import ModelZooBrowser from './ModelZooBrowser/ModelZooBrowser'
+import ModelZooBrowser from './ModelZooBrowser'
 import { useLogin, useGetModel, useGetVersions} from './API/api'
 
 const JOB_ID = 'bd4f208e-808d-492d-a4c0-550e42924445'

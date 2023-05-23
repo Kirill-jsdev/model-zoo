@@ -3,7 +3,7 @@ import { ModelOption, VariableWithColors } from "./Types"
 import { ModelZooBrowserContext } from '../Context/ModelZooBrowserContextProvider'
 import { getTreemapFromModels, getVariablePropertiesSum, mapVariablePropertiesToTerms, mapVariablePropertiesToTreemapNodes } from './helpers'
 import { DetectionModel } from '../ADModelTypes'
-import { ForecastModel } from '../FTypes'
+import { ForecastModel } from './FTypes'
 
 export const useModelOptions = () => {
 
@@ -141,7 +141,7 @@ export const useConvertTimePeriodFromISO8601 = (model: DetectionModel | Forecast
             timeUnit: timeUnitMapping[timeUnit],
             labelValue,
             timePeriodISO8601,
-            multiplier: multipliers[timeUnit]
+            multiplier: multipliers[timeUnit] || 1
         }
     }
 

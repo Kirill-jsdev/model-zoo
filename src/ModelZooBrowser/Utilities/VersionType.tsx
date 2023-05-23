@@ -1,5 +1,5 @@
-import { Entity, Status } from "./ModelZoo/Insights/insights-hooks"
-import { Variable } from "./Utilities/Types"
+import { Entity, Status } from "../ModelZoo/Insights/insights-hooks"
+import { Variable } from "./Types"
 
 export type DatasetVersion = {
     id: string

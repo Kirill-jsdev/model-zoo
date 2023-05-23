@@ -2,8 +2,8 @@
 import React, {useState} from 'react'
 import { Term, TooltipDataProps, TreemapNode, VariableWithColors } from '../Utilities/Types'
 import { DetectionModel } from '../ADModelTypes'
-import { ForecastModel } from '../FTypes'
-import { DatasetVersion } from '../VersionType'
+import { ForecastModel } from '../Utilities/FTypes'
+import { DatasetVersion } from '../Utilities/VersionType'
 
 interface ModelZooBrowserContextValues {
     model: DetectionModel | ForecastModel | undefined

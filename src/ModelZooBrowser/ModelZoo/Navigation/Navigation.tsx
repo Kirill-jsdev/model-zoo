@@ -1,7 +1,8 @@
 import React, {useContext} from 'react'
 import { ModelZooBrowserContext } from '../../Context/ModelZooBrowserContextProvider'
 import { ModelSelector } from './ModelSelector'
-import '../../ModelZooBrowser.css'
+// import '../../ModelZooBrowser.css'
+import '../../ModelZoo/ModelZooBrowser.css'
 import { DownloadIcon, ArrowUpIcon } from '../../Icons'
 
 const Header = () => {

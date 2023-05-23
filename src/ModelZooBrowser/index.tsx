@@ -1,12 +1,12 @@
 import React from 'react'
-import './ModelZooBrowser.css'
+import './ModelZoo/ModelZooBrowser.css'
 import { buildPredictorPalette } from './Utilities/helpers'
 import { ModelZooBrowserContextProvider } from './Context/ModelZooBrowserContextProvider'
-import ModelZooBrowserWrapper from './ModelZooBrowserWrapper'
+import ModelZooBrowserWrapper from './ModelZoo/ModelZooBrowserWrapper'
 import ModelZoo from './ModelZoo/ModelZoo'
-import { DetectionModel } from './ADModelTypes'
-import { DatasetVersion } from './VersionType'
-import { ForecastModel } from './FTypes'
+import { DatasetVersion } from './Utilities/VersionType'
+import { ForecastModel } from './Utilities/FTypes'
+import { DetectionModel } from './Utilities/ADModelTypes'
 
 type ModelZooBrowserProps = {
     model: DetectionModel | ForecastModel

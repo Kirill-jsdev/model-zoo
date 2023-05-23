@@ -1,6 +1,6 @@
 import {useState, useEffect, useMemo} from 'react'
 import { Variable, VariableWithColors } from '../../Utilities/Types'
-import { DatasetVersion } from '../../VersionType'
+import { DatasetVersion } from '../../Utilities/VersionType'
 
 export enum DataAvailabilityScale {
     SAMPLE = 1,
