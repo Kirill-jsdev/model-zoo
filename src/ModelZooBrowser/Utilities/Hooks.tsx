@@ -28,7 +28,7 @@ export const useModelOptions = () => {
 
 export function useDetectionModelResult() {
 
-    const { onSelectedModelTermsChange, onSelectedModelTreemapNodesChange, model, selectedModelIndex } = useContext(ModelZooBrowserContext)
+    const { model, selectedModelIndex } = useContext(ModelZooBrowserContext)
 
     const detectionModel = model as DetectionModel
     const forecastModel = model as ForecastModel
@@ -66,9 +66,6 @@ export function useDetectionModelResult() {
         if (isUnRelatedModel) return models[0]?.terms
         return mapVariablePropertiesToTerms(variableProperties ?? [])
     }, [models, isUnRelatedModel, selectedModelIndex, variableProperties])
-
-    onSelectedModelTermsChange(selectedModelTerms)
-    onSelectedModelTreemapNodesChange(selectedModelTreemapNodes)
 
     return {
         models,
